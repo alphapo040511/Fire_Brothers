@@ -7,6 +7,7 @@ public class FireHydrant : Interactable
     public override void Complite(PlayerInteraction playerData)
     {
         base.Complite(playerData);
-        Destroy(gameObject);                    //일단 완료되면 파괴되도록 설정
+        Debug.Log("화재 진압 완료");
+        //점수 관련 내용 추가 등에 사용
     }
 }

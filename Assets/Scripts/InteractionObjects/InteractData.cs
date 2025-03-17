@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class InteractData
 {
+    public string interactObjectName;
     public List<HeldItemType> needItems;
     public int maxProgress;
     public HeldItemType rewardItem;
@@ -21,6 +22,7 @@ public class InteractData
         if(currentProgress >= maxProgress )
         {
             Debug.Log("상호작용 완료");
+            currentProgress = 0;
             return true;
         }
 
