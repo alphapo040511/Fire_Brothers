@@ -245,6 +245,9 @@ MonoBehaviour:
     needItems: 00000000
     maxProgress: 0
     rewardItem: 1
+    reuseable: 1
+    reuseDelay: 10
+    interactable: 1
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,6 +954,9 @@ MonoBehaviour:
     needItems: 01000000
     maxProgress: 5
     rewardItem: 2
+    reuseable: 1
+    reuseDelay: 3
+    interactable: 1
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,10 +1213,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactData:
-    interactObjectName: "\uD654\uC7AC"
-    needItems: 0200000004000000
+    interactObjectName: "\uC18C\uBC29\uCC28(\uBB3C\uD0F1\uD06C)"
+    needItems: 02000000
     maxProgress: 7
     rewardItem: 0
+    reuseable: 1
+    reuseDelay: 0
+    interactable: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

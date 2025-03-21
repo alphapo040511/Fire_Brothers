@@ -8,7 +8,13 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interact(PlayerInteraction playerData)          //상호작용시 호출하는 메서드
     {
-         if (interactData.needItems.Contains(playerData.heldItemType))
+        if (interactData.interactable == false)
+        {
+            Debug.Log("더 이상 사용할 수 없습니다.");
+            return;
+        }
+
+        if (interactData.needItems.Contains(playerData.heldItemType))
         {
             if (interactData.ProgressInteraction())
             {
@@ -25,5 +31,14 @@ public class Interactable : MonoBehaviour
     public virtual void Complite(PlayerInteraction playerData)
     {
         playerData.CompliteInteractin(interactData.rewardItem);
+        //가로수 같이 완료 후 파괴되는 오브젝트는 따로 관리
+    }
+
+    void Update()
+    {
+        if (interactData.reuseable)
+        {
+            interactData.Timer(Time.deltaTime);
+        }
     }
 }
