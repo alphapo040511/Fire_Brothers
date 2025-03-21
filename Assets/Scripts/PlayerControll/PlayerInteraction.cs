@@ -5,8 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    public Transform pivot;
+
     public float interactableDistance = 3f;
-    public float interactableAngle = 45f;
+    public float interactableAngle = 90f;
 
     public HeldItemType heldItemType;
 
@@ -20,7 +22,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void Start()
     {
-        angleThreshold = Mathf.Cos(Mathf.Deg2Rad * interactableAngle);
+        angleThreshold = Mathf.Cos(Mathf.Deg2Rad * interactableAngle * 0.5f);
     }
 
     void Update()
@@ -46,7 +48,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void FindTargetObject()
     {
-        Collider[] targets = Physics.OverlapSphere(transform.position, interactableDistance, 1 << 3);       //레이어 추가
+        Collider[] targets = Physics.OverlapSphere(pivot.position, interactableDistance, 1 << 3);       //레이어 추가
 
         if (targets.Length <= 0)
         {
@@ -54,21 +56,21 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
-        Vector3 playerPos = new Vector3(transform.position.x, 0, transform.position.z);
+        Vector3 playerPos = new Vector3(pivot.position.x, 0, pivot.position.z);
 
         Vector3 targetPos = Vector3.zero;
         if (target != null)
         {
             targetPos = new Vector3(target.transform.position.x, 0, target.transform.position.z);
         }
-        float dot = Vector3.Dot(transform.forward, targetPos - playerPos);
+        float dot = Vector3.Dot(pivot.forward, (targetPos - playerPos).normalized);
 
         foreach (var temp in targets)
         {
             if (temp == null || temp == target) return;
 
             Vector3 newPos = new Vector3(temp.transform.position.x, 0, temp.transform.position.z);
-            float newDot = Vector3.Dot(transform.forward, newPos - playerPos);
+            float newDot = Vector3.Dot(pivot.forward, (newPos - playerPos).normalized);
 
             if (newDot < angleThreshold) return;
 
