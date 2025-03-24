@@ -30,7 +30,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        Vector3 direction = Vector3.forward * context.ReadValue<Vector2>().y + Vector3.right * context.ReadValue<Vector2>().x;
+        // 카메라의 Y축 회전만 반영해서 이동 방향 계산
+        Vector3 forward = Camera.main.transform.forward;
+        Vector3 right = Camera.main.transform.right;
+
+        // Y 축 회전은 무시하고, 수평 방향만 사용
+        forward.y = 0;
+        right.y = 0;
+
+        Vector3 direction = forward * context.ReadValue<Vector2>().y + right * context.ReadValue<Vector2>().x;
         direction.Normalize();
         if (direction.magnitude > minValue)
         {
