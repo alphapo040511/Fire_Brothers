@@ -6,9 +6,14 @@ public class Interactable : MonoBehaviour
 {
     public InteractData interactData;
 
+    public int currentProgress = 0;
+    public bool interactable = true;
+
+    private float timer;
+
     public virtual void Interact(PlayerInteraction playerData)          //상호작용시 호출하는 메서드
     {
-        if (interactData.interactable == false)
+        if (interactable == false)
         {
             Debug.Log("더 이상 사용할 수 없습니다.");
             return;
@@ -16,7 +21,7 @@ public class Interactable : MonoBehaviour
 
         if (interactData.needItems.Contains(playerData.heldItemType))
         {
-            if (interactData.ProgressInteraction())
+            if (ProgressInteraction())
             {
                 Complite(playerData);
             }
@@ -31,14 +36,56 @@ public class Interactable : MonoBehaviour
     public virtual void Complite(PlayerInteraction playerData)
     {
         playerData.CompliteInteractin(interactData.rewardItem);
-        //가로수 같이 완료 후 파괴되는 오브젝트는 따로 관리
+        //가로수 같이 완료 후 파괴되는 오브젝트는 따로 관리(이벤트로 하는것도 방법일듯)
     }
 
     void Update()
     {
         if (interactData.reuseable)
         {
-            interactData.Timer(Time.deltaTime);
+            Timer(Time.deltaTime);
+        }
+    }
+
+    public bool ProgressInteraction()
+    {
+        currentProgress++;
+
+        Debug.Log($"현재 진행도 : {currentProgress}/{interactData.maxProgress}");
+
+        if (currentProgress >= interactData.maxProgress)
+        {
+            Debug.Log("상호작용 완료");
+            currentProgress = 0;
+
+            interactable = false;
+
+            if (interactData.reuseable)
+            {
+                InitTimer();
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private void InitTimer()
+    {
+        timer = interactData.reuseDelay;
+    }
+
+    public void Timer(float deltaTime)
+    {
+        if (!interactable)
+        {
+            timer -= deltaTime;
+
+            if (timer <= 0)
+            {
+                interactable = true;
+            }
         }
     }
 }
