@@ -14,18 +14,18 @@ public class TrailsManager : MonoBehaviour
         }
     }
 
-    public Queue<Waypoint> waypoins = new Queue<Waypoint>();
+    public List<Waypoint> waypoins = new List<Waypoint>();
 
     public void AddPoint(Waypoint point)
     {
-        waypoins.Enqueue(point);
+        waypoins.Add(point);
     }
 
-    public Waypoint GetWaypoint()
+    public Waypoint GetWaypoint(int index)
     {
-        if(waypoins.Count > 0)
+        if(waypoins.Count > 0 && waypoins.Count > index)
         {
-            return waypoins.Dequeue();
+            return waypoins[index];
         }
 
         return null;

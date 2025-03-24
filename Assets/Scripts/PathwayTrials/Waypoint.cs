@@ -8,6 +8,7 @@ public class Waypoint : MonoBehaviour
 
     void Start()
     {
-        TrailsManager.instance.AddPoint(this);
+        //자체적으로 길을 추가할거 아니라면 필요 없을듯
+        //TrailsManager.instance.AddPoint(this);
     }
 }

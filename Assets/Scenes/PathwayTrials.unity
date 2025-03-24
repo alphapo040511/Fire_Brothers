@@ -647,6 +647,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247696a59f83aa34da9278c42def850d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoins:
+  - {fileID: 2058605763}
+  - {fileID: 561321215}
+  - {fileID: 1967428288}
+  - {fileID: 1421670744}
 --- !u!4 &1061367544
 Transform:
   m_ObjectHideFlags: 0

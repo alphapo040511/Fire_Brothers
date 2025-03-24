@@ -10,6 +10,14 @@ public class FiretruckMove : MonoBehaviour
 
     public Waypoint waypoint;
 
+    private Rigidbody rb;
+    private int waypointIndex = 0;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -30,7 +38,7 @@ public class FiretruckMove : MonoBehaviour
         Vector3 direction = (waypoint.transform.position - transform.position);
         direction.y = 0;
 
-        transform.position = transform.position + direction.normalized * moveSpeed * Time.deltaTime;
+        rb.MovePosition(transform.position + direction.normalized * moveSpeed * Time.deltaTime);
     }
 
     private void Rotation()
@@ -39,15 +47,16 @@ public class FiretruckMove : MonoBehaviour
         direction.y = 0;
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        rb.MoveRotation(Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime));
     }
 
     private void GettingWaypoint()
     {
-        Waypoint point = TrailsManager.instance.GetWaypoint();
+        Waypoint point = TrailsManager.instance.GetWaypoint(waypointIndex);
         
         if(point != null)
         {
+            waypointIndex++;
             waypoint = point;
         }
         else

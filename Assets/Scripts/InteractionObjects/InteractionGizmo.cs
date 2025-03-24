@@ -6,8 +6,8 @@ public class InteractionGizmo : MonoBehaviour
 {
     public Transform pivot;
 
-    private float radius = 3f;         // 부채꼴의 반지름
-    private float angle = 90f;         // 부채꼴의 각도 (중앙에서 양쪽으로 펼쳐지는 각도)
+    public float radius = 3f;         // 부채꼴의 반지름
+    public float angle = 90f;         // 부채꼴의 각도 (중앙에서 양쪽으로 펼쳐지는 각도)
     private int numSteps = 10;         // 부채꼴을 그릴 때 사용되는 분할 수 (원 그릴 때의 점들)
 
     void OnDrawGizmos()
