@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: WaterTank
   m_EditorClassIdentifier: 
   interactObjectName: "\uBB3C\uD0F1\uD06C"
+  sprite: {fileID: 21300000, guid: 5455a41bf9be7434882d15a52e7b4a65, type: 3}
   needItems: 02000000
-  maxProgress: 2
+  maxProgress: 0
   rewardItem: 0
   reuseable: 1
   reuseDelay: 1

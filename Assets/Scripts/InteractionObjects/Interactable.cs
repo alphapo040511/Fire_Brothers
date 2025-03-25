@@ -9,7 +9,18 @@ public class Interactable : MonoBehaviour
     public int currentProgress = 0;
     public bool interactable = true;
 
+
+    private CooldownUI coodownUI;
+    private ProgressUI progressUI;
     private float timer;
+
+    void Start()
+    {
+        if(interactData.reuseable)
+        {
+            coodownUI = GameSceneUIManger.instance.CreatingCooldownUI(interactData.sprite, transform);
+        }
+    }
 
     void Update()
     {
@@ -43,13 +54,30 @@ public class Interactable : MonoBehaviour
 
     public bool ProgressInteraction()
     {
+        if(progressUI == null && interactData.maxProgress > 0)
+        {
+            progressUI = GameSceneUIManger.instance.CreatingProgressUI(transform);
+        }
+
         currentProgress++;
 
         Debug.Log($"현재 진행도 : {currentProgress}/{interactData.maxProgress}");
 
+        if (progressUI != null)
+        {
+            progressUI.UpdateProgess((float)currentProgress / (float)interactData.maxProgress);
+        }
+
         if (currentProgress >= interactData.maxProgress)
         {
             Debug.Log("상호작용 완료");
+
+            if (progressUI != null)
+            {
+                Destroy(progressUI.gameObject);
+                progressUI = null;
+            }
+
             if (interactData.reuseable)
             {
                 InitTimer();
@@ -72,16 +100,18 @@ public class Interactable : MonoBehaviour
 
     private void InitTimer()
     {
-        timer = interactData.reuseDelay;
+        timer = 0;
     }
 
     public void Timer(float deltaTime)
     {
         if (!interactable)
         {
-            timer -= deltaTime;
+            timer += deltaTime;
 
-            if (timer <= 0)
+            coodownUI.UpdateCooltime(timer / interactData.reuseDelay);
+
+            if (timer >= interactData.reuseDelay)
             {
                 interactable = true;
             }

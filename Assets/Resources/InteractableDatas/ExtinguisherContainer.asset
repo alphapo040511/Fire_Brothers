@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: ExtinguisherContainer
   m_EditorClassIdentifier: 
   interactObjectName: "\uC18C\uD654\uAE30 \uBCF4\uAD00\uD568"
+  sprite: {fileID: 21300000, guid: 062e5fad3cc43d04788799e0efd0a8da, type: 3}
   needItems: 00000000
-  maxProgress: 2
+  maxProgress: 0
   rewardItem: 4
   reuseable: 1
   reuseDelay: 15
