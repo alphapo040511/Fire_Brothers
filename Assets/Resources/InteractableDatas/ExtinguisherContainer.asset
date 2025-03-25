@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactObjectName: "\uC18C\uD654\uAE30 \uBCF4\uAD00\uD568"
   needItems: 00000000
-  maxProgress: 0
+  maxProgress: 2
   rewardItem: 4
   reuseable: 1
   reuseDelay: 15

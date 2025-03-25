@@ -56,23 +56,24 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
-        Vector3 playerPos = new Vector3(pivot.position.x, 0, pivot.position.z);
+        Vector3 playerPos = PlanePosition(pivot.position);
 
         Vector3 targetPos = Vector3.zero;
         if (target != null)
         {
-            targetPos = new Vector3(target.transform.position.x, 0, target.transform.position.z);
+            targetPos = PlanePosition(target.transform.position);
         }
         float dot = Vector3.Dot(pivot.forward, (targetPos - playerPos).normalized);
 
         foreach (var temp in targets)
         {
-            if (temp == null || temp == target) return;
+            if (temp == target) return;
 
-            Vector3 newPos = new Vector3(temp.transform.position.x, 0, temp.transform.position.z);
+            Vector3 newPos = PlanePosition(temp.transform.position);
+
             float newDot = Vector3.Dot(pivot.forward, (newPos - playerPos).normalized);
 
-            if (newDot < angleThreshold) return;
+            if (newDot < angleThreshold) return;                                //탐색 각도 밖에 있다면 리턴
 
             if (newDot > dot || target == null)
             {
@@ -96,5 +97,12 @@ public class PlayerInteraction : MonoBehaviour
 
             target.Interact(this);
         }
+    }
+
+    private Vector3 PlanePosition(Vector3 pos)
+    {
+        Vector3 temp = pos;
+        temp.y = 0;
+        return temp;
     }
 }

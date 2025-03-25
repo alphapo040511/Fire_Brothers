@@ -32,13 +32,12 @@ public class FiretruckMove : MonoBehaviour
     }
 
 
-    //어떤 방식으로 움직일지에 따라서 이동 방식은 변경예정
     private void Movement()
     {
         Vector3 direction = (waypoint.transform.position - transform.position);
         direction.y = 0;
 
-        rb.MovePosition(transform.position + direction.normalized * moveSpeed * Time.deltaTime);
+        rb.velocity = direction.normalized * moveSpeed;
     }
 
     private void Rotation()

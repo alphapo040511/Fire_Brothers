@@ -16,6 +16,7 @@ public class TrailsManager : MonoBehaviour
 
     public List<Waypoint> waypoins = new List<Waypoint>();
 
+    //웨이포인트를 미리 저장하지 않을 경우 추가하는 함수
     public void AddPoint(Waypoint point)
     {
         waypoins.Add(point);

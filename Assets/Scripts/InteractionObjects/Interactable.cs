@@ -11,6 +11,14 @@ public class Interactable : MonoBehaviour
 
     private float timer;
 
+    void Update()
+    {
+        if (interactData.reuseable)
+        {
+            Timer(Time.deltaTime);
+        }
+    }
+
     public virtual void Interact(PlayerInteraction playerData)          //상호작용시 호출하는 메서드
     {
         if (interactable == false)
@@ -33,20 +41,6 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public virtual void Complite(PlayerInteraction playerData)
-    {
-        playerData.CompliteInteractin(interactData.rewardItem);
-        //가로수 같이 완료 후 파괴되는 오브젝트는 따로 관리(이벤트로 하는것도 방법일듯)
-    }
-
-    void Update()
-    {
-        if (interactData.reuseable)
-        {
-            Timer(Time.deltaTime);
-        }
-    }
-
     public bool ProgressInteraction()
     {
         currentProgress++;
@@ -56,19 +50,24 @@ public class Interactable : MonoBehaviour
         if (currentProgress >= interactData.maxProgress)
         {
             Debug.Log("상호작용 완료");
-            currentProgress = 0;
-
-            interactable = false;
-
             if (interactData.reuseable)
             {
                 InitTimer();
             }
 
+            currentProgress = 0;
+            interactable = false;
+
             return true;
         }
 
         return false;
+    }
+
+    public virtual void Complite(PlayerInteraction playerData)
+    {
+        playerData.CompliteInteractin(interactData.rewardItem);
+        //가로수 같이 완료 후 파괴되는 오브젝트는 따로 관리(이벤트로 하는것도 방법일듯)
     }
 
     private void InitTimer()

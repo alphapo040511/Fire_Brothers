@@ -8,20 +8,20 @@ public class PlayerMovement : MonoBehaviour
     public float minValue = 0.1f;
     public float moveSpeed = 5.0f;
 
-    public CharacterController characterController;
+    private Rigidbody rb;
 
     private Vector3 moveDirection;
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        if (moveDirection == Vector3.zero) return;
+        rb.velocity = moveDirection * moveSpeed;
 
-        characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
+        if (moveDirection == Vector3.zero) return;
 
         // 이동 방향을 향하도록 회전
         Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
