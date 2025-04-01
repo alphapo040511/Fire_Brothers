@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5f21e22bdfe01348a042b56fcf41c00, type: 3}
-  m_Name: BucketContainer
+  m_Name: AxeContainer
   m_EditorClassIdentifier: 
-  interactObjectName: "\uC591\uB3D9\uC774 \uC0C1\uC790"
-  sprite: {fileID: 21300000, guid: 80dd408a303c0324ba863ce14e1b59e5, type: 3}
+  interactObjectName: "\uB3C4\uB07C \uBCF4\uAD00\uD568"
+  sprite: {fileID: 0}
   needItems: 00000000
   maxProgress: 0
-  rewardItem: 1
+  rewardItem: 3
   reuseable: 1
-  reuseDelay: 10
+  reuseDelay: 15

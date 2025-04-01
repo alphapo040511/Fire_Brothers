@@ -4,9 +4,13 @@ using UnityEngine;
 
 public enum HeldItemType
 {
-    None,          // ¾Æ¹«°Íµµ ¾È µé°í ÀÖÀ½
-    BucketEmpty,   // ºó ¾çµ¿ÀÌ
-    BucketFull,    // ¹°ÀÌ Âù ¾çµ¿ÀÌ
-    Axe,           // µµ³¢
-    Extinguisher   // ¼ÒÈ­±â
+    None,          // ï¿½Æ¹ï¿½ï¿½Íµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    BucketEmpty,   // ï¿½ï¿½ ï¿½çµ¿ï¿½ï¿½
+    BucketFull,    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½çµ¿ï¿½ï¿½
+    Axe,           // ï¿½ï¿½ï¿½ï¿½
+    Extinguisher,   // ï¿½ï¿½È­ï¿½ï¿½
+    Tree,            // ê°€ë¡œìˆ˜
+    Ambulance,       // êµ¬ê¸‰ì°¨
+    Firstaidkit,    // êµ¬ê¸‰í‚¤íŠ¸
+    HealedPerson,   // ì¹˜ë£Œëœ ì‚¬ëŒ
 }

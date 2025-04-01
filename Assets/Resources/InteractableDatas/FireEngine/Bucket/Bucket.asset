@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5f21e22bdfe01348a042b56fcf41c00, type: 3}
-  m_Name: Fire
+  m_Name: Bucket
   m_EditorClassIdentifier: 
-  interactObjectName: "\uD654\uC7AC"
-  needItems: 04000000
-  maxProgress: 5
-  rewardItem: 0
+  interactObjectName: "\uC591\uB3D9\uC774"
+  sprite: {fileID: 0}
+  needItems: 
+  maxProgress: 0
+  rewardItem: 1
   reuseable: 0
   reuseDelay: 0

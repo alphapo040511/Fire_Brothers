@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5f21e22bdfe01348a042b56fcf41c00, type: 3}
-  m_Name: FireHydrant
+  m_Name: FirstaidkitContainer
   m_EditorClassIdentifier: 
-  interactObjectName: "\uC18C\uD654\uC804"
-  needItems: 01000000
-  maxProgress: 7
-  rewardItem: 2
-  reuseable: 0
-  reuseDelay: 0
+  interactObjectName: "\uAD6C\uAE09\uD0A4\uD2B8 \uBCF4\uAD00\uD568"
+  sprite: {fileID: 0}
+  needItems: 00000000
+  maxProgress: 0
+  rewardItem: 7
+  reuseable: 1
+  reuseDelay: 15
