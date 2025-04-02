@@ -15,16 +15,18 @@ public class LevelData
 public class ObjectData
 {
     public int index;
-    public string prefabName;   //프리팹 이름 리소스 폴더 안에 프리팹 이름과 같아야 함
+    public int prefabIndex;   //프리팹 이름 리소스 폴더 안에 프리팹 이름과 같아야 함
     public Vector3 position;
     public Vector3 rotation;
     public Vector3 scale;
 }
+
 //레벨 데이터를 JSON으로 저장하고 불러오는 기능 구현
 public static class LevelDataConverter
 {
     private const string c_SavePath = "Assets/Resources/Json";
     private const string c_PrefabPath = "Prefabs/";
+    private const string c_PrefabIndexDatabasePath = "Database/PrefabIndexDatabase"; // Resources 폴더 기준
 
     //현재 씬의 오브젝트 데이터를 저장
     public static void SaveLevelData(int levelIndex)
@@ -32,15 +34,14 @@ public static class LevelDataConverter
         LevelData levelData = new LevelData { levelIndex = levelIndex, objectDatas = new List<ObjectData>() };
 
         ObjectDataComponent[] objects = Object.FindObjectsOfType<ObjectDataComponent>();
-
         for (int i = 0; i < objects.Length; i++)
         {
-            Transform tf = objects[i].transform;
+            var tf = objects[i].transform;
 
             ObjectData data = new ObjectData
             {
                 index = i,
-                prefabName = objects[i].prefabName,
+                prefabIndex = objects[i].prefabIndex,
                 position = tf.position,
                 rotation = tf.rotation.eulerAngles,
                 scale = tf.localScale
@@ -50,8 +51,7 @@ public static class LevelDataConverter
         }
 
         string json = JsonUtility.ToJson(levelData, true);
-        string filePath = Path.Combine(c_SavePath, $"Level_{levelIndex}.json");
-        File.WriteAllText(filePath, json);
+        File.WriteAllText(Path.Combine(c_SavePath, $"Level_{levelIndex}.json"), json);
     }
 
     //레벨 데이터를 불러와서 오브젝트 생성
@@ -61,7 +61,15 @@ public static class LevelDataConverter
 
         if (!File.Exists(path))
         {
-            Debug.LogError($"레벨 {levelIndex} 파일이 존재하지 않습니다: {path}");
+            Debug.LogError($"레벨 {levelIndex} JSON 파일 없음");
+            return;
+        }
+
+        //데이터 베이스 불러오기
+        PrefabIndexDatabase database = Resources.Load<PrefabIndexDatabase>(c_PrefabIndexDatabasePath);
+        if (database == null)
+        {
+            Debug.LogError("PrefabIndexDatabase.asset 파일이 Resources/Database에 없음");
             return;
         }
 
@@ -70,10 +78,17 @@ public static class LevelDataConverter
 
         foreach (ObjectData objData in data.objectDatas)
         {
-            GameObject prefab = Resources.Load<GameObject>($"{c_PrefabPath}{objData.prefabName}");
+            string prefabName = database.GetPrefabNameByIndex(objData.prefabIndex);
+            if (string.IsNullOrEmpty(prefabName))
+            {
+                Debug.LogError($"인덱스 {objData.prefabIndex}에 해당하는 프리팹 이름 없음");
+                continue;
+            }
+
+            GameObject prefab = Resources.Load<GameObject>($"{c_PrefabPath}{prefabName}");
             if (prefab == null)
             {
-                Debug.LogError($"레벨 {levelIndex}에서 불러올 수 없는 오브젝트: {objData.prefabName}");
+                Debug.LogError($"프리팹 로드 실패: {prefabName}");
                 continue;
             }
 
