@@ -19,14 +19,15 @@ public class ProgressUI : MonoBehaviour
 
     void Update()
     {
-        Vector2 screenPos = Camera.main.WorldToScreenPoint(targetPosition.position);
-        screenPos.y += 100;
+        Vector3 pos = targetPosition.position;
+        pos.y += 1.5f;
+
+        Vector2 screenPos = Camera.main.WorldToScreenPoint(pos);
         transform.position = screenPos;
     }
 
     public void UpdateProgess(float percent)
     {
-        Debug.Log(percent);
         itemImage.fillAmount = percent;
     }
 }

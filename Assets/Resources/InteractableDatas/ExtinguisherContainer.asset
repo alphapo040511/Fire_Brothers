@@ -18,4 +18,4 @@ MonoBehaviour:
   maxProgress: 0
   rewardItem: 4
   reuseable: 1
-  reuseDelay: 15
+  reuseDelay: 8
