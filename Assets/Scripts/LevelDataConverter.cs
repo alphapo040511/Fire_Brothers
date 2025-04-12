@@ -41,7 +41,7 @@ public static class LevelDataConverter
             ObjectData data = new ObjectData
             {
                 index = i,
-                prefabIndex = objects[i].prefabIndex,
+                prefabIndex = objects[i].PrefabIndex,
                 position = tf.position,
                 rotation = tf.rotation.eulerAngles,
                 scale = tf.localScale

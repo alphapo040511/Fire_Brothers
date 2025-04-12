@@ -1,0 +1,22 @@
+{
+    "stages": [
+        {
+            "stageIndex": 1,
+            "isCleared": false,
+            "stars": 0,
+            "isUnlockedWithoutStars": true
+        },
+        {
+            "stageIndex": 2,
+            "isCleared": false,
+            "stars": 0,
+            "isUnlockedWithoutStars": false
+        },
+        {
+            "stageIndex": 3,
+            "isCleared": false,
+            "stars": 0,
+            "isUnlockedWithoutStars": false
+        }
+    ]
+}
