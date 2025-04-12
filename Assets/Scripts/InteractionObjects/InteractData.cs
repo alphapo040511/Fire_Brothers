@@ -5,11 +5,29 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewInteractData", menuName = "ScriptableData/InteractData")]
 public class InteractData : ScriptableObject
 {
-    public string interactObjectName;                   //¿ÀºêÁ§Æ® ÀÌ¸§
-    public Sprite sprite;                               //¿ÀºêÁ§Æ® ÀÌ¹ÌÁö
-    public List<HeldItemType> needItems;                //»óÈ£ÀÛ¿ë½Ã ÇÊ¿äÇÑ ¾ÆÀÌÅÛ
-    public int maxProgress;                             //ÃÖ´ë ÀÛ¾÷(»óÈ£ÀÛ¿ë) È½¼ö
-    public HeldItemType rewardItem;                     //ÀÛ¾÷ ¿Ï·á ½Ã º¸»ó
-    public bool reuseable;                              //Àç»ç¿ë °¡´ÉÇÑÁö
-    public float reuseDelay;                            //Àç»ç¿ë ÄğÅ¸ÀÓ
+    public string interactObjectName;                   //ì˜¤ë¸Œì íŠ¸ ì´ë¦„
+    public Sprite sprite;                               //ì˜¤ë¸Œì íŠ¸ ì´ë¯¸ì§€
+    public List<HeldItemType> needItems;                //ìƒí˜¸ì‘ìš©ì‹œ í•„ìš”í•œ ì•„ì´í…œ
+    public int maxProgress;                             //ìµœëŒ€ ì‘ì—…(ìƒí˜¸ì‘ìš©) íšŸìˆ˜
+    public HeldItem rewardItem;                     //ì‘ì—… ì™„ë£Œ ì‹œ ë³´ìƒ
+    public bool reuseable;                              //ì¬ì‚¬ìš© ê°€ëŠ¥í•œì§€
+    public float reuseDelay;                            //ì¬ì‚¬ìš© ì¿¨íƒ€ì„
+
+    public bool CurrentItemChecking(HeldItem itemtype)
+    {   
+        if(needItems.Contains(HeldItemType.Any))                        //ëª¨ë“  ì•„ì´í…œì´ ê°€ëŠ¥í•˜ë‹¤ë©´ ê·¸ëƒ¥ true ë¦¬í„´
+        {
+            return true;
+        }
+
+        if(itemtype == null)                                            //ì†ì— ì•„ì´í…œì´ ì—†ëŠ” ê²½ìš°
+        {
+            return (needItems.Contains(HeldItemType.None));             //ìš”êµ¬ ì•„ì´í…œì´ ì—†ë‹¤ë©´
+        }
+        else
+        {
+            return (needItems.Contains(itemtype.itemType));     //í•´ë‹¹ ì•„ì´í…œë“¤ì´ ì¡°ê±´ì„ ì¶©ì¡± í•œë‹¤ë©´
+        }
+       
+    }
 }

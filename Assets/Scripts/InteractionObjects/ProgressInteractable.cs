@@ -4,33 +4,9 @@ using UnityEngine;
 
 public class ProgressInteractable : Interactable
 {
-    public InteractData interactData;
-
     public int currentProgress = 0;
-    public bool interactable = true;
 
 
-    private CooldownUI coodownUI;
-    private ProgressUI progressUI;
-    private float timer;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (interactData.reuseable)
-        {
-            coodownUI = GameSceneUIManger.instance.CreatingCooldownUI(interactData.sprite, transform);
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (interactData.reuseable)
-        {
-            Timer(Time.deltaTime);
-        }
-    }
 
     public override void Interact(PlayerInteraction playerData)          //상호작용시 호출하는 메서드
     {
@@ -40,7 +16,7 @@ public class ProgressInteractable : Interactable
             return;
         }
 
-        if (interactData.needItems.Contains(playerData.heldItemType))
+        if (interactData.CurrentItemChecking(playerData.heldItem))
         {
             if (ProgressInteraction())
             {
@@ -96,21 +72,9 @@ public class ProgressInteractable : Interactable
 
     public override void Complite(PlayerInteraction playerData)
     {
+        HeldItem item = Instantiate(interactData.rewardItem, GenPosition(playerData.transform.position), Quaternion.identity);
+        item.Handling(playerData.pivot);
         playerData.CompliteInteractin(interactData.rewardItem);
     }
 
-    public void Timer(float deltaTime)
-    {
-        if (!interactable)
-        {
-            timer += deltaTime;
-
-            coodownUI.UpdateCooltime(timer / interactData.reuseDelay);
-
-            if (timer >= interactData.reuseDelay)
-            {
-                interactable = true;
-            }
-        }
-    }
 }

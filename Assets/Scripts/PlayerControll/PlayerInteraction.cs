@@ -10,7 +10,7 @@ public class PlayerInteraction : MonoBehaviour
     public float interactableDistance = 3f;
     public float interactableAngle = 90f;
 
-    public HeldItemType heldItemType;
+    public HeldItem heldItem;
 
     private Interactable target;
     private float angleThreshold;
@@ -40,15 +40,24 @@ public class PlayerInteraction : MonoBehaviour
         pressedAButton = context.performed;
     }
 
-    public void CompliteInteractin(HeldItemType itemType)
+    public void CompliteInteractin(HeldItem itemType)
     {
-        heldItemType = itemType;
-        Debug.Log($"{itemType}¸¦ ¼Õ¿¡ µê");
+        heldItem = itemType;
+        Debug.Log($"{itemType}ë¥¼ ì†ì— ë“¦");
+    }
+
+    public void DropHeldItem()
+    {
+        if(heldItem != null)
+        {
+            heldItem.Drop();
+            heldItem = null;
+        }
     }
 
     private void FindTargetObject()
     {
-        Collider[] targets = Physics.OverlapSphere(pivot.position, interactableDistance, 1 << 3);       //·¹ÀÌ¾î Ãß°¡
+        Collider[] targets = Physics.OverlapSphere(pivot.position, interactableDistance, 1 << 3);       //ë ˆì´ì–´ ì¶”ê°€
 
         if (targets.Length <= 0)
         {
@@ -73,7 +82,7 @@ public class PlayerInteraction : MonoBehaviour
 
             float newDot = Vector3.Dot(pivot.forward, (newPos - playerPos).normalized);
 
-            if (newDot < angleThreshold) return;                                //Å½»ö °¢µµ ¹Û¿¡ ÀÖ´Ù¸é ¸®ÅÏ
+            if (newDot < angleThreshold) return;                                //íƒìƒ‰ ê°ë„ ë°–ì— ìˆë‹¤ë©´ ë¦¬í„´
 
             if (newDot > dot || target == null)
             {
@@ -81,7 +90,7 @@ public class PlayerInteraction : MonoBehaviour
                 if (interactable != null)
                 {
                     target = interactable;
-                    Debug.Log($"»õ·Î¿î Å¸°Ù [{interactable.interactData.interactObjectName}]");
+                    Debug.Log($"ìƒˆë¡œìš´ íƒ€ê²Ÿ");
                 }
             }
         }

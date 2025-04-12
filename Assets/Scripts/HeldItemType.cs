@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum HeldItemType
 {
+    Any,
     None,          // �ƹ��͵� �� ��� ����
     BucketEmpty,   // �� �絿��
     BucketFull,    // ���� �� �絿��
