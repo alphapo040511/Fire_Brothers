@@ -2,119 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactable : MonoBehaviour
+public abstract class Interactable : MonoBehaviour
 {
     public InteractData interactData;
 
-    public int currentProgress = 0;
-    public bool interactable = true;
+    public abstract void Interact(PlayerInteraction playerData);          //ìƒí˜¸ì‘ìš©ì‹œ í˜¸ì¶œí•˜ëŠ” ë©”ì„œë“œ
 
+    public abstract void Complite(PlayerInteraction playerData);
 
-    private CooldownUI coodownUI;
-    private ProgressUI progressUI;
-    private float timer;
-
-    void Start()
-    {
-        if(interactData.reuseable)
-        {
-            coodownUI = GameSceneUIManger.instance.CreatingCooldownUI(interactData.sprite, transform);
-        }
-    }
-
-    void Update()
-    {
-        if (interactData.reuseable)
-        {
-            Timer(Time.deltaTime);
-        }
-    }
-
-    public virtual void Interact(PlayerInteraction playerData)          //»óÈ£ÀÛ¿ë½Ã È£ÃâÇÏ´Â ¸Ş¼­µå
-    {
-        if (interactable == false)
-        {
-            Debug.Log("´õ ÀÌ»ó »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.");
-            return;
-        }
-
-        if (interactData.needItems.Contains(playerData.heldItemType))
-        {
-            if (ProgressInteraction())
-            {
-                Complite(playerData);
-            }
-        }
-        else
-        {
-            //»óÈ£ ÀÛ¿ëÀÌ ¾ÈµÉ °æ¿ì ¾Ö´Ï¸ŞÀÌ¼Ç µîÀ» °ü¸® ÇØ¾ßÇÏ´Ï false ¸®ÅÏÀ» ÅëÇØ ÁøÇà ¾ÈµÊÀ» Ç¥½ÃÇÏµµ·Ï Ãß°¡
-            Debug.LogWarning("ÀûÀıÇÑ ¾ÆÀÌÅÛÀ» µé°í ÀÖÁö ¾Ê½À´Ï´Ù.");
-        }
-    }
-
-    public bool ProgressInteraction()
-    {
-        if(progressUI == null && interactData.maxProgress > 0)
-        {
-            progressUI = GameSceneUIManger.instance.CreatingProgressUI(transform);
-        }
-
-        currentProgress++;
-
-        Debug.Log($"ÇöÀç ÁøÇàµµ : {currentProgress}/{interactData.maxProgress}");
-
-        if (progressUI != null)
-        {
-            progressUI.UpdateProgess((float)currentProgress / (float)interactData.maxProgress);
-        }
-
-        if (currentProgress >= interactData.maxProgress)
-        {
-            Debug.Log("»óÈ£ÀÛ¿ë ¿Ï·á");
-
-            if (progressUI != null)
-            {
-                Destroy(progressUI.gameObject);
-                progressUI = null;
-            }
-
-            if (interactData.reuseable)
-            {
-                InitTimer();
-            }
-
-            currentProgress = 0;
-            interactable = false;
-
-            return true;
-        }
-
-        return false;
-    }
-
-    public virtual void Complite(PlayerInteraction playerData)
-    {
-        playerData.CompliteInteractin(interactData.rewardItem);
-        //°¡·Î¼ö °°ÀÌ ¿Ï·á ÈÄ ÆÄ±«µÇ´Â ¿ÀºêÁ§Æ®´Â µû·Î °ü¸®(ÀÌº¥Æ®·Î ÇÏ´Â°Íµµ ¹æ¹ıÀÏµí)
-    }
-
-    private void InitTimer()
-    {
-        timer = 0;
-    }
-
-    public void Timer(float deltaTime)
-    {
-        if (!interactable)
-        {
-            timer += deltaTime;
-
-            coodownUI.UpdateCooltime(timer / interactData.reuseDelay);
-
-            if (timer >= interactData.reuseDelay)
-            {
-                interactable = true;
-            }
-        }
-    }
 }
