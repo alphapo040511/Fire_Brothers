@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FiretruckMove : MonoBehaviour
+public class VehicleMove : MonoBehaviour
 {
     public float moveSpeed = 8f;
     public float rotationSpeed = 100f;
