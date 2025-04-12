@@ -102,7 +102,7 @@ public class PlayerInteraction : MonoBehaviour
     private Vector3 PlanePosition(Vector3 pos)
     {
         Vector3 temp = pos;
-        temp.y = 0;
+        temp.y = transform.position.y;
         return temp;
     }
 }
