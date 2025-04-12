@@ -61,7 +61,7 @@ public class VehicleMove : MonoBehaviour
         else
         {
             waypoint = null;
-            Debug.Log("ΏώΐΜΖχΐΞΖ®Έ¦ Γ£ΐ» Όφ Ύψ½ΐ΄Ο΄Ω.");
+            Debug.Log("μ›¨μ΄ν¬μΈνΈλ¥Ό μ°Ύμ„ μ μ—†μµλ‹λ‹¤.");
         }
 
     }

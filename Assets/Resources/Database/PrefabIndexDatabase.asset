@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: PrefabIndexDatabase
   m_EditorClassIdentifier: 
   prefabList:
-  - prefabName: Cube
+  - prefabName: Cube 1
+    prefabIndex: 0
+  - prefabName: Cube 2
     prefabIndex: 1
+  - prefabName: Cube 3
+    prefabIndex: 2
+  - prefabName: Cube
+    prefabIndex: 3

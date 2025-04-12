@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3704392435511336482}
   - component: {fileID: 613685428473978933}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Cube 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,4 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d794963bcaf0be4fa59d517970c179c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PrefabIndex: 3
+  m_PrefabIndex: 2
