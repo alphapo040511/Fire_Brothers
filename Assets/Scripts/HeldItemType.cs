@@ -4,11 +4,12 @@ using UnityEngine;
 
 public enum HeldItemType
 {
-    None,          // 아무것도 안 든 상태
-    BucketEmpty,   // 비어있는 양동이
-    BucketFull,    // 가득찬 양동이
-    Axe,           // 도끼
-    Extinguisher,   // 소화기
+    Any,
+    None,          // �ƹ��͵� �� ��� ����
+    BucketEmpty,   // �� �絿��
+    BucketFull,    // ���� �� �絿��
+    Axe,           // ����
+    Extinguisher,   // ��ȭ��
     Tree,            // 가로수
     Ambulance,       // 구급차
     Firstaidkit,    // 구급키트

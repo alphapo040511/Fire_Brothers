@@ -10,7 +10,7 @@ public class PlayerInteraction : MonoBehaviour
     public float interactableDistance = 3f;
     public float interactableAngle = 90f;
 
-    public HeldItemType heldItemType;
+    public HeldItem heldItem;
 
     private Interactable target;
     private float angleThreshold;
@@ -40,15 +40,24 @@ public class PlayerInteraction : MonoBehaviour
         pressedAButton = context.performed;
     }
 
-    public void CompliteInteractin(HeldItemType itemType)
+    public void CompliteInteractin(HeldItem itemType)
     {
-        heldItemType = itemType;
-        Debug.Log($"{itemType}∏¶ º’ø° µÍ");
+        heldItem = itemType;
+        Debug.Log($"{itemType}Î•º ÏÜêÏóê Îì¶");
+    }
+
+    public void DropHeldItem()
+    {
+        if(heldItem != null)
+        {
+            heldItem.Drop();
+            heldItem = null;
+        }
     }
 
     private void FindTargetObject()
     {
-        Collider[] targets = Physics.OverlapSphere(pivot.position, interactableDistance, 1 << 3);       //∑π¿ÃæÓ √ﬂ∞°
+        Collider[] targets = Physics.OverlapSphere(pivot.position, interactableDistance, 1 << 3);       //Î†àÏù¥Ïñ¥ Ï∂îÍ∞Ä
 
         if (targets.Length <= 0)
         {
@@ -73,7 +82,7 @@ public class PlayerInteraction : MonoBehaviour
 
             float newDot = Vector3.Dot(pivot.forward, (newPos - playerPos).normalized);
 
-            if (newDot < angleThreshold) return;                                //≈Ωªˆ ∞¢µµ π€ø° ¿÷¥Ÿ∏È ∏Æ≈œ
+            if (newDot < angleThreshold) return;                                //ÌÉêÏÉâ Í∞ÅÎèÑ Î∞ñÏóê ÏûàÎã§Î©¥ Î¶¨ÌÑ¥
 
             if (newDot > dot || target == null)
             {
@@ -81,7 +90,7 @@ public class PlayerInteraction : MonoBehaviour
                 if (interactable != null)
                 {
                     target = interactable;
-                    Debug.Log($"ªı∑ŒøÓ ≈∏∞Ÿ [{interactable.interactData.interactObjectName}]");
+                    Debug.Log($"ÏÉàÎ°úÏö¥ ÌÉÄÍ≤ü");
                 }
             }
         }
@@ -102,7 +111,7 @@ public class PlayerInteraction : MonoBehaviour
     private Vector3 PlanePosition(Vector3 pos)
     {
         Vector3 temp = pos;
-        temp.y = 0;
+        temp.y = transform.position.y;
         return temp;
     }
 }

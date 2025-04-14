@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +5,16 @@ public class TrailsManager : MonoBehaviour
 {
     public static TrailsManager instance { get; private set; }
 
-    void Awake()
+    [Header("ìŠ¤í…Œì´ì§€ ì¸ë±ìŠ¤")]
+    public int stageIndex;
+
+    [Header("ì›¨ì´í¬ì¸íŠ¸ í”„ë¦¬íŒ¹")]
+    public GameObject waypointPrefab;
+
+    [Header("ë¡œë“œëœ ì›¨ì´í¬ì¸íŠ¸")]
+    public List<Waypoint> waypoins = new();
+
+    private void Awake()
     {
         if (instance == null)
         {
@@ -14,9 +22,11 @@ public class TrailsManager : MonoBehaviour
         }
     }
 
-    public List<Waypoint> waypoins = new List<Waypoint>();
+    private void Start()
+    {
+        LoadWaypoints(stageIndex);
+    }
 
-    //¿şÀÌÆ÷ÀÎÆ®¸¦ ¹Ì¸® ÀúÀåÇÏÁö ¾ÊÀ» °æ¿ì Ãß°¡ÇÏ´Â ÇÔ¼ö
     public void AddPoint(Waypoint point)
     {
         waypoins.Add(point);
@@ -24,11 +34,26 @@ public class TrailsManager : MonoBehaviour
 
     public Waypoint GetWaypoint(int index)
     {
-        if(waypoins.Count > 0 && waypoins.Count > index)
+        if (waypoins.Count > index)
         {
             return waypoins[index];
         }
 
         return null;
+    }
+
+    public void LoadWaypoints(int index)
+    {
+        List<Vector3> loaded = WaypointIO.LoadWaypointPositions(index);
+        if (loaded == null) return;
+
+        foreach (var pos in loaded)
+        {
+            GameObject obj = Instantiate(waypointPrefab, pos, Quaternion.identity, transform);
+            Waypoint wp = obj.GetComponent<Waypoint>();
+            waypoins.Add(wp);
+        }
+
+        Debug.Log($"ì›¨ì´í¬ì¸íŠ¸ {loaded.Count}ê°œ ë¡œë“œë¨");
     }
 }

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactObjectName: "\uAC00\uB85C\uC218"
   sprite: {fileID: 0}
-  needItems: 03000000
+  needItems: 04000000
   maxProgress: 10
-  rewardItem: 0
+  rewardItem: {fileID: 0}
   reuseable: 0
   reuseDelay: 0

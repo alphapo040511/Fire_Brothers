@@ -151,8 +151,8 @@ GameObject:
   - component: {fileID: 1321922277498874211}
   - component: {fileID: 222815162256310800}
   - component: {fileID: 8473766638953465853}
-  - component: {fileID: 5768040332317134802}
-  - component: {fileID: 4217798059875393898}
+  - component: {fileID: 6854584617547981372}
+  - component: {fileID: 1172908799490384316}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -319,7 +319,7 @@ MonoBehaviour:
   pivot: {fileID: 160260324192175677}
   interactableDistance: 1.5
   interactableAngle: 90
-  heldItemType: 0
+  heldItem: {fileID: 0}
 --- !u!114 &8473766638953465853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,7 +335,7 @@ MonoBehaviour:
   pivot: {fileID: 160260324192175677}
   radius: 1.5
   angle: 90
---- !u!54 &5768040332317134802
+--- !u!54 &6854584617547981372
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -362,7 +362,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &4217798059875393898
+--- !u!136 &1172908799490384316
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
