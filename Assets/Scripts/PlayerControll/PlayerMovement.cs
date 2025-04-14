@@ -12,6 +12,16 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 moveDirection;
 
+    private void OnEnable()
+    {
+        InputSystem.onDeviceChange += DisconnectDevice;
+    }
+
+    private void OnDisable()
+    {
+        InputSystem.onDeviceChange -= DisconnectDevice;
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -47,6 +57,17 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             moveDirection = Vector3.zero;
+        }
+    }
+
+    public void DisconnectDevice(InputDevice device, InputDeviceChange change)
+    {
+        foreach (InputDevice inputDevice in GetComponent<PlayerInput>().devices)
+        {
+            if (device == inputDevice && change == InputDeviceChange.Removed)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
