@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    public static StageManager Instance { get; private set; }
+    public static StageManager Instance { get; private set; }       //싱글턴 선언
 
-    private const string c_FileName = "stage_data.json";
-    private const int c_StageCount = 20;
+    private const string c_FileName = "stage_data.json";        //저장될 JSON 파일 이름
+    private const int c_StageCount = 20;                    //만약 JSON이 비어있다면 스테이지 20까지 임의로 생성
 
     [Header("초기 스테이지 JSON")]
-    [SerializeField] private TextAsset initialStageJson; // 초기 스테이지 설정들 데이터 파일
+    [SerializeField] private TextAsset initialStageJson; // 초기 스테이지 설정들 데이터 파일 설정해두면 처음 게임 시작할 때 우리가 제작한 스테이지 데이터로 불러옴
 
-    [SerializeField] private int starsToUnlock = 1;
+    [SerializeField] private int starsToUnlock = 1;     //스테이지들은 이 전 스테이지에서 별 1개 이상 획득해야 오픈
 
-    public List<StageData> stages = new();
+    public List<StageData> stages = new();              //리스트 선언
 
     private void Awake()
     {
