@@ -8,13 +8,11 @@ public class HeldItem : MonoBehaviour
     public Vector3 childPosition;
     public Vector3 childRotation;
 
-    public Rigidbody rb;
     public Collider _collider;
 
 
     public void Handling(Transform parents)
     {
-        rb.useGravity = false;
         _collider.enabled = false;
         transform.SetParent(parents);
         transform.localPosition = childPosition;
@@ -24,7 +22,9 @@ public class HeldItem : MonoBehaviour
     public void Drop()
     {
         transform.SetParent(null);
-        rb.useGravity = true;
+        Vector3 groundPosition= transform.localPosition;
+        groundPosition.y = 0;
+        transform.position = groundPosition;
         _collider.enabled = true;
     }
 

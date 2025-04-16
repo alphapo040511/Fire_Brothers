@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DroppedItem : Interactable
 {
-    public HeldItem item;
-
     public override void Interact(PlayerInteraction playerData)
     {
         if (playerData.heldItem == null)
@@ -16,7 +14,7 @@ public class DroppedItem : Interactable
 
     public override void Complite(PlayerInteraction playerData)
     {
-        playerData.CompliteInteractin(item);
-        item.Handling(playerData.pivot);
+        playerData.GetNewItem(heldItem);
+        heldItem.Handling(playerData.pivot);
     }
 }

@@ -119,5 +119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactData: {fileID: 11400000, guid: 2b3b7f6c91120dc4aa0ec2fdbbd8bde6, type: 2}
-  currentProgress: 0
   interactable: 1
+  heldItem: {fileID: 0}
+  currentProgress: 0

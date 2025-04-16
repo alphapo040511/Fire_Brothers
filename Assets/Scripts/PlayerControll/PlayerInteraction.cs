@@ -40,7 +40,7 @@ public class PlayerInteraction : MonoBehaviour
         pressedAButton = context.performed;
     }
 
-    public void CompliteInteractin(HeldItem itemType)
+    public void GetNewItem(HeldItem itemType)
     {
         heldItem = itemType;
         Debug.Log($"{itemType}를 손에 듦");

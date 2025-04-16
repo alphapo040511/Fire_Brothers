@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProgressInteractable : Interactable
+public class ProgressInteractable : InstantInteractable
 {
     public int currentProgress = 0;
 
@@ -10,23 +10,9 @@ public class ProgressInteractable : Interactable
 
     public override void Interact(PlayerInteraction playerData)          //상호작용시 호출하는 메서드
     {
-        if (interactable == false)
+        if (ProgressInteraction())
         {
-            Debug.Log("더 이상 사용할 수 없습니다.");
-            return;
-        }
-
-        if (interactData.CurrentItemChecking(playerData.heldItem))
-        {
-            if (ProgressInteraction())
-            {
-                Complite(playerData);
-            }
-        }
-        else
-        {
-            //상호 작용이 안될 경우 애니메이션 등을 관리 해야하니 false 리턴을 통해 진행 안됨을 표시하도록 추가
-            Debug.LogWarning("적절한 아이템을 들고 있지 않습니다.");
+            Complite(playerData);
         }
     }
 
@@ -56,11 +42,6 @@ public class ProgressInteractable : Interactable
                 progressUI = null;
             }
 
-            if (interactData.reuseable)
-            {
-                timer = 0;
-            }
-
             currentProgress = 0;
             interactable = false;
 
@@ -69,12 +50,4 @@ public class ProgressInteractable : Interactable
 
         return false;
     }
-
-    public override void Complite(PlayerInteraction playerData)
-    {
-        HeldItem item = Instantiate(interactData.rewardItem, GenPosition(playerData.transform.position), Quaternion.identity);
-        item.Handling(playerData.pivot);
-        playerData.CompliteInteractin(interactData.rewardItem);
-    }
-
 }

@@ -8,54 +8,46 @@ public abstract class Interactable : MonoBehaviour
 
     public bool interactable = true;
 
+    public HeldItem heldItem;
     protected CooldownUI coodownUI;
     protected ProgressUI progressUI;
     protected float timer;
 
     void Start()
     {
-        if (interactData == null) return;       //클래스 상속 재정리 필요
-
-        if (interactData.reuseable)
-        {
-            coodownUI = GameSceneUIManger.instance.CreatingCooldownUI(interactData.sprite, transform);
+        if (interactData != null)
+        { 
+            heldItem = interactData.rewardItem; 
         }
     }
 
-    void Update()
-    {
-        if (interactData == null) return;
 
-        if (interactData.reuseable)
+    public virtual void Interact(PlayerInteraction playerData)          //상호작용시 호출하는 메서드
+    {
+        if (interactable == false || interactData == null)              //사용 불가능 할거나 데이터가 없을 때
         {
-            Timer(Time.deltaTime);
+            Debug.Log("더 이상 사용할 수 없습니다.");
+            return;
         }
-    }
-
-    public abstract void Interact(PlayerInteraction playerData);          //상호작용시 호출하는 메서드
-
-    public abstract void Complite(PlayerInteraction playerData);
-
-    public void Timer(float deltaTime)
-    {
-        if (!interactable)
-        {
-            timer += deltaTime;
-
-            coodownUI.UpdateCooltime(timer / interactData.reuseDelay);
-
-            if (timer >= interactData.reuseDelay)
+        else                                                    
+        { 
+            if (!interactData.CurrentItemChecking(playerData.heldItem)) //사용 조건이 안 맞을 때
             {
-                interactable = true;
+                return;
+            }
+
+            if (interactData.reuseable)
+            {
+                timer = 0;
             }
         }
     }
 
-    public Vector3 GenPosition(Vector3 playerPostion)
+    public virtual void Complite(PlayerInteraction playerData)
     {
-        Vector3 dir = (playerPostion - transform.position).normalized;
-
-        return dir * 0.75f + playerPostion;
+        if (heldItem != null)
+        {
+            playerData.GetNewItem(heldItem);
+        }
     }
-
 }
