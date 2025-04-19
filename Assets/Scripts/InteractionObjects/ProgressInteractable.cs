@@ -1,19 +1,81 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
-public class ProgressInteractable : InstantInteractable
+public class ProgressInteractable : Interactable
 {
-    public int currentProgress = 0;
+    private CooldownUI coodownUI;
 
+    private ProgressUI progressUI;
 
+    private int currentProgress = 0;
+    private float timer;
 
-    public override void Interact(PlayerInteraction playerData)          //상호작용시 호출하는 메서드
+    private void Start()
     {
-        if (ProgressInteraction())
+        if (interactData.reuseable)
+        {
+            coodownUI = GameSceneUIManger.instance.CreatingCooldownUI(interactData.sprite, transform);
+        }
+    }
+
+    private void Update()
+    {
+        if (interactData.reuseable)
+        {
+            Timer(Time.deltaTime);
+        }
+    }
+
+    public override void Interact(PlayerInteraction playerData)
+    {
+        if (interactable == false || interactData == null)              //사용 불가능 할거나 데이터가 없을 때
+        {
+            Debug.Log("더 이상 사용할 수 없습니다.");
+            return;
+        }
+        else
+        {
+            if (!interactData.CurrentItemChecking(playerData.heldItem)) //사용 조건이 안 맞을 때
+            {
+                return;
+            }
+        }
+
+        if (interactData.maxProgress > 0)
+        {
+            if (ProgressInteraction())
+            {
+                Complite(playerData);
+            }
+        }
+        else
         {
             Complite(playerData);
         }
+    }
+
+    public override void Complite(PlayerInteraction playerData)
+    {
+        IInteractionEffect effect = GetComponent<IInteractionEffect>();
+
+        if (effect != null)
+        {
+            effect.OnInteractComplete();
+        }
+
+        if (interactData.rewardItem != null)
+        {
+            HeldItem item = Instantiate(interactData.rewardItem, GenPosition(playerData.transform.position), Quaternion.identity);
+            item.Handling(playerData.pivot);
+            playerData.GetNewItem(item);
+        }
+        else
+        {
+            playerData.GetNewItem();
+        }
+        interactable = false;
     }
 
     public bool ProgressInteraction()
@@ -49,5 +111,28 @@ public class ProgressInteractable : InstantInteractable
         }
 
         return false;
+    }
+
+    public void Timer(float deltaTime)
+    {
+        if (!interactable)
+        {
+            timer += deltaTime;
+
+            coodownUI.UpdateCooltime(timer / interactData.reuseDelay);
+
+            if (timer >= interactData.reuseDelay)
+            {
+                interactable = true;
+                timer = 0;
+            }
+        }
+    }
+
+    public Vector3 GenPosition(Vector3 playerPostion)
+    {
+        Vector3 dir = (playerPostion - transform.position).normalized;
+
+        return dir * 0.75f + playerPostion;
     }
 }

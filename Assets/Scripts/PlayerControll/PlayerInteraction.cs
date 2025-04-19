@@ -20,9 +20,12 @@ public class PlayerInteraction : MonoBehaviour
 
     private bool pressedAButton;
 
+    private PlayerMovement playerMovement;
+
     void Start()
     {
         angleThreshold = Mathf.Cos(Mathf.Deg2Rad * interactableAngle * 0.5f);
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -42,8 +45,27 @@ public class PlayerInteraction : MonoBehaviour
 
     public void GetNewItem(HeldItem itemType)
     {
+        if(heldItem != null)
+        {
+            heldItem.BreakItem();
+        }
         heldItem = itemType;
         Debug.Log($"{itemType}를 손에 듦");
+
+        if(playerMovement != null)
+        {
+            playerMovement.SetIK(heldItem.leftGrib, heldItem.rightGrib);
+        }
+    }
+
+    public void GetNewItem()
+    {
+        heldItem.BreakItem();
+        heldItem = null;
+        if (playerMovement != null)
+        {
+            playerMovement.RemoveIK();
+        }
     }
 
     public void DropHeldItem()
@@ -53,10 +75,17 @@ public class PlayerInteraction : MonoBehaviour
             heldItem.Drop();
             heldItem = null;
         }
+
+        if(playerMovement != null)
+        {
+            playerMovement.RemoveIK();
+        }
     }
 
     private void FindTargetObject()
     {
+        if (pivot == null) return;
+
         Collider[] targets = Physics.OverlapSphere(pivot.position, interactableDistance, 1 << 3);       //레이어 추가
 
         if (targets.Length <= 0)
@@ -90,7 +119,7 @@ public class PlayerInteraction : MonoBehaviour
                 if (interactable != null)
                 {
                     target = interactable;
-                    Debug.Log($"새로운 타겟");
+                    //Debug.Log($"새로운 타겟");
                 }
             }
         }

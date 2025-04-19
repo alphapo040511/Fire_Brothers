@@ -8,9 +8,14 @@ public class PlayerMovement : MonoBehaviour
     public float minValue = 0.1f;
     public float moveSpeed = 5.0f;
 
+    private Animator m_Animator;
+
     private Rigidbody rb;
 
     private Vector3 moveDirection;
+
+    private Transform leftHandTarget = null;
+    private Transform rightHandTarget = null;
 
     private void OnEnable()
     {
@@ -24,7 +29,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        m_Animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+
+        m_Animator.SetFloat("State", 1);
+        m_Animator.SetFloat("Hor", 0);
     }
 
     void Update()
@@ -33,18 +42,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveDirection == Vector3.zero) return;
 
-        // ÀÌµ¿ ¹æÇâÀ» ÇâÇÏµµ·Ï È¸Àü
+        // ì´ë™ ë°©í–¥ì„ í–¥í•˜ë„ë¡ íšŒì „
         Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        // Ä«¸Þ¶óÀÇ YÃà È¸Àü¸¸ ¹Ý¿µÇØ¼­ ÀÌµ¿ ¹æÇâ °è»ê
+        // ì¹´ë©”ë¼ì˜ Yì¶• íšŒì „ë§Œ ë°˜ì˜í•´ì„œ ì´ë™ ë°©í–¥ ê³„ì‚°
         Vector3 forward = Camera.main.transform.forward;
         Vector3 right = Camera.main.transform.right;
 
-        // Y Ãà È¸ÀüÀº ¹«½ÃÇÏ°í, ¼öÆò ¹æÇâ¸¸ »ç¿ë
+        // Y ì¶• íšŒì „ì€ ë¬´ì‹œí•˜ê³ , ìˆ˜í‰ ë°©í–¥ë§Œ ì‚¬ìš©
         forward.y = 0;
         right.y = 0;
 
@@ -53,10 +62,13 @@ public class PlayerMovement : MonoBehaviour
         if (direction.magnitude > minValue)
         {
             moveDirection = direction.normalized;
+
+            m_Animator.SetFloat("Vert", direction.magnitude);
         }
         else
         {
             moveDirection = Vector3.zero;
+            m_Animator.SetFloat("Vert", 0);
         }
     }
 
@@ -68,6 +80,43 @@ public class PlayerMovement : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }
+    }
+
+    public void SetIK(Transform left, Transform right)
+    {
+        leftHandTarget = left;
+        rightHandTarget = right;
+    }
+
+    public void RemoveIK()
+    {
+        leftHandTarget = null;
+        rightHandTarget = null;
+    }
+
+    void OnAnimatorIK(int layerIndex)
+    {
+        if (m_Animator == null) return;
+
+        ApplyIK(AvatarIKGoal.LeftHand, leftHandTarget);
+        ApplyIK(AvatarIKGoal.RightHand, rightHandTarget);
+    }
+
+    private void ApplyIK(AvatarIKGoal goal, Transform target)
+    {
+        if (target != null)
+        {
+            m_Animator.SetIKPositionWeight(goal, 1f);
+            m_Animator.SetIKRotationWeight(goal, 1f);
+
+            m_Animator.SetIKPosition(goal, target.position);
+            m_Animator.SetIKRotation(goal, target.rotation);
+        }
+        else
+        {
+            m_Animator.SetIKPositionWeight(goal, 0f);
+            m_Animator.SetIKRotationWeight(goal, 0f);
         }
     }
 }

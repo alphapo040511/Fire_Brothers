@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7445833465291033199}
   - component: {fileID: 4661257911030496933}
   - component: {fileID: 4208201748653759356}
-  - component: {fileID: 5192674209078339626}
   m_Layer: 3
   m_Name: fire-hydrant
   m_TagString: Untagged
@@ -106,19 +105,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.72662944, y: 1.1393582, z: 0.68425536}
   m_Center: {x: 0, y: 0.5501519, z: 0.042477295}
---- !u!114 &5192674209078339626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6607028248014233456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a23ab9295a75a428c4fea41b5806b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactData: {fileID: 11400000, guid: 2b3b7f6c91120dc4aa0ec2fdbbd8bde6, type: 2}
-  interactable: 1
-  heldItem: {fileID: 0}
-  currentProgress: 0
