@@ -57,6 +57,8 @@ public class PlayerInteraction : MonoBehaviour
 
     private void FindTargetObject()
     {
+        if (pivot == null) return;
+
         Collider[] targets = Physics.OverlapSphere(pivot.position, interactableDistance, 1 << 3);       //레이어 추가
 
         if (targets.Length <= 0)

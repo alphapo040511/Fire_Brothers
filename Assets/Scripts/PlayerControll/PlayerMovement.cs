@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public float minValue = 0.1f;
     public float moveSpeed = 5.0f;
 
+    private Animator m_Animator;
+
     private Rigidbody rb;
 
     private Vector3 moveDirection;
@@ -24,7 +26,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        m_Animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+
+        m_Animator.SetFloat("State", 1);
+        m_Animator.SetFloat("Hor", 0);
     }
 
     void Update()
@@ -33,18 +39,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveDirection == Vector3.zero) return;
 
-        // ÀÌµ¿ ¹æÇâÀ» ÇâÇÏµµ·Ï È¸Àü
+        // ì´ë™ ë°©í–¥ì„ í–¥í•˜ë„ë¡ íšŒì „
         Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        // Ä«¸Þ¶óÀÇ YÃà È¸Àü¸¸ ¹Ý¿µÇØ¼­ ÀÌµ¿ ¹æÇâ °è»ê
+        // ì¹´ë©”ë¼ì˜ Yì¶• íšŒì „ë§Œ ë°˜ì˜í•´ì„œ ì´ë™ ë°©í–¥ ê³„ì‚°
         Vector3 forward = Camera.main.transform.forward;
         Vector3 right = Camera.main.transform.right;
 
-        // Y Ãà È¸ÀüÀº ¹«½ÃÇÏ°í, ¼öÆò ¹æÇâ¸¸ »ç¿ë
+        // Y ì¶• íšŒì „ì€ ë¬´ì‹œí•˜ê³ , ìˆ˜í‰ ë°©í–¥ë§Œ ì‚¬ìš©
         forward.y = 0;
         right.y = 0;
 
@@ -53,10 +59,13 @@ public class PlayerMovement : MonoBehaviour
         if (direction.magnitude > minValue)
         {
             moveDirection = direction.normalized;
+
+            m_Animator.SetFloat("Vert", direction.magnitude);
         }
         else
         {
             moveDirection = Vector3.zero;
+            m_Animator.SetFloat("Vert", 0);
         }
     }
 
