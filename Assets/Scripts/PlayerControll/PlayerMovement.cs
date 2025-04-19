@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 moveDirection;
 
+    private Transform leftHandTarget = null;
+    private Transform rightHandTarget = null;
+
     private void OnEnable()
     {
         InputSystem.onDeviceChange += DisconnectDevice;
@@ -77,6 +80,43 @@ public class PlayerMovement : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }
+    }
+
+    public void SetIK(Transform left, Transform right)
+    {
+        leftHandTarget = left;
+        rightHandTarget = right;
+    }
+
+    public void RemoveIK()
+    {
+        leftHandTarget = null;
+        rightHandTarget = null;
+    }
+
+    void OnAnimatorIK(int layerIndex)
+    {
+        if (m_Animator == null) return;
+
+        ApplyIK(AvatarIKGoal.LeftHand, leftHandTarget);
+        ApplyIK(AvatarIKGoal.RightHand, rightHandTarget);
+    }
+
+    private void ApplyIK(AvatarIKGoal goal, Transform target)
+    {
+        if (target != null)
+        {
+            m_Animator.SetIKPositionWeight(goal, 1f);
+            m_Animator.SetIKRotationWeight(goal, 1f);
+
+            m_Animator.SetIKPosition(goal, target.position);
+            m_Animator.SetIKRotation(goal, target.rotation);
+        }
+        else
+        {
+            m_Animator.SetIKPositionWeight(goal, 0f);
+            m_Animator.SetIKRotationWeight(goal, 0f);
         }
     }
 }

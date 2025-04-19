@@ -16,6 +16,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 80dd408a303c0324ba863ce14e1b59e5, type: 3}
   needItems: 01000000
   maxProgress: 0
-  rewardItem: {fileID: 0}
+  rewardItem: {fileID: 8582210990198595572, guid: c5eaf8ee3bda24246b05dddd27cfb41a,
+    type: 3}
   reuseable: 1
   reuseDelay: 5

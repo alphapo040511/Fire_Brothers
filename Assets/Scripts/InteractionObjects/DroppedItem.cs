@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class DroppedItem : Interactable
 {
+    public HeldItem heldItem;
+
+    private void Start()
+    {
+        heldItem = GetComponent<HeldItem>();
+    }
     public override void Interact(PlayerInteraction playerData)
     {
         if (playerData.heldItem == null)
@@ -16,5 +22,6 @@ public class DroppedItem : Interactable
     {
         playerData.GetNewItem(heldItem);
         heldItem.Handling(playerData.pivot);
+        interactable = false;
     }
 }

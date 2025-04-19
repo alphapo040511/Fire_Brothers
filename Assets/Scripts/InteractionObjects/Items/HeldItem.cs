@@ -10,6 +10,13 @@ public class HeldItem : MonoBehaviour
 
     public Collider _collider;
 
+    public Transform rightGrib;
+    public Transform leftGrib;
+
+    private void Start()
+    {
+        _collider = GetComponent<Collider>();
+    }
 
     public void Handling(Transform parents)
     {
