@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6734966899769320118}
   - component: {fileID: 8832579214601574012}
   - component: {fileID: 863725953392773676}
+  - component: {fileID: 1410235451284288936}
   m_Layer: 0
   m_Name: suburban-house-A
   m_TagString: Untagged
@@ -26,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7031072911745939369}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6734966899769320118
 MeshFilter:
@@ -100,3 +101,24 @@ MonoBehaviour:
   windowMaterialIndex: 1
   lightColor: {r: 0.41509432, g: 0.36251774, b: 0.14293341, a: 1}
   areLightsOn: 0
+--- !u!65 &1410235451284288936
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031072911745939369}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.353558, y: 8.963087, z: 7.7187867}
+  m_Center: {x: -1.2097473, y: 4.4815435, z: 0.6219566}

@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2667483220727111096}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.70706177, y: 5.7430687, z: 0.70648193}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8287941426295723801}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2674715458861544443
 MeshFilter:
@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 4948177557487278268}
   - component: {fileID: 7156081322937953398}
   - component: {fileID: -3149321796277699223}
+  - component: {fileID: 6291024052632090373}
   m_Layer: 0
   m_Name: commercial-building-coffee-shop
   m_TagString: Untagged
@@ -109,6 +110,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8669286879879335331}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -116,7 +118,6 @@ Transform:
   m_Children:
   - {fileID: 4843124822054798842}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4948177557487278268
 MeshFilter:
@@ -184,3 +185,24 @@ MonoBehaviour:
   windowMaterialIndex: 1
   lightColor: {r: 0.41568628, g: 0.36078432, b: 0.14117648, a: 1}
   areLightsOn: 0
+--- !u!65 &6291024052632090373
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8669286879879335331}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 12.796581, y: 5.7400126, z: 12.796581}
+  m_Center: {x: 0.035469055, y: 2.8759344, z: -0.3258145}

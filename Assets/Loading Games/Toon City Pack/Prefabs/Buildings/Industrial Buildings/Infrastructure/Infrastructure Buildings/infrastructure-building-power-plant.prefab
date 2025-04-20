@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1042518364397202491}
   - component: {fileID: 2995794957264460017}
   - component: {fileID: 5923828956970941728}
+  - component: {fileID: -1274400528025966666}
   m_Layer: 0
   m_Name: infrastructure-building-power-plant
   m_TagString: Untagged
@@ -26,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3644485033198631204}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1042518364397202491
 MeshFilter:
@@ -100,3 +101,24 @@ MonoBehaviour:
   windowMaterialIndex: 1
   lightColor: {r: 0.41568628, g: 0.36078432, b: 0.14117648, a: 1}
   areLightsOn: 0
+--- !u!65 &-1274400528025966666
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3644485033198631204}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 31.90118, y: 27.36106, z: 28.092796}
+  m_Center: {x: -7.0525346, y: 13.68053, z: 4.9179745}

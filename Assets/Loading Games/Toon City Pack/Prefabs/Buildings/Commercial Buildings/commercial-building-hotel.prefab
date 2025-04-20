@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3133428183804442761}
   - component: {fileID: 907716242696866883}
   - component: {fileID: -62697027956495222}
+  - component: {fileID: -3830688774677220361}
   m_Layer: 0
   m_Name: commercial-building-hotel
   m_TagString: Untagged
@@ -26,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1700152209450413462}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3133428183804442761
 MeshFilter:
@@ -101,3 +102,24 @@ MonoBehaviour:
   windowMaterialIndex: 1
   lightColor: {r: 0.41568628, g: 0.36078432, b: 0.14117648, a: 1}
   areLightsOn: 0
+--- !u!65 &-3830688774677220361
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700152209450413462}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.443179, y: 15, z: 13.109549}
+  m_Center: {x: 0, y: 7.5, z: 0.20684361}

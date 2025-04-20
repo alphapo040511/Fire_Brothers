@@ -25,6 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2982122396237122}
+  serializedVersion: 2
   m_LocalRotation: {x: -1.9540046e-13, y: 0.003176597, z: -5.7903654e-10, w: 0.999995}
   m_LocalPosition: {x: 3.9264808, y: 0.10771545, z: -6.7143135}
   m_LocalScale: {x: 0.99999994, y: 1, z: 0.99999994}
@@ -32,7 +33,6 @@ Transform:
   m_Children:
   - {fileID: 2844105433809078777}
   m_Father: {fileID: 5976453798489705795}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8867777238401519280
 MeshFilter:
@@ -109,13 +109,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753366250209914988}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.00000011920927, y: 0.00000028212997, z: 1, w: 0.000000075497866}
   m_LocalPosition: {x: -0.40778708, y: 0.9173957, z: -0.7960556}
   m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8116828675931621581}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8715135096954230588
 MeshFilter:
@@ -192,6 +192,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005939164379995142}
+  serializedVersion: 2
   m_LocalRotation: {x: 1.03134924e-10, y: 0.999995, z: -0.00000016292022, w: -0.0031766403}
   m_LocalPosition: {x: -3.9386187, y: 0.10771764, z: 6.7126117}
   m_LocalScale: {x: 0.99999994, y: 1, z: 0.99999994}
@@ -199,7 +200,6 @@ Transform:
   m_Children:
   - {fileID: 2505380869369747185}
   m_Father: {fileID: 5976453798489705795}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8597159801865704095
 MeshFilter:
@@ -276,13 +276,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3862775381675654513}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.00000016344706, y: 0.00000022252532, z: 1, w: 0.000000075497866}
   m_LocalPosition: {x: -0.40778685, y: 0.9173957, z: -0.7960558}
   m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5226595811079048358}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &632035642657913901
 MeshFilter:
@@ -345,6 +345,7 @@ GameObject:
   - component: {fileID: 5976453798489705795}
   - component: {fileID: 7304691836252865254}
   - component: {fileID: 4808592934588692012}
+  - component: {fileID: -7535327477809293761}
   m_Layer: 0
   m_Name: infrastructure-building-parking-lot
   m_TagString: Untagged
@@ -359,6 +360,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6465886743113701369}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -367,7 +369,6 @@ Transform:
   - {fileID: 5226595811079048358}
   - {fileID: 8116828675931621581}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7304691836252865254
 MeshFilter:
@@ -420,3 +421,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-7535327477809293761
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6465886743113701369}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 16.75248, y: 0.33495247, z: 16.75248}
+  m_Center: {x: 0, y: 0.16747588, z: 0}

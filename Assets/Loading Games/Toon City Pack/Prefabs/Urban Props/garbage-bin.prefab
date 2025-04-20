@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 4908772268729330964}
   - component: {fileID: 8336354000453067441}
   - component: {fileID: 6076581312913315451}
+  - component: {fileID: -5900649050064607263}
   m_Layer: 0
   m_Name: garbage-bin
   m_TagString: Untagged
@@ -167,3 +168,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-5900649050064607263
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5716377387404769198}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.7976025, y: 0.7821816, z: 0.71124583}
+  m_Center: {x: 0, y: 0.3910908, z: -0.000000029802322}

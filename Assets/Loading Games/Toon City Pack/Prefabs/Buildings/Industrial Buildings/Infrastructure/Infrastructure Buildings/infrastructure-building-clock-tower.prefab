@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4220819828561199347}
   - component: {fileID: 2123352720063607865}
   - component: {fileID: 4024372236849730909}
+  - component: {fileID: -3074191857844494331}
   m_Layer: 0
   m_Name: infrastructure-building-clock-tower
   m_TagString: Untagged
@@ -26,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465936180034115052}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4220819828561199347
 MeshFilter:
@@ -101,3 +102,24 @@ MonoBehaviour:
   windowMaterialIndex: 2
   lightColor: {r: 0.5568628, g: 0.49019608, b: 0.21176471, a: 1}
   areLightsOn: 1
+--- !u!65 &-3074191857844494331
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465936180034115052}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.055785, y: 16.35302, z: 5.055785}
+  m_Center: {x: 0, y: 8.17651, z: 0}

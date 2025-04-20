@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5205544284612941961}
   - component: {fileID: 8059536486447164483}
   - component: {fileID: 4939592120124617739}
+  - component: {fileID: -6325950584054232404}
   m_Layer: 0
   m_Name: government-building-city-hall
   m_TagString: Untagged
@@ -26,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8419978456268541334}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5205544284612941961
 MeshFilter:
@@ -100,3 +101,24 @@ MonoBehaviour:
   windowMaterialIndex: 1
   lightColor: {r: 0.41568628, g: 0.36078432, b: 0.14117648, a: 1}
   areLightsOn: 0
+--- !u!65 &-6325950584054232404
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8419978456268541334}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 21.438833, y: 10.609233, z: 13.662464}
+  m_Center: {x: 0, y: 5.3046165, z: 2.4127808}
