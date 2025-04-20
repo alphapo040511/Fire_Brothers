@@ -84869,6 +84869,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0cbea95d6a3bcd849a106e731a07624b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 24cfa90132de74034926755088b5ad3a, type: 2}
     - target: {fileID: 919132149155446097, guid: 0cbea95d6a3bcd849a106e731a07624b,
         type: 3}
       propertyPath: m_Name
@@ -109854,6 +109859,11 @@ PrefabInstance:
       propertyPath: m_StaticShadowCaster
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3191396469636558097, guid: 54794c7c6bc4a4ec7b8262a403aa3cbb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 753a27c215b4de0489e71596cded0c61, type: 2}
     - target: {fileID: 3906282722691711843, guid: 54794c7c6bc4a4ec7b8262a403aa3cbb,
         type: 3}
       propertyPath: m_CastShadows
@@ -110590,6 +110600,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: government-building-fire-station
       objectReference: {fileID: 0}
+    - target: {fileID: 5922651401077312978, guid: 92c740a39a2114a0585c8786bd34a4b6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42cc234de5917486287c225b305261e5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
