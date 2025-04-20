@@ -13,6 +13,7 @@ public class FireInteraction : MonoBehaviour, IInteractionEffect
         {
             fireEffect[i].Stop();
         }
-        //점수 획득?
+
+        ScoreManager.Instance.GainScore(ScoreType.FireFighting, 150f);
     }
 }
