@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.43867922, g: 1, b: 0.5271828, a: 1}
-  m_AmbientEquatorColor: {r: 1, g: 0.9008969, b: 0.6084906, a: 1}
-  m_AmbientGroundColor: {r: 0.41576257, g: 1, b: 0.3443396, a: 1}
+  m_AmbientSkyColor: {r: 0.49, g: 0.8, b: 1, a: 1}
+  m_AmbientEquatorColor: {r: 0.87, g: 0.95, b: 1, a: 1}
+  m_AmbientGroundColor: {r: 0.95, g: 0.91, b: 0.82, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.6014151, g: 0.65815234, b: 0.8018868, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_AmbientMode: 1
+  m_SubtractiveShadowColor: {r: 0.6, g: 0.8, b: 0.7735218, a: 1}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -10522,8 +10522,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.96886796, b: 0.8443396, a: 1}
-  m_Intensity: 1.35
+  m_Color: {r: 1, g: 0.93639684, b: 0.7311321, a: 1}
+  m_Intensity: 0.77
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -10566,7 +10566,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 6900
+  m_ColorTemperature: 4568
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -57911,13 +57911,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191575683}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.39053687, y: -0.58947515, z: 0.3905369, w: 0.5894752}
-  m_LocalPosition: {x: 17.349997, y: 18.522999, z: -41.101997}
+  m_LocalRotation: {x: 0.33440727, y: -0.6230343, z: 0.3344073, w: 0.62303436}
+  m_LocalPosition: {x: 20.82, y: 16.22, z: -41.101997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 67.05, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 56.448, y: -90, z: 0}
 --- !u!114 &1191575687
 MonoBehaviour:
   m_ObjectHideFlags: 0
