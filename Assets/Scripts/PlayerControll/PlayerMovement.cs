@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float minValue = 0.1f;
     public float moveSpeed = 5.0f;
+    public InputDevice inputDevice;
 
     private Animator m_Animator;
 
@@ -74,12 +75,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void DisconnectDevice(InputDevice device, InputDeviceChange change)
     {
-        foreach (InputDevice inputDevice in GetComponent<PlayerInput>().devices)
+        if (device == inputDevice && change == InputDeviceChange.Removed)
         {
-            if (device == inputDevice && change == InputDeviceChange.Removed)
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
 

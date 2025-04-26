@@ -14,24 +14,16 @@ public class InputDeviceManager
             if(instance == null)
             {
                 instance = new InputDeviceManager();
+                InputSystem.onDeviceChange += OnDeviceChange;
             }
 
             return instance;
         }
     }
 
-    public Dictionary<InputDevice, int> inputDevices = new Dictionary<InputDevice, int>();
+    private Dictionary<InputDevice, int> inputDevices = new Dictionary<InputDevice, int>();
+    public IReadOnlyDictionary<InputDevice, int> InputDevices => inputDevices; // 외부에서는 읽기 전용으로 공개
     public event Action<InputDevice> OnInputDeviceConnected;
-
-    private void OnEnable()
-    {
-        InputSystem.onDeviceChange += OnDeviceChange;
-    }
-
-    private void OnDisable()
-    {
-        InputSystem.onDeviceChange -= OnDeviceChange;
-    }
 
     public bool IsConnectedDevice(InputDevice newDevice)
     {
@@ -42,23 +34,23 @@ public class InputDeviceManager
     {
         if(inputDevices.ContainsKey(newDevice) || inputDevices.Count >= 2) return;
 
-        if(inputDevices.ContainsValue(1))
+        if(inputDevices.ContainsValue(0))
         {
-            inputDevices[newDevice] = 2;
+            inputDevices.Add(newDevice, 1);
         }
         else
         {
-            inputDevices[newDevice] = 1;
+            inputDevices.Add(newDevice, 0);
         }
 
         OnInputDeviceConnected?.Invoke(newDevice);
     }
 
-    private void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    private static void OnDeviceChange(InputDevice device, InputDeviceChange change)
     {
-        if (inputDevices.ContainsKey(device) && change == InputDeviceChange.Removed)
+        if (Instance.inputDevices.ContainsKey(device) && change == InputDeviceChange.Removed)
         {
-            inputDevices.Remove(device);
+            Instance.inputDevices.Remove(device);
         }
     }
 }
