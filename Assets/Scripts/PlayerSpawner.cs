@@ -19,15 +19,16 @@ public class PlayerSpawner : MonoBehaviour
 
     public void SpawnPlayer()
     {
-        foreach(var value in InputDeviceManager.Instance.inputDevices)
+        foreach(var value in InputDeviceManager.Instance.InputDevices)
         {
-            var player = PlayerInput.Instantiate(playerPrefab, value.Value, controlScheme: "PC", pairWithDevice: value.Key);
+            var player = PlayerInput.Instantiate(playerPrefab, value.Value, controlScheme: null, pairWithDevice: value.Key);
         }
     }
 
     public void SpawnPlayer(InputDevice device)
     {
-        var player = PlayerInput.Instantiate(playerPrefab, InputDeviceManager.Instance.inputDevices[device], controlScheme: "PC", pairWithDevice: device);
+        var player = PlayerInput.Instantiate(playerPrefab, InputDeviceManager.Instance.InputDevices[device], controlScheme: null, pairWithDevice: device);
+        player.GetComponent<PlayerMovement>().inputDevice = device;
     }
 
     public Vector3 GetPosition()

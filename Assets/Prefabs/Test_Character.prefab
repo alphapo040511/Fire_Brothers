@@ -225,7 +225,7 @@ Transform:
   m_GameObject: {fileID: 668586970448991730}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.36622348, z: -0, w: 0.930527}
-  m_LocalPosition: {x: 11.967129, y: 0, z: -45.98}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -356,7 +356,7 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9fae65ca-bbac-4e43-abab-317dcfb4c2e5
     m_ActionName: PlayerActions/ItemDrop[/Keyboard/q]
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerActions
   m_SplitScreenIndex: -1
