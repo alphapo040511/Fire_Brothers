@@ -146,8 +146,8 @@
                 },
                 {
                     "name": "",
-                    "id": "ba0c2ee0-daab-4dc0-8d19-4a69c5660d90",
-                    "path": "<XInputController>/buttonSouth",
+                    "id": "d07dff59-a1b5-40a6-b5cc-4d3322194343",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -157,8 +157,19 @@
                 },
                 {
                     "name": "",
-                    "id": "d07dff59-a1b5-40a6-b5cc-4d3322194343",
-                    "path": "<Keyboard>/space",
+                    "id": "c4dbf721-61bc-4760-a794-5c45f43aec51",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interaction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e2d2a29d-87f1-4e33-8b52-800584ff40bc",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
