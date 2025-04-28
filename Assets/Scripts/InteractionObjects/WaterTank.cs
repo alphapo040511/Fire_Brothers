@@ -6,6 +6,6 @@ public class WaterTank : MonoBehaviour, IInteractionEffect
 {
     public void OnInteractComplete()
     {
-        ScoreManager.Instance.GainScore(ScoreType.WaterRefill, 150f);
+        ScoreManager.Instance.GainScore(150f);
     }
 }

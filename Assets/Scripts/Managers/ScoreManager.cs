@@ -3,26 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ScoreType
-{
-    WaterRefill,        //물탱크
-    FireFighting,       //화재 진압
-    Rescue              //인명 구조
-}
-
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
 
-    public float waterRefillScore { get; private set; }                     //물탱크 점수
-    public float firefightingScore { get; private set; }                    //화재 진압 점수
-    public float rescueScore { get; private set; }                          //인명 구조 점수
+    public float currentScore { get; private set; }                     //현재 점수
+
+    private float[] scoreStarThreshold = new float[3] { 100, 150, 300}; //각 별을 획득할 경계
+    private float minScore = 0;                                         //별 획득시 감소를 막을 수치
+
+    private float decreaseRate = 3f;                                    //매 초 감소할 수치
 
 
-    private float decreaseRate = 3f;                                        //매 초 감소할 수치
-
-
-    public event Action<float, float, float> OnScoreChanged;                //점수 변경 이벤트
+    public event Action<float> OnScoreChanged;                          //점수 변경 이벤트
 
     private void Awake()
     {
@@ -43,10 +36,8 @@ public class ScoreManager : MonoBehaviour
 
     private void InitScore()
     {
-        firefightingScore = 0;
-        rescueScore = 0;
-        waterRefillScore = 0;
-        OnScoreChanged?.Invoke(waterRefillScore, firefightingScore, rescueScore);
+        currentScore = 0;
+        OnScoreChanged?.Invoke(currentScore);
     }
 
     private IEnumerator ScoreDecrease()
@@ -54,29 +45,26 @@ public class ScoreManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            waterRefillScore = Mathf.Max(0f, waterRefillScore - decreaseRate);
-            firefightingScore = Mathf.Max(0f, firefightingScore - decreaseRate);
-            rescueScore = Mathf.Max(0f, rescueScore - decreaseRate);
+            currentScore = Mathf.Max(minScore, currentScore - decreaseRate);
 
-            OnScoreChanged?.Invoke(waterRefillScore, firefightingScore, rescueScore);
+            OnScoreChanged?.Invoke(currentScore);
         }
     }
 
-    public void GainScore(ScoreType scoreType, float amount)
+    public void GainScore(float amount)
     {
-        switch (scoreType)
+        currentScore = Mathf.Min(1000f, currentScore + amount);
+
+        for(int i = scoreStarThreshold.Length - 1; i >= 0; i--)
         {
-            case ScoreType.WaterRefill:
-                waterRefillScore = Mathf.Min(1000f, waterRefillScore + amount);
+            if(currentScore >= scoreStarThreshold[i])
+            {
+                minScore = scoreStarThreshold[i];
+                Debug.Log($"{i + 1}번째 별 획득");
                 break;
-            case ScoreType.FireFighting:
-                firefightingScore = Mathf.Min(1000f, firefightingScore + amount);
-                break;
-            case ScoreType.Rescue:
-                rescueScore = Mathf.Min(1000f, rescueScore + amount);
-                break;
+            }
         }
 
-        OnScoreChanged?.Invoke(waterRefillScore, firefightingScore, rescueScore);
+        OnScoreChanged?.Invoke(currentScore);
     }
 }
