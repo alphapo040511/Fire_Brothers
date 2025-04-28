@@ -18,7 +18,7 @@ public class PlayerInteraction : MonoBehaviour
     private float interactDelay = 0.5f;
     private float lastInteractTime;
 
-    private bool pressedAButton;
+    private bool pressedInteractionButton;
 
     private PlayerMovement playerMovement;
 
@@ -40,7 +40,20 @@ public class PlayerInteraction : MonoBehaviour
 
     public void OnInteraction(InputAction.CallbackContext context)
     {
-        pressedAButton = context.performed;
+        pressedInteractionButton = context.performed;
+
+        if (pressedInteractionButton)
+        {
+            playerMovement.OnPlayerStatsChange(PlayerStats.Interacting);
+        }
+        else if(GameManager.Instance.CurrentState == GameState.Playing)
+        {
+            playerMovement.OnPlayerStatsChange(PlayerStats.Controllable);
+        }
+        else
+        {
+            playerMovement.OnPlayerStatsChange(PlayerStats.Idle);
+        }
     }
 
     public void GetNewItem(HeldItem itemType)
@@ -127,7 +140,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Intertaction()
     {
-        if (pressedAButton)
+        if (pressedInteractionButton)
         {
             if (target == null || lastInteractTime + interactDelay > Time.time) return;
 

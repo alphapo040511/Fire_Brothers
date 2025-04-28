@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
+
+public enum PlayerStats
+{
+    Idle,         // 기본 대기 상태 (움직이지 않음, 입력 대기)
+    Controllable, // 조작 가능 (이동, 상호작용 가능)
+    Interacting   // 상호작용 중 (조작 불가)
+}
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,14 +26,18 @@ public class PlayerMovement : MonoBehaviour
     private Transform leftHandTarget = null;
     private Transform rightHandTarget = null;
 
+    [SerializeField]private PlayerStats playerStats;
+
     private void OnEnable()
     {
         InputSystem.onDeviceChange += DisconnectDevice;
+        GameManager.Instance.OnGameStateChanged += OnGameStatsChange;
     }
 
     private void OnDisable()
     {
         InputSystem.onDeviceChange -= DisconnectDevice;
+        GameManager.Instance.OnGameStateChanged -= OnGameStatsChange;
     }
 
     void Start()
@@ -50,6 +62,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (playerStats != PlayerStats.Controllable) return;
+
         // 카메라의 Y축 회전만 반영해서 이동 방향 계산
         Vector3 forward = Camera.main.transform.forward;
         Vector3 right = Camera.main.transform.right;
@@ -116,5 +130,27 @@ public class PlayerMovement : MonoBehaviour
             m_Animator.SetIKPositionWeight(goal, 0f);
             m_Animator.SetIKRotationWeight(goal, 0f);
         }
+    }
+
+    public void OnGameStatsChange(GameState newState)
+    {
+        switch (newState)
+        {
+            case GameState.Ready:
+            case GameState.Paused:
+            case GameState.GameOver:
+                playerStats = PlayerStats.Idle;
+                break;
+
+            case GameState.Playing:
+                playerStats = PlayerStats.Controllable;
+                break;
+
+        }
+    }
+
+    public void OnPlayerStatsChange(PlayerStats newStats)
+    {
+        playerStats = newStats;
     }
 }

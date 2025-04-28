@@ -32,7 +32,11 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-        ChangeState(GameState.Menu);
+    }
+    private void Start()
+    {
+        //맵 로딩 및 연출 완료시 시작 되도록 변경
+        ChangeState(GameState.Playing);
     }
 
     private void ChangeState(GameState newState)
