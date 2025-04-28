@@ -14,6 +14,6 @@ public class FireInteraction : MonoBehaviour, IInteractionEffect
             fireEffect[i].Stop();
         }
 
-        ScoreManager.Instance.GainScore(ScoreType.FireFighting, 150f);
+        ScoreManager.Instance.GainScore(150f);
     }
 }
