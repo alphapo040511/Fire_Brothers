@@ -57797,7 +57797,7 @@ MonoBehaviour:
   cameraStats: 1
   targets: []
   hasMultipleTargets: 1
-  cameraOffset: {x: 4, y: 18, z: 0}
+  cameraOffset: {x: 8, y: 18, z: 0}
 --- !u!1001 &1191978152
 PrefabInstance:
   m_ObjectHideFlags: 0

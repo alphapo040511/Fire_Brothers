@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.IO;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public class LevelData
@@ -28,6 +27,7 @@ public static class LevelDataConverter
     private const string c_PrefabPath = "Prefabs/";
     private const string c_PrefabIndexDatabasePath = "Database/PrefabIndexDatabase"; // Resources 폴더 기준
 
+#if UNITY_EDITOR
     //현재 씬의 오브젝트 데이터를 저장
     public static void SaveLevelData(int levelIndex)
     {
@@ -53,6 +53,8 @@ public static class LevelDataConverter
         string json = JsonUtility.ToJson(levelData, true);
         File.WriteAllText(Path.Combine(c_SavePath, $"Level_{levelIndex}.json"), json);
     }
+
+#endif
 
     //레벨 데이터를 불러와서 오브젝트 생성
     public static void LoadLevelData(int levelIndex)
