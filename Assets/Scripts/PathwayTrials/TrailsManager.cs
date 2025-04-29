@@ -56,4 +56,20 @@ public class TrailsManager : MonoBehaviour
 
         Debug.Log($"웨이포인트 {loaded.Count}개 로드됨");
     }
+    private void OnDrawGizmos()
+    {
+        if (waypoins == null || waypoins.Count < 2)
+            return;
+
+        Gizmos.color = Color.red;
+
+        for (int i = 0; i < waypoins.Count - 1; i++)
+        {
+            if (waypoins[i] != null && waypoins[i + 1] != null)
+            {
+                Gizmos.DrawLine(waypoins[i].transform.position, waypoins[i + 1].transform.position);
+            }
+        }
+    }
+
 }
