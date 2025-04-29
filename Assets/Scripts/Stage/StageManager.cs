@@ -1,21 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    public static StageManager Instance { get; private set; }       //싱글턴 선언
+    public static StageManager Instance { get; private set; }
 
-    private const string c_FileName = "stage_data.json";        //저장될 JSON 파일 이름
-    private const int c_StageCount = 20;                    //만약 JSON이 비어있다면 스테이지 20까지 임의로 생성
+    private const string c_SaveFileName = "stage_save.json";
+    private StageSaveWrapper saveData = new StageSaveWrapper();
 
-    [Header("초기 스테이지 JSON")]
-    [SerializeField] private TextAsset initialStageJson; // 초기 스테이지 설정들 데이터 파일 설정해두면 처음 게임 시작할 때 우리가 제작한 스테이지 데이터로 불러옴
-
-    [SerializeField] private int starsToUnlock = 1;     //스테이지들은 이 전 스테이지에서 별 1개 이상 획득해야 오픈
-
-    public List<StageData> stages = new();              //리스트 선언
+    [Header("Resources에서 불러올 StageInfo 데이터")]
+    private StageInfoWrapper stageInfoData;
 
     private void Awake()
     {
@@ -23,7 +18,8 @@ public class StageManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            LoadOrInitalize();
+            LoadStageInfo();
+            LoadStageSave();
         }
         else
         {
@@ -31,97 +27,112 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    private string GetPath() => Path.Combine(Application.persistentDataPath, c_FileName);
-
-    private void LoadOrInitalize()
+    private void LoadStageInfo()
     {
-        string path = GetPath();
+        TextAsset jsonFile = Resources.Load<TextAsset>("DataBase/StageInfo");
+
+        if (jsonFile == null)
+        {
+            Debug.LogError("StageInfo.json 파일을 Resources/DataBase 경로에 배치해야 합니다.");
+            return;
+        }
+
+        stageInfoData = JsonUtility.FromJson<StageInfoWrapper>(jsonFile.text);
+    }
+
+    private void LoadStageSave()
+    {
+        string path = Path.Combine(Application.persistentDataPath, c_SaveFileName);
+
         if (File.Exists(path))
         {
             string json = File.ReadAllText(path);
-            stages = JsonUtility.FromJson<StageDataWrapper>(json).stages;
+            saveData = JsonUtility.FromJson<StageSaveWrapper>(json);
         }
         else
         {
-            if (initialStageJson != null)
-            {
-                // 초기 JSON 복사하여 저장
-                File.WriteAllText(path, initialStageJson.text);
-                Debug.Log("초기 스테이지 데이터 복제 완료");
-                stages = JsonUtility.FromJson<StageDataWrapper>(initialStageJson.text).stages;
-            }
-            else
-            {
-                Debug.LogWarning("초기 JSON이 설정되지 않아 기본 초기화 진행");
-                InitNewData(); // 예외 fallback
-            }
+            InitializeNewSaveData();
         }
     }
 
-    private void InitNewData()
+    private void InitializeNewSaveData()
     {
-        stages.Clear();
-        for (int i = 0; i < c_StageCount; i++)
+        saveData = new StageSaveWrapper();
+        saveData.saves = new List<StageSave>();
+
+        foreach (var info in stageInfoData.stages)
         {
-            stages.Add(new StageData
+            saveData.saves.Add(new StageSave
             {
-                stageIndex = i,
+                stageIndex = info.stageIndex,
                 isCleared = false,
-                stars = 0,
-                isUnlockedWithoutStars = (i == 0)
+                bestStars = 0
             });
         }
-        Save();
+
+        saveData.totalStars = 0;
+        SaveStageData();
     }
 
-    public void Save()
+    private void SaveStageData()
     {
-        string json = JsonUtility.ToJson(new StageDataWrapper { stages = stages }, true);
-        File.WriteAllText(GetPath(), json);
+        string path = Path.Combine(Application.persistentDataPath, c_SaveFileName);
+        string json = JsonUtility.ToJson(saveData, true);
+        File.WriteAllText(path, json);
     }
 
-    public bool IsStageUnlocked(int index)
+    public bool IsStageUnlocked(int stageIndex)
     {
-        StageData current = stages.Find(s => s.stageIndex == index);
-        if (current == null)
+        StageInfo info = stageInfoData.stages.Find(x => x.stageIndex == stageIndex);
+        if (info == null)
         {
-            Debug.LogWarning($"[IsStageUnlocked] 스테이지 {index} 정보 없음");
+            Debug.LogError($"스테이지 {stageIndex} 정보가 StageInfo에 존재하지 않습니다.");
             return false;
         }
 
-        if (current.isUnlockedWithoutStars)
-            return true;
+        return saveData.totalStars >= info.unlockRequiredStars;
+    }
 
-        StageData prev = stages.Find(s => s.stageIndex == index - 1);
-        if (prev == null)
+    public int GetStageBestStars(int stageIndex)
+    {
+        StageSave save = saveData.saves.Find(x => x.stageIndex == stageIndex);
+        return save != null ? save.bestStars : 0;
+    }
+
+    public void CompleteStage(int stageIndex, int earnedScore)
+    {
+        StageSave save = saveData.saves.Find(x => x.stageIndex == stageIndex);
+        StageInfo info = stageInfoData.stages.Find(x => x.stageIndex == stageIndex);
+
+        if (save == null || info == null)
         {
-            Debug.LogWarning($"[IsStageUnlocked] 이전 스테이지 {index - 1} 정보 없음");
-            return false;
+            Debug.LogError($"스테이지 {stageIndex} 완료 처리 중 데이터 오류 발생");
+            return;
         }
 
-        return prev.isCleared && prev.stars >= starsToUnlock;
+        int earnedStars = CalculateStars(earnedScore, info.starScoreThresholds);
+
+        if (earnedStars > save.bestStars)
+        {
+            int additionalStars = earnedStars - save.bestStars;
+            save.bestStars = earnedStars;
+            saveData.totalStars += additionalStars;
+        }
+
+        save.isCleared = true;
+        SaveStageData();
     }
 
-    public void CompleteStage(int index, int earnedStars)
+    private int CalculateStars(int score, int[] thresholds)
     {
-        if (index < 0 || index >= stages.Count) return;
-        
-        var data = stages[index];
-        data.isCleared = true;
-        data.stars = Mathf.Max(data.stars, earnedStars);
-        Save();
+        if (score >= thresholds[2]) return 3;
+        if (score >= thresholds[1]) return 2;
+        if (score >= thresholds[0]) return 1;
+        return 0;
     }
 
-    public void UnlockWithoutStars(int index)
+    public int GetTotalStars()
     {
-        if (index < 0 || index >= stages.Count) return;
-        stages[index].isUnlockedWithoutStars = true;
-        Save();
-    }
-
-    public int GetStars(int index)
-    {
-        if (index < 0 || index >= stages.Count) return 0;
-        return stages[index].stars;
+        return saveData.totalStars;
     }
 }
