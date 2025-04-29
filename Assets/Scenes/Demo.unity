@@ -2901,9 +2901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54b53059ffc13f43ae3ea7d8e55163e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterRefillScore: {fileID: 2060717373}
-  firefightingScore: {fileID: 380036170}
-  rescueScore: {fileID: 493516361}
+  scoreBar: {fileID: 0}
 --- !u!1001 &66513154
 PrefabInstance:
   m_ObjectHideFlags: 0
