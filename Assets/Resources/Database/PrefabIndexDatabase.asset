@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: PrefabIndexDatabase
   m_EditorClassIdentifier: 
   prefabList:
-  - prefabName: Cube 1
+  - prefabRef:
+      m_AssetGUID: 711247ffba4ae104bae7edef9fa0ffb3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     prefabIndex: 0
-  - prefabName: Cube 2
+  - prefabRef:
+      m_AssetGUID: 4f54fd337f7a6204faddf73d3e082274
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     prefabIndex: 1
-  - prefabName: Cube 3
-    prefabIndex: 2
-  - prefabName: Cube
-    prefabIndex: 3
