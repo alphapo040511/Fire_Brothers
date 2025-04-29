@@ -35,7 +35,7 @@ public class StageEntrance : MonoBehaviour
     {
         if (!isPlayerOnPlate) return;
 
-        // 스테이지 해금 여부 확인
+        // StageManager에서 해금 여부 확인
         if (!StageManager.Instance.IsStageUnlocked(stageIndex))
         {
             Debug.LogWarning("잠겨 있는 스테이지입니다.");
@@ -46,22 +46,17 @@ public class StageEntrance : MonoBehaviour
 
         if (interactionCount == 1)
         {
-            Debug.Log($"스테이지 {stageIndex} 선택됨. 다시 상호작용 시 입장");
+            Debug.Log($"스테이지 {stageIndex}가 선택되었습니다. 다시 상호작용 시 입장합니다.");
         }
         else if (interactionCount >= 2)
         {
-            Debug.Log($"스테이지 {stageIndex} 입장 시도");
-
-            StageLoader.nextStageIndex = stageIndex;
-
-            // 씬 이름 누락 방어
             if (string.IsNullOrEmpty(sceneName))
             {
                 Debug.LogError("씬 이름이 설정되지 않았습니다.");
                 return;
             }
 
-            Debug.Log($"씬 '{sceneName}' 로드 중...");
+            StageLoader.nextStageIndex = stageIndex;
             SceneManager.LoadScene(sceneName);
         }
     }
