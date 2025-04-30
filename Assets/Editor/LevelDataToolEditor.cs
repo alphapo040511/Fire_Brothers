@@ -1,14 +1,8 @@
 #if UNITY_EDITOR
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEditor;
 using UnityEngine;
-using Unity.EditorCoroutines.Editor;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+using System.IO;
 
-// 레벨 데이터 저장과 Addressables 기반 불러오기를 지원하는 툴
 public class LevelDataToolEditor : EditorWindow
 {
     private int m_LevelIndex = 1;
@@ -30,9 +24,9 @@ public class LevelDataToolEditor : EditorWindow
             LevelDataConverter.SaveLevelData(m_LevelIndex);
         }
 
-        if (GUILayout.Button("Load Level Data (Addressables)"))
+        if (GUILayout.Button("Load Level Data"))
         {
-            EditorCoroutineUtility.StartCoroutine(LoadCoroutineInEditor(m_LevelIndex), this);
+            LevelDataConverter.LoadLevelData(m_LevelIndex);
         }
 
         GUILayout.Space(10);
@@ -51,65 +45,13 @@ public class LevelDataToolEditor : EditorWindow
     private void ClearSceneObjects()
     {
         ObjectDataComponent[] objects = GameObject.FindObjectsOfType<ObjectDataComponent>();
-        int count = 0;
-
         foreach (var obj in objects)
         {
             if (obj != null)
-            {
                 DestroyImmediate(obj.gameObject);
-                count++;
-            }
         }
 
-        Debug.Log($"총 {count}개의 ObjectDataComponent 오브젝트가 삭제되었습니다.");
-    }
-
-    // Addressables 기반 레벨 데이터 로드용 코루틴
-    private static IEnumerator LoadCoroutineInEditor(int levelIndex)
-    {
-        string path = Path.Combine("Assets/Resources/Json", $"Level_{levelIndex}.json");
-
-        if (!File.Exists(path))
-        {
-            Debug.LogError($"레벨 {levelIndex} JSON 파일이 존재하지 않습니다.");
-            yield break;
-        }
-
-        PrefabIndexDatabase db = Resources.Load<PrefabIndexDatabase>("Database/PrefabIndexDatabase");
-        if (db == null)
-        {
-            Debug.LogError("PrefabIndexDatabase.asset이 Resources/Database 경로에 없습니다.");
-            yield break;
-        }
-
-        string json = File.ReadAllText(path);
-        LevelData levelData = JsonUtility.FromJson<LevelData>(json);
-
-        foreach (var objData in levelData.objectDatas)
-        {
-            var prefabRef = db.GetPrefabReferenceByIndex(objData.prefabIndex);
-            if (prefabRef == null)
-            {
-                Debug.LogError($"프리팹 인덱스 {objData.prefabIndex}를 찾을 수 없습니다.");
-                continue;
-            }
-
-            AsyncOperationHandle<GameObject> handle = Addressables.InstantiateAsync(prefabRef, objData.position, Quaternion.Euler(objData.rotation));
-            yield return handle;
-
-            if (handle.Status == AsyncOperationStatus.Succeeded)
-            {
-                GameObject instance = handle.Result;
-                instance.transform.localScale = objData.scale;
-            }
-            else
-            {
-                Debug.LogError($"프리팹 로드 실패: 인덱스 {objData.prefabIndex}");
-            }
-        }
-
-        Debug.Log($"[Editor] Addressables 기반 Level {levelIndex} 로드 완료");
+        Debug.Log($"ObjectDataComponent 오브젝트 전부 삭제됨");
     }
 }
 #endif

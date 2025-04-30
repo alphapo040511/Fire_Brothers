@@ -1,18 +1,14 @@
-using UnityEditor;
 using UnityEngine;
+using UnityEditor;
 using System.IO;
-using UnityEditor.AddressableAssets.Settings;
-using UnityEditor.AddressableAssets;
-using UnityEngine.AddressableAssets;
-using UnityEditor.AddressableAssets.Settings.GroupSchemas;
 
 public class PrefabIndexDatabaseGenerator
 {
     private const string c_OutputPath = "Assets/Resources/Database";
     private const string c_OutputAssetName = "PrefabIndexDatabase.asset";
-    private const string c_ScanFolder = "Assets/AddressablePrefabs";
+    private const string c_ScanFolder = "Assets/Resources/Prefabs";
 
-    [MenuItem("Tools/Generate Prefab Index Database (Addressables)")]
+    [MenuItem("Tools/Generate Prefab Index Database (Resources)")]
     public static void GenerateDatabase()
     {
         if (!Directory.Exists(c_ScanFolder))
@@ -30,17 +26,38 @@ public class PrefabIndexDatabaseGenerator
             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
             if (prefab == null) continue;
 
-            // Addressable 등록
-            AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
-            AddressableAssetEntry entry = settings.CreateOrMoveEntry(guids[i], settings.DefaultGroup);
+            string prefabName = Path.GetFileNameWithoutExtension(path);
 
-            entry.address = path.Replace("Assets/AddressablePrefabs/", "").Replace(".prefab", "");
+            // ObjectDataComponent 없으면 자동 추가
+            bool updated = false;
+            if (prefab.GetComponent<ObjectDataComponent>() == null)
+            {
+                var tempInstance = Object.Instantiate(prefab);
+                tempInstance.AddComponent<ObjectDataComponent>();
+                PrefabUtility.SaveAsPrefabAsset(tempInstance, path);
+                Object.DestroyImmediate(tempInstance);
+                updated = true;
+            }
 
-            var reference = new AssetReferenceGameObject(entry.guid);
+            // 인덱스 주입
+            GameObject updatedPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            ObjectDataComponent comp = updatedPrefab.GetComponent<ObjectDataComponent>();
+            if (comp != null)
+            {
+                SerializedObject so = new SerializedObject(comp);
+                so.FindProperty("m_PrefabIndex").intValue = i;
+                so.ApplyModifiedProperties();
+                EditorUtility.SetDirty(updatedPrefab);
+                updated = true;
+            }
 
+            if (updated)
+                Debug.Log($"프리팹 수정됨: {prefabName}");
+
+            // DB에 등록
             database.prefabList.Add(new PrefabIndexDatabase.PrefabIndexEntry
             {
-                prefabRef = reference,
+                prefabName = prefabName,
                 prefabIndex = i
             });
         }
@@ -53,6 +70,6 @@ public class PrefabIndexDatabaseGenerator
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
 
-        Debug.Log($"PrefabIndexDatabase(Addressable) 생성 완료 ({database.prefabList.Count}개 등록)");
+        Debug.Log($"PrefabIndexDatabase(Resources) 생성 완료 ({database.prefabList.Count}개 등록)");
     }
 }
