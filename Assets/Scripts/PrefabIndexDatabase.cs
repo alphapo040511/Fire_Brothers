@@ -1,24 +1,21 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
-[CreateAssetMenu(fileName = "PrefabIndexDatabase", menuName = "Database/PrefabIndexDatabase")]
+[CreateAssetMenu(fileName = "PrefabIndexDatabase", menuName = "Database/Prefab Index Database")]
 public class PrefabIndexDatabase : ScriptableObject
 {
     [System.Serializable]
     public class PrefabIndexEntry
     {
-        public AssetReferenceGameObject prefabRef; // Addressable 참조
+        public string prefabName;
         public int prefabIndex;
     }
 
     public List<PrefabIndexEntry> prefabList = new();
 
-    public AssetReferenceGameObject GetPrefabReferenceByIndex(int index)
+    public string GetPrefabNameByIndex(int index)
     {
-        var entry = prefabList.Find(p => p.prefabIndex == index);
-        return entry != null ? entry.prefabRef : null;
+        var entry = prefabList.Find(e => e.prefabIndex == index);
+        return entry != null ? entry.prefabName : string.Empty;
     }
 }
-

@@ -8,7 +8,7 @@ public class StageLoader : MonoBehaviour
     {
         if (nextStageIndex >= 0)
         {
-            LevelDataConverter.LoadLevelDataAddressable(this, nextStageIndex);
+            LevelDataConverter.LoadLevelData(nextStageIndex);
             Debug.Log($"스테이지 {nextStageIndex} 로드 시작");
             nextStageIndex = -1;
         }

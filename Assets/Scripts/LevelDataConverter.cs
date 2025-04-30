@@ -1,7 +1,4 @@
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
@@ -25,23 +22,18 @@ public class ObjectData
 public static class LevelDataConverter
 {
     private const string c_SavePath = "Assets/Resources/Json";
-    private const string c_PrefabIndexDatabasePath = "Database/PrefabIndexDatabase"; // Resources 기준
-
+    private const string c_PrefabPath = "Prefabs/";
+    private const string c_PrefabDatabasePath = "Database/PrefabIndexDatabase";
 
     public static void SaveLevelData(int levelIndex)
     {
-        // 저장할 데이터 구성
-        LevelData data = new LevelData
-        {
-            levelIndex = levelIndex,
-            objectDatas = new List<ObjectData>()
-        };
+        LevelData levelData = new LevelData { levelIndex = levelIndex, objectDatas = new List<ObjectData>() };
 
-        ObjectDataComponent[] objects = GameObject.FindObjectsOfType<ObjectDataComponent>();
+        ObjectDataComponent[] objects = Object.FindObjectsOfType<ObjectDataComponent>();
         for (int i = 0; i < objects.Length; i++)
         {
-            var tf = objects[i].transform;
-            data.objectDatas.Add(new ObjectData
+            Transform tf = objects[i].transform;
+            levelData.objectDatas.Add(new ObjectData
             {
                 index = i,
                 prefabIndex = objects[i].PrefabIndex,
@@ -51,59 +43,46 @@ public static class LevelDataConverter
             });
         }
 
-        string json = JsonUtility.ToJson(data, true);
-        string filePath = Path.Combine("Assets/Resources/Json", $"Level_{levelIndex}.json");
-        File.WriteAllText(filePath, json);
-        Debug.Log($"[LevelData] {filePath} 저장 완료 ({data.objectDatas.Count}개 오브젝트)");
-    }
-    public static void LoadLevelDataAddressable(MonoBehaviour runner, int levelIndex)
-    {
-        runner.StartCoroutine(LoadCoroutine(levelIndex));
+        string json = JsonUtility.ToJson(levelData, true);
+        string path = Path.Combine(c_SavePath, $"Level_{levelIndex}.json");
+        File.WriteAllText(path, json);
+        Debug.Log($"Level {levelIndex} 저장 완료 ({levelData.objectDatas.Count}개 오브젝트)");
     }
 
-    private static IEnumerator LoadCoroutine(int levelIndex)
+    public static void LoadLevelData(int levelIndex)
     {
         string path = Path.Combine(c_SavePath, $"Level_{levelIndex}.json");
 
         if (!File.Exists(path))
         {
             Debug.LogError($"레벨 {levelIndex} JSON 파일 없음");
-            yield break;
+            return;
         }
 
-        PrefabIndexDatabase database = Resources.Load<PrefabIndexDatabase>(c_PrefabIndexDatabasePath);
-        if (database == null)
+        PrefabIndexDatabase db = Resources.Load<PrefabIndexDatabase>(c_PrefabDatabasePath);
+        if (db == null)
         {
-            Debug.LogError("PrefabIndexDatabase.asset이 Resources/Database에 존재하지 않음");
-            yield break;
+            Debug.LogError("PrefabIndexDatabase를 Resources/Database에 배치해야 합니다.");
+            return;
         }
 
         string json = File.ReadAllText(path);
-        LevelData data = JsonUtility.FromJson<LevelData>(json);
+        LevelData levelData = JsonUtility.FromJson<LevelData>(json);
 
-        foreach (ObjectData objData in data.objectDatas)
+        foreach (var objData in levelData.objectDatas)
         {
-            var prefabRef = database.GetPrefabReferenceByIndex(objData.prefabIndex);
-            if (prefabRef == null)
+            string prefabName = db.GetPrefabNameByIndex(objData.prefabIndex);
+            GameObject prefab = Resources.Load<GameObject>($"{c_PrefabPath}{prefabName}");
+            if (prefab == null)
             {
-                Debug.LogError($"프리팹 인덱스 {objData.prefabIndex}에 해당하는 Addressable 참조 없음");
+                Debug.LogError($"프리팹 로드 실패: {prefabName}");
                 continue;
             }
 
-            AsyncOperationHandle<GameObject> handle = Addressables.InstantiateAsync(prefabRef, objData.position, Quaternion.Euler(objData.rotation));
-            yield return handle;
-
-            if (handle.Status == AsyncOperationStatus.Succeeded)
-            {
-                GameObject instance = handle.Result;
-                instance.transform.localScale = objData.scale;
-            }
-            else
-            {
-                Debug.LogError($"프리팹 인스턴스화 실패: 인덱스 {objData.prefabIndex}");
-            }
+            GameObject instance = Object.Instantiate(prefab, objData.position, Quaternion.Euler(objData.rotation));
+            instance.transform.localScale = objData.scale;
         }
 
-        Debug.Log($"레벨 {levelIndex} Addressables 기반 로드 완료: {data.objectDatas.Count}개 생성됨");
+        Debug.Log($"Level {levelIndex} 로드 완료");
     }
 }
