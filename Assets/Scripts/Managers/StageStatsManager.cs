@@ -9,13 +9,14 @@ public class StageStatsManager : MonoBehaviour
 
     public int currentScore { get; private set; }                     //현재 점수
 
-    private int[] scoreStarThreshold = new int[3];                  //각 별을 획득할 기준
+    public int[] scoreStarThreshold = new int[3];                  //각 별을 획득할 기준
     private int minScore = 0;                                         //별 획득시 감소를 막을 수치
 
     private int decreaseRate = 3;                                    //매 초 감소할 수치
 
 
     public event Action<float> OnScoreChanged;                          //점수 변경 이벤트
+    public event Action<int> GetStar;                          //점수 변경 이벤트
 
     private void Awake()
     {
@@ -64,6 +65,7 @@ public class StageStatsManager : MonoBehaviour
             {
                 minScore = scoreStarThreshold[i];
                 Debug.Log($"{i + 1}번째 별 획득");
+                GetStar?.Invoke(i);
                 break;
             }
         }

@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform leftHandTarget = null;
     private Transform rightHandTarget = null;
 
-    public PlayerStats playerStats { get; private set; }
+    public PlayerStats playerStats { get; private set; } = PlayerStats.Controllable;
 
     private void OnEnable()
     {
@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         m_Animator.SetFloat("Hor", 0);
 
         inputDevice = InputDeviceManager.Instance.FindDevice(playerIndex);
+        Debug.Log($"{playerIndex} 플레이어 {inputDevice}와 연결됨");
     }
 
     void Update()
@@ -78,7 +79,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (context.control.device != inputDevice) return;
+        if (context.control.device != inputDevice)
+        {
+            Debug.LogWarning($"{context.control.device}이게 들어왔는데 {inputDevice}랑 다르다는데요.");
+            return;
+        }
 
         // 카메라의 Y축 회전만 반영해서 이동 방향 계산
         Vector3 forward = Camera.main.transform.forward;

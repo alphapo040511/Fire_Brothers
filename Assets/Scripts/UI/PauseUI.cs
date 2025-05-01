@@ -12,6 +12,8 @@ public class PauseUI : MonoBehaviour
 
     public void Quit()
     {
+        UIManager.Instance.HideScreen();
+
         int index = SceneManager.GetActiveScene().buildIndex;
         if(index == 0)
         {
