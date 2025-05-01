@@ -59,6 +59,7 @@ public class TrailsManager : MonoBehaviour
         }
 
         Debug.Log($"웨이포인트 {loaded.Count}개 로드됨");
+        GameManager.Instance.ChangeState(GameState.Playing);
     }
     private void OnDrawGizmos()
     {
