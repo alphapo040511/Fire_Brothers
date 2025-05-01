@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabList:
   - prefabName: Fire_Hydrant
-    prefabIndex: 0
-  - prefabName: FireEvent
     prefabIndex: 1
+  - prefabName: FireEvent
+    prefabIndex: 0

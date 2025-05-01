@@ -3,29 +3,29 @@
         {
             "stageIndex": 1,
             "starScoreThresholds": [
-                200,
-                450,
-                700
+                300,
+                600,
+                900
             ],
             "unlockRequiredStars": 0
         },
         {
             "stageIndex": 2,
             "starScoreThresholds": [
-                200,
-                450,
-                800
+                300,
+                600,
+                900
             ],
-            "unlockRequiredStars": 2
+            "unlockRequiredStars": 3
         },
         {
             "stageIndex": 3,
             "starScoreThresholds": [
-                0,
-                0,
-                0
+                300,
+                600,
+                900
             ],
-            "unlockRequiredStars": 0
+            "unlockRequiredStars": 3
         }
     ]
 }
