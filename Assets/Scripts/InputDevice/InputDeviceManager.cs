@@ -11,7 +11,7 @@ public class InputDeviceManager
     {
         get
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = new InputDeviceManager();
                 InputSystem.onDeviceChange += OnDeviceChange;
@@ -32,9 +32,9 @@ public class InputDeviceManager
 
     public void ConnectNewDevice(InputDevice newDevice)
     {
-        if(inputDevices.ContainsKey(newDevice) || inputDevices.Count >= 2) return;
+        if (inputDevices.ContainsKey(newDevice) || inputDevices.Count >= 2) return;
 
-        if(inputDevices.ContainsValue(0))
+        if (inputDevices.ContainsValue(0))
         {
             inputDevices.Add(newDevice, 1);
         }
@@ -43,7 +43,22 @@ public class InputDeviceManager
             inputDevices.Add(newDevice, 0);
         }
 
+        Debug.Log($"{newDevice}가 연결됨");
+
         OnInputDeviceConnected?.Invoke(newDevice);
+    }
+
+    public InputDevice FindDevice(int index)
+    {
+        foreach(var input in InputDevices)
+        {
+            if(input.Value == index)
+            {
+                return input.Key;
+            }
+        }
+
+        return null;
     }
 
     private static void OnDeviceChange(InputDevice device, InputDeviceChange change)

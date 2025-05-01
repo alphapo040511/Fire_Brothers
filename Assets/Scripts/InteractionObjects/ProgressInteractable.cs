@@ -15,7 +15,7 @@ public class ProgressInteractable : Interactable
     {
         if (interactData.reuseable)
         {
-            coodownUI = GameSceneUIManger.instance.CreatingCooldownUI(interactData.sprite, transform);
+            coodownUI = GameSceneUIManger.instance?.CreatingCooldownUI(interactData.sprite, transform);
         }
     }
 

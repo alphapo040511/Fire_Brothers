@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -40,9 +41,11 @@ public class PlayerInteraction : MonoBehaviour
 
     public void OnInteraction(InputAction.CallbackContext context)
     {
+        if (context.control.device != playerMovement.inputDevice) return;
+
         pressedInteractionButton = context.performed;
 
-        if (pressedInteractionButton)
+        if (pressedInteractionButton && target != null)
         {
             playerMovement.OnPlayerStatsChange(PlayerStats.Interacting);
         }
@@ -69,6 +72,8 @@ public class PlayerInteraction : MonoBehaviour
         {
             playerMovement.SetIK(heldItem.leftGrib, heldItem.rightGrib);
         }
+
+        playerMovement.OnPlayerStatsChange(PlayerStats.Controllable);
     }
 
     public void GetNewItem()
@@ -79,6 +84,8 @@ public class PlayerInteraction : MonoBehaviour
         {
             playerMovement.RemoveIK();
         }
+
+        playerMovement.OnPlayerStatsChange(PlayerStats.Controllable);
     }
 
     public void DropHeldItem()
@@ -140,9 +147,9 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Intertaction()
     {
-        if (pressedInteractionButton)
+        if (pressedInteractionButton && target != null && playerMovement.playerStats == PlayerStats.Interacting)
         {
-            if (target == null || lastInteractTime + interactDelay > Time.time) return;
+            if (lastInteractTime + interactDelay > Time.time) return;
 
             lastInteractTime = Time.time;
 

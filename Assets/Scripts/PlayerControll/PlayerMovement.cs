@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float minValue = 0.1f;
     public float moveSpeed = 5.0f;
     public InputDevice inputDevice;
+    public int playerIndex;
 
     private Animator m_Animator;
 
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform leftHandTarget = null;
     private Transform rightHandTarget = null;
 
-    [SerializeField]private PlayerStats playerStats;
+    public PlayerStats playerStats { get; private set; }
 
     private void OnEnable()
     {
@@ -47,22 +48,34 @@ public class PlayerMovement : MonoBehaviour
 
         m_Animator.SetFloat("State", 1);
         m_Animator.SetFloat("Hor", 0);
+
+        inputDevice = InputDeviceManager.Instance.FindDevice(playerIndex);
     }
 
     void Update()
     {
-        rb.velocity = moveDirection * moveSpeed;
+        if (playerStats != PlayerStats.Controllable)
+        {
+            rb.velocity = Vector3.zero;
+        }
+        else
+        {
+            rb.velocity = moveDirection * moveSpeed;
 
-        if (moveDirection == Vector3.zero) return;
+            if (moveDirection != Vector3.zero)
+            {
+                // 이동 방향을 향하도록 회전
+                Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+            }
+        }
 
-        // 이동 방향을 향하도록 회전
-        Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+        m_Animator.SetFloat("Vert", rb.velocity.magnitude);
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (playerStats != PlayerStats.Controllable) return;
+        if (context.control.device != inputDevice) return;
 
         // 카메라의 Y축 회전만 반영해서 이동 방향 계산
         Vector3 forward = Camera.main.transform.forward;
@@ -77,22 +90,28 @@ public class PlayerMovement : MonoBehaviour
         if (direction.magnitude > minValue)
         {
             moveDirection = direction.normalized;
-
-            m_Animator.SetFloat("Vert", direction.magnitude);
         }
         else
         {
             moveDirection = Vector3.zero;
-            m_Animator.SetFloat("Vert", 0);
         }
     }
 
     public void DisconnectDevice(InputDevice device, InputDeviceChange change)
     {
-        if (device == inputDevice && change == InputDeviceChange.Removed)
+        if (device == inputDevice)
         {
-            Destroy(gameObject);
+            if (change == InputDeviceChange.Removed)
+            {
+                inputDevice = null;
+                GameManager.Instance.ChangeState(GameState.Paused);
+            }
+            else if (change == InputDeviceChange.Added)
+            {
+                inputDevice = InputDeviceManager.Instance.FindDevice(playerIndex);
+            }
         }
+
     }
 
     public void SetIK(Transform left, Transform right)

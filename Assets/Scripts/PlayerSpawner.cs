@@ -29,6 +29,7 @@ public class PlayerSpawner : MonoBehaviour
     {
         var player = PlayerInput.Instantiate(playerPrefab, InputDeviceManager.Instance.InputDevices[device], controlScheme: null, pairWithDevice: device);
         player.GetComponent<PlayerMovement>().inputDevice = device;
+        player.GetComponent<PlayerMovement>().playerIndex = InputDeviceManager.Instance.InputDevices[device];
     }
 
     public Vector3 GetPosition()

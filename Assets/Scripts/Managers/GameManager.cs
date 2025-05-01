@@ -15,12 +15,14 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameManager Instance { get; private set; }
 
     //현재 게임 상태
-    public GameState CurrentState { get; private set; }
+    public GameState CurrentState;
 
     public event Action<GameState> OnGameStateChanged;                      //게임 상태 변경 이벤트
+
+    public int currentStageIndex;
 
 
     private void Awake()
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     private void Start()
     {
@@ -39,7 +42,7 @@ public class GameManager : MonoBehaviour
         ChangeState(GameState.Playing);
     }
 
-    private void ChangeState(GameState newState)
+    public void ChangeState(GameState newState)
     {
         CurrentState = newState;
 
@@ -68,5 +71,10 @@ public class GameManager : MonoBehaviour
         }
 
         OnGameStateChanged?.Invoke(newState);
+    }
+
+    public void CurrentStageSetting(int index)
+    {
+        currentStageIndex = index;
     }
 }
