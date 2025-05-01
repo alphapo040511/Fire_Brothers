@@ -7,13 +7,17 @@ public class ScoreHUD : MonoBehaviour
 {
     public Image scoreBar;
 
-    public GameObject[] starbar = new GameObject[3];
+    public RectTransform[] starbar = new RectTransform[3];
     public GameObject[] stars = new GameObject[3];
 
     void Start()
     {
         StageStatsManager.Instance.OnScoreChanged += ChangeScore;
         StageStatsManager.Instance.GetStar += GetStar;
+        stars[0].SetActive(false);
+        stars[1].SetActive(false);
+        stars[2].SetActive(false);
+        SetBar();
     }
 
     void OnDestroy()
@@ -37,8 +41,8 @@ public class ScoreHUD : MonoBehaviour
 
     private void SetBar()
     {
-        starbar[0].transform.localPosition = Vector3.up * (StageStatsManager.Instance.scoreStarThreshold[0] / 1000) * 600;
-        starbar[1].transform.localPosition = Vector3.up * (StageStatsManager.Instance.scoreStarThreshold[1] / 1000) * 600;
-        starbar[2].transform.localPosition = Vector3.up * (StageStatsManager.Instance.scoreStarThreshold[2] / 1000) * 600;
+        starbar[0].anchoredPosition = new Vector2(0, (StageStatsManager.Instance.scoreStarThreshold[0] / 1000f) * 600);
+        starbar[1].anchoredPosition = new Vector2(0, (StageStatsManager.Instance.scoreStarThreshold[1] / 1000f) * 600);
+        starbar[2].anchoredPosition = new Vector2(0, (StageStatsManager.Instance.scoreStarThreshold[2] / 1000f) * 600);
     }
 }
