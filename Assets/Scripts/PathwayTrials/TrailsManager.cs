@@ -24,7 +24,7 @@ public class TrailsManager : MonoBehaviour
 
     private void Start()
     {
-        LoadWaypoints(stageIndex);
+        LoadWaypoints(GameManager.Instance.currentStageIndex);
     }
 
     public void AddPoint(Waypoint point)
@@ -46,6 +46,8 @@ public class TrailsManager : MonoBehaviour
 
     public void LoadWaypoints(int index)
     {
+        waypoins.Clear();
+
         List<Vector3> loaded = WaypointIO.LoadWaypointPositions(index);
         if (loaded == null) return;
 

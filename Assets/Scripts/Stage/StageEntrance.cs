@@ -23,9 +23,8 @@ public class StageEntrance : MonoBehaviour
             return;
         }
 
+        GameManager.Instance.CurrentStageSetting(stageIndex);
         StageLoader.nextStageIndex = stageIndex;
         SceneManager.LoadScene(sceneName);
-        GameManager.Instance.CurrentStageSetting(stageIndex);
-
     }
 }

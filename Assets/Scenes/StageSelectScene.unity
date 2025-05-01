@@ -434,7 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentState: 0
-  currentStageIndex: 0
+  currentStageIndex: 1
 --- !u!4 &524555813
 Transform:
   m_ObjectHideFlags: 0
@@ -832,8 +832,40 @@ MonoBehaviour:
     m_ActionName: VehicleActions/Interaction[/Keyboard/space,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 63500c94-cf4f-435e-9762-d998b36c5d69
-    m_ActionName: UIActions/Pause[/XInputControllerWindows/start,/Keyboard/escape]
+    m_ActionId: fa283b5c-a465-4e63-ad8c-8b1bf8b6b97f
+    m_ActionName: UIActions/Navigate[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/DualSenseGamepadHID/leftStick,/XInputControllerWindows/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 62ad9a40-44be-4956-a60a-c62805ebb930
+    m_ActionName: UIActions/Submit[/DualSenseGamepadHID/buttonSouth,/XInputControllerWindows/buttonSouth,/Keyboard/enter,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8a204ca1-1758-4203-8cb4-f424610afb98
+    m_ActionName: UIActions/Cancel[/DualSenseGamepadHID/buttonEast,/XInputControllerWindows/buttonEast,/Keyboard/backspace,/Keyboard/z]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 96e354c4-6c3a-4418-8fe2-59d652cccb53
+    m_ActionName: UIActions/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5849201e-418f-464c-8220-0b0b52420624
+    m_ActionName: UIActions/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b3e6a134-3d08-48e1-b82e-d457abc3f70f
+    m_ActionName: UIActions/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 23aace6f-23b0-4d2a-94fc-92b812ff9b2f
+    m_ActionName: UIActions/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 586adb82-6a24-4aeb-bbd6-b089a02cf751
+    m_ActionName: UIActions/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fbc00f0d-1c0c-441e-97ce-18e3170aa3c4
+    m_ActionName: UIActions/Pause[/DualSenseGamepadHID/start,/XInputControllerWindows/start,/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: VehicleActions
