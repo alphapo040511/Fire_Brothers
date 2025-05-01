@@ -7,7 +7,6 @@ public class ScoreHUD : MonoBehaviour
 {
     public Image scoreBar;
 
-
     void Start()
     {
         StageStatsManager.Instance.OnScoreChanged += ChangeScore;

@@ -93,6 +93,18 @@ public class StageManager : MonoBehaviour
         return saveData.totalStars >= info.unlockRequiredStars;
     }
 
+    public bool IsStageClaer(int index)
+    {
+        StageSave save = saveData.saves.Find(x => x.stageIndex == index);
+        if (save == null)
+        {
+            Debug.LogError($"스테이지 {index} 정보가 StageInfo에 존재하지 않습니다.");
+            return false;
+        }
+
+        return save.isCleared;
+    }
+
     public int GetStageBestStars(int stageIndex)
     {
         StageSave save = saveData.saves.Find(x => x.stageIndex == stageIndex);
@@ -130,7 +142,7 @@ public class StageManager : MonoBehaviour
         return true;
     }
 
-    private int CalculateStars(int score, int[] thresholds)
+    public int CalculateStars(int score, int[] thresholds)
     {
         if (score >= thresholds[2]) return 3;
         if (score >= thresholds[1]) return 2;

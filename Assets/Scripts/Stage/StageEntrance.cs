@@ -5,8 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class StageEntrance : MonoBehaviour
 {
+    public List<ParticleSystem> effects = new List<ParticleSystem>();
+
     public int stageIndex;
     public string sceneName;
+
+    private bool isUnlocked = false;
+
+    void Start()
+    {
+        if(StageManager.Instance.IsStageClaer(stageIndex))
+        {
+            DisableEffects();
+        }
+        
+    }
+
+    private void DisableEffects()
+    {
+        foreach(var effect in effects)
+        {
+            effect.Stop();
+        }
+    }
+
     public void Entrance()
     {
         // StageManager에서 해금 여부 확인

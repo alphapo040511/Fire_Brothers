@@ -10,6 +10,7 @@ public class VehicleControll : MonoBehaviour
     public float moveSpeed = 5.0f;
     public InputDevice inputDevice;
 
+    private PlayerInput playerInput;
     private Rigidbody rb;
 
     private Vector3 moveDirection;
@@ -18,15 +19,18 @@ public class VehicleControll : MonoBehaviour
     private void OnEnable()
     {
         InputSystem.onDeviceChange += DisconnectDevice;
+        GameManager.Instance.OnGameStateChanged += OnGameStatsChange;
     }
 
     private void OnDisable()
     {
         InputSystem.onDeviceChange -= DisconnectDevice;
+        GameManager.Instance.OnGameStateChanged -= OnGameStatsChange;
     }
 
     void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -97,5 +101,27 @@ public class VehicleControll : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void OnGameStatsChange(GameState newState)
+    {
+        switch (newState)
+        {
+            case GameState.Ready:
+            case GameState.Paused:
+            case GameState.GameOver:
+                playerInput.enabled = false;
+                break;
+
+            case GameState.Playing:
+                playerInput.enabled = true;
+                break;
+
+        }
+    }
+
+    public void GamePause(InputAction.CallbackContext context)
+    {
+        UIManager.Instance.ShowScreen(ScreenType.Pause);
     }
 }

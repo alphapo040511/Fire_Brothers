@@ -9,7 +9,7 @@ public class StageStatsManager : MonoBehaviour
 
     public int currentScore { get; private set; }                     //현재 점수
 
-    private int[] scoreStarThreshold = new int[3];                      //각 별을 획득할 기준
+    private int[] scoreStarThreshold = new int[3];                  //각 별을 획득할 기준
     private int minScore = 0;                                         //별 획득시 감소를 막을 수치
 
     private int decreaseRate = 3;                                    //매 초 감소할 수치
@@ -82,5 +82,7 @@ public class StageStatsManager : MonoBehaviour
         {
             //게임 오버 연출
         }
+
+        GameManager.Instance.ChangeState(GameState.GameOver);
     }
 }

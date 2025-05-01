@@ -10,7 +10,10 @@ public class UIFocus : MonoBehaviour
     void OnEnable()
     {
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(firstSelected);
+        if (firstSelected != null)
+        {
+            EventSystem.current.SetSelectedGameObject(firstSelected);
+        }
     }
 
     private void OnDisable()

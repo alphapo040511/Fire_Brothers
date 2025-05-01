@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public InputDevice inputDevice;
     public int playerIndex;
 
+    private PlayerInput playerInput;
     private Animator m_Animator;
 
     private Rigidbody rb;
@@ -43,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
+
         m_Animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
 
@@ -159,10 +162,12 @@ public class PlayerMovement : MonoBehaviour
             case GameState.Paused:
             case GameState.GameOver:
                 playerStats = PlayerStats.Idle;
+                playerInput.enabled = false;
                 break;
 
             case GameState.Playing:
                 playerStats = PlayerStats.Controllable;
+                playerInput.enabled = true;
                 break;
 
         }
@@ -171,5 +176,10 @@ public class PlayerMovement : MonoBehaviour
     public void OnPlayerStatsChange(PlayerStats newStats)
     {
         playerStats = newStats;
+    }
+
+    public void GamePause(InputAction.CallbackContext context)
+    {
+        UIManager.Instance.ShowScreen(ScreenType.Pause);
     }
 }
