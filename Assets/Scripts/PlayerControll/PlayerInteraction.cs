@@ -42,7 +42,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         pressedInteractionButton = context.performed;
 
-        if (pressedInteractionButton)
+        if (pressedInteractionButton && target != null)
         {
             playerMovement.OnPlayerStatsChange(PlayerStats.Interacting);
         }
@@ -69,6 +69,8 @@ public class PlayerInteraction : MonoBehaviour
         {
             playerMovement.SetIK(heldItem.leftGrib, heldItem.rightGrib);
         }
+
+        playerMovement.OnPlayerStatsChange(PlayerStats.Controllable);
     }
 
     public void GetNewItem()
@@ -79,6 +81,8 @@ public class PlayerInteraction : MonoBehaviour
         {
             playerMovement.RemoveIK();
         }
+
+        playerMovement.OnPlayerStatsChange(PlayerStats.Controllable);
     }
 
     public void DropHeldItem()
@@ -140,9 +144,9 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Intertaction()
     {
-        if (pressedInteractionButton)
+        if (pressedInteractionButton && target != null && playerMovement.playerStats == PlayerStats.Interacting)
         {
-            if (target == null || lastInteractTime + interactDelay > Time.time) return;
+            if (lastInteractTime + interactDelay > Time.time) return;
 
             lastInteractTime = Time.time;
 

@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform leftHandTarget = null;
     private Transform rightHandTarget = null;
 
-    [SerializeField]private PlayerStats playerStats;
+    public PlayerStats playerStats { get; private set; }
 
     private void OnEnable()
     {
@@ -51,19 +51,27 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        rb.velocity = moveDirection * moveSpeed;
+        if (playerStats != PlayerStats.Controllable)
+        {
+            rb.velocity = Vector3.zero;
+        }
+        else
+        {
+            rb.velocity = moveDirection * moveSpeed;
 
-        if (moveDirection == Vector3.zero) return;
+            if (moveDirection != Vector3.zero)
+            {
+                // 이동 방향을 향하도록 회전
+                Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+            }
+        }
 
-        // 이동 방향을 향하도록 회전
-        Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+        m_Animator.SetFloat("Vert", rb.velocity.magnitude);
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (playerStats != PlayerStats.Controllable) return;
-
         // 카메라의 Y축 회전만 반영해서 이동 방향 계산
         Vector3 forward = Camera.main.transform.forward;
         Vector3 right = Camera.main.transform.right;
@@ -77,13 +85,10 @@ public class PlayerMovement : MonoBehaviour
         if (direction.magnitude > minValue)
         {
             moveDirection = direction.normalized;
-
-            m_Animator.SetFloat("Vert", direction.magnitude);
         }
         else
         {
             moveDirection = Vector3.zero;
-            m_Animator.SetFloat("Vert", 0);
         }
     }
 
