@@ -1021,7 +1021,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2553,7 +2553,7 @@ PrefabInstance:
     - target: {fileID: -8436573723639555992, guid: 393a206315a3d4da381332d3236e6b63,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 232577762376677681, guid: 393a206315a3d4da381332d3236e6b63,
         type: 3}
@@ -3213,7 +3213,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3372,6 +3372,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 157989753}
     m_Modifications:
+    - target: {fileID: -6540656012410381455, guid: 1f4ddc48a06a343c9aaa65959bdb64dd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6224841830659001584, guid: 1f4ddc48a06a343c9aaa65959bdb64dd,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -4078,6 +4083,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 612052927}
     m_Modifications:
+    - target: {fileID: 1326428982436290755, guid: 54794c7c6bc4a4ec7b8262a403aa3cbb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3984245714131668164, guid: 54794c7c6bc4a4ec7b8262a403aa3cbb,
         type: 3}
       propertyPath: m_Name
@@ -9345,7 +9355,7 @@ PrefabInstance:
     - target: {fileID: 1662774694183425329, guid: 8351d44feae40456caa996063ccbe4ec,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2827300469468458982, guid: 8351d44feae40456caa996063ccbe4ec,
         type: 3}
@@ -10461,7 +10471,7 @@ PrefabInstance:
     - target: {fileID: -8436573723639555992, guid: 393a206315a3d4da381332d3236e6b63,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 232577762376677681, guid: 393a206315a3d4da381332d3236e6b63,
         type: 3}
@@ -10719,6 +10729,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5427673249213949727, guid: f6b1f13116c54ff42b42738156539126,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839310659511099890, guid: f6b1f13116c54ff42b42738156539126,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5860565938791533119, guid: f6b1f13116c54ff42b42738156539126,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10774,10 +10794,20 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8334319771722734023, guid: f6b1f13116c54ff42b42738156539126,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8953608967192419080, guid: f6b1f13116c54ff42b42738156539126,
         type: 3}
       propertyPath: m_Name
       value: Fire_Truck
+      objectReference: {fileID: 0}
+    - target: {fileID: 8953608967192419080, guid: f6b1f13116c54ff42b42738156539126,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
