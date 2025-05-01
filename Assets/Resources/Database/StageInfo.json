@@ -2,21 +2,30 @@
     "stages": [
         {
             "stageIndex": 1,
-            "isCleared": false,
-            "stars": 0,
-            "isUnlockedWithoutStars": true
+            "starScoreThresholds": [
+                300,
+                600,
+                900
+            ],
+            "unlockRequiredStars": 0
         },
         {
             "stageIndex": 2,
-            "isCleared": false,
-            "stars": 0,
-            "isUnlockedWithoutStars": false
+            "starScoreThresholds": [
+                300,
+                600,
+                900
+            ],
+            "unlockRequiredStars": 3
         },
         {
             "stageIndex": 3,
-            "isCleared": false,
-            "stars": 0,
-            "isUnlockedWithoutStars": false
+            "starScoreThresholds": [
+                300,
+                600,
+                900
+            ],
+            "unlockRequiredStars": 3
         }
     ]
 }
