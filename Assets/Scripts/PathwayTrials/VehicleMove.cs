@@ -24,6 +24,7 @@ public class VehicleMove : MonoBehaviour
         if (waypoint == null)
         {
             GettingWaypoint();
+            rb.velocity = Vector3.zero;
             return;
         }
         Movement();
