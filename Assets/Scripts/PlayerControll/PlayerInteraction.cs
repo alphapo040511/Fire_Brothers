@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -40,6 +41,8 @@ public class PlayerInteraction : MonoBehaviour
 
     public void OnInteraction(InputAction.CallbackContext context)
     {
+        if (context.control.device != playerMovement.inputDevice) return;
+
         pressedInteractionButton = context.performed;
 
         if (pressedInteractionButton && target != null)

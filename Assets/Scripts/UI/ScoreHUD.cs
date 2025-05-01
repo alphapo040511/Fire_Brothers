@@ -10,12 +10,12 @@ public class ScoreHUD : MonoBehaviour
 
     void Start()
     {
-        ScoreManager.Instance.OnScoreChanged += ChangeScore;
+        StageStatsManager.Instance.OnScoreChanged += ChangeScore;
     }
 
     void OnDestroy()
     {
-        ScoreManager.Instance.OnScoreChanged -= ChangeScore;
+        StageStatsManager.Instance.OnScoreChanged -= ChangeScore;
     }
 
     private void ChangeScore(float score)

@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float minValue = 0.1f;
     public float moveSpeed = 5.0f;
     public InputDevice inputDevice;
+    public int playerIndex;
 
     private Animator m_Animator;
 
@@ -47,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
         m_Animator.SetFloat("State", 1);
         m_Animator.SetFloat("Hor", 0);
+
+        inputDevice = InputDeviceManager.Instance.FindDevice(playerIndex);
     }
 
     void Update()
@@ -72,6 +75,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (context.control.device != inputDevice) return;
+
         // 카메라의 Y축 회전만 반영해서 이동 방향 계산
         Vector3 forward = Camera.main.transform.forward;
         Vector3 right = Camera.main.transform.right;
@@ -94,10 +99,19 @@ public class PlayerMovement : MonoBehaviour
 
     public void DisconnectDevice(InputDevice device, InputDeviceChange change)
     {
-        if (device == inputDevice && change == InputDeviceChange.Removed)
+        if (device == inputDevice)
         {
-            Destroy(gameObject);
+            if (change == InputDeviceChange.Removed)
+            {
+                inputDevice = null;
+                GameManager.Instance.ChangeState(GameState.Paused);
+            }
+            else if (change == InputDeviceChange.Added)
+            {
+                inputDevice = InputDeviceManager.Instance.FindDevice(playerIndex);
+            }
         }
+
     }
 
     public void SetIK(Transform left, Transform right)

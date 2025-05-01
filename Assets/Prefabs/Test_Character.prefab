@@ -202,6 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5128944629901729764}
   - component: {fileID: 4784661913054981011}
+  - component: {fileID: 3932880980210938803}
   - component: {fileID: 5450435579820474215}
   - component: {fileID: 5227715775948070525}
   - component: {fileID: 2437440402706687547}
@@ -211,7 +212,7 @@ GameObject:
   - component: {fileID: 6104000759014073447}
   m_Layer: 0
   m_Name: Test_Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,9 +225,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668586970448991730}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.36622348, z: -0, w: 0.930527}
+  m_LocalRotation: {x: 0, y: -0.36622518, z: 0, w: 0.93052626}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6419510732087538982}
@@ -245,7 +246,7 @@ Transform:
   - {fileID: 7989795393811255806}
   - {fileID: 1054894200944251636}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -42.966, z: 0}
 --- !u!95 &4784661913054981011
 Animator:
   serializedVersion: 5
@@ -267,6 +268,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3932880980210938803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668586970448991730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f2e230a406c166439e418786b0633bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5450435579820474215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +369,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9fae65ca-bbac-4e43-abab-317dcfb4c2e5
     m_ActionName: PlayerActions/ItemDrop[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5458a920-e825-46f5-9c44-59e150ddea69
+    m_ActionName: VehicleActions/Move[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 08d69703-a85f-446e-9b38-e436dc01fb54
+    m_ActionName: VehicleActions/Interaction[/Keyboard/space,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 63500c94-cf4f-435e-9762-d998b36c5d69
+    m_ActionName: UIActions/Pause[/XInputControllerWindows/start,/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerActions
@@ -374,7 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minValue: 0.1
-  moveSpeed: 5
+  moveSpeed: 6.5
 --- !u!114 &8663410093063307288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivot: {fileID: 1054894200944251636}
-  interactableDistance: 3
+  interactableDistance: 2
   interactableAngle: 90
   heldItem: {fileID: 0}
 --- !u!114 &704218662634518937
@@ -404,7 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivot: {fileID: 1054894200944251636}
-  radius: 3
+  radius: 2
   angle: 90
 --- !u!54 &5979968730053989863
 Rigidbody:
@@ -431,7 +456,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!136 &6104000759014073447
 CapsuleCollider:

@@ -26,7 +26,7 @@ public class PlayerStageSelectInteraction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E)) // 상호작용 키
         {
-            currentPlate?.TryInteract();
+            currentPlate?.Entrance();
         }
     }
 }

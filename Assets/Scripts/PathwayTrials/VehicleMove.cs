@@ -51,7 +51,7 @@ public class VehicleMove : MonoBehaviour
 
     private void GettingWaypoint()
     {
-        Waypoint point = TrailsManager.instance.GetWaypoint(waypointIndex);
+        Waypoint point = TrailsManager.instance?.GetWaypoint(waypointIndex);
         
         if(point != null)
         {

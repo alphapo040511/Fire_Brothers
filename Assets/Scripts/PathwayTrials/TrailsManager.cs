@@ -34,12 +34,14 @@ public class TrailsManager : MonoBehaviour
 
     public Waypoint GetWaypoint(int index)
     {
-        if (waypoins.Count > index)
+        if (waypoins.Count <= index)
         {
-            return waypoins[index];
+            StageStatsManager.Instance.GameEnd();
+            return null;
         }
 
-        return null;
+
+        return waypoins[index];
     }
 
     public void LoadWaypoints(int index)

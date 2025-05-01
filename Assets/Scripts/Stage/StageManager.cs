@@ -99,7 +99,7 @@ public class StageManager : MonoBehaviour
         return save != null ? save.bestStars : 0;
     }
 
-    public void CompleteStage(int stageIndex, int earnedScore)
+    public bool CompleteStage(int stageIndex, int earnedScore)
     {
         StageSave save = saveData.saves.Find(x => x.stageIndex == stageIndex);
         StageInfo info = stageInfoData.stages.Find(x => x.stageIndex == stageIndex);
@@ -107,10 +107,16 @@ public class StageManager : MonoBehaviour
         if (save == null || info == null)
         {
             Debug.LogError($"스테이지 {stageIndex} 완료 처리 중 데이터 오류 발생");
-            return;
+            return false;
         }
 
         int earnedStars = CalculateStars(earnedScore, info.starScoreThresholds);
+
+        if(earnedStars == 0)
+        {
+            Debug.Log("클리어 실패");
+            return false;
+        }
 
         if (earnedStars > save.bestStars)
         {
@@ -121,6 +127,7 @@ public class StageManager : MonoBehaviour
 
         save.isCleared = true;
         SaveStageData();
+        return true;
     }
 
     private int CalculateStars(int score, int[] thresholds)
@@ -134,5 +141,15 @@ public class StageManager : MonoBehaviour
     public int GetTotalStars()
     {
         return saveData.totalStars;
+    }
+
+    public int[] GetStarThreshold()
+    {
+        if(stageInfoData != null && stageInfoData.stages.Count > GameManager.Instance.currentStageIndex)
+        {
+            return stageInfoData.stages[GameManager.Instance.currentStageIndex].starScoreThresholds;
+        }
+
+        return new int[3] {1000,1000,1000};
     }
 }

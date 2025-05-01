@@ -14,13 +14,13 @@ public class StageClearTest : MonoBehaviour
 
     private void TestCompleteStage()
     {
-        if (StageManager.Instance == null || ScoreManager.Instance == null)
+        if (StageManager.Instance == null || StageStatsManager.Instance == null)
         {
             Debug.LogError("StageManager 또는 ScoreManager 인스턴스가 존재하지 않습니다.");
             return;
         }
 
-        int scoreToSave = Mathf.RoundToInt(ScoreManager.Instance.currentScore);
+        int scoreToSave = Mathf.RoundToInt(StageStatsManager.Instance.currentScore);
 
         StageManager.Instance.CompleteStage(testStageIndex, scoreToSave);
 
