@@ -8,15 +8,10 @@ public class ConnectDevice : MonoBehaviour
 {
     public TextMeshProUGUI[] deviceText = new TextMeshProUGUI[2];
 
-    private void OnEnable()
+    private void Start()
     {
         CheckDevice();
         InputDeviceManager.Instance.OnInputDeviceConnected += InputDeviceConnected;
-    }
-
-    private void OnDisable()
-    {
-        InputDeviceManager.Instance.OnInputDeviceConnected -= InputDeviceConnected;
     }
 
     // Update is called once per frame
