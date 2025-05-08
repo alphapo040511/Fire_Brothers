@@ -65,7 +65,7 @@ public class StageStatsManager : MonoBehaviour
             {
                 minScore = scoreStarThreshold[i];
                 Debug.Log($"{i + 1}번째 별 획득");
-                GetStar?.Invoke(i);
+                GetStar?.Invoke(i + 1);
                 break;
             }
         }
