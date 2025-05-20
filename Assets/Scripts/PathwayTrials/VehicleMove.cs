@@ -10,6 +10,7 @@ public class VehicleMove : MonoBehaviour
 
     public Waypoint waypoint;
 
+    private bool canMove = false;
     private Rigidbody rb;
     private int waypointIndex = 0;
 
@@ -27,6 +28,9 @@ public class VehicleMove : MonoBehaviour
             rb.velocity = Vector3.zero;
             return;
         }
+
+        if(!canMove) return;
+
         Movement();
         Rotation();
         CheckWaypointArrival();
@@ -81,5 +85,10 @@ public class VehicleMove : MonoBehaviour
         direction.y = 0;
 
         return direction.magnitude;
+    }
+
+    public void OnCanMoveChanged(bool able)
+    {
+        canMove = able;
     }
 }
