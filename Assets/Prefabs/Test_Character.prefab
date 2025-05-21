@@ -453,6 +453,7 @@ MonoBehaviour:
   minValue: 0.1
   moveSpeed: 6.5
   playerIndex: 0
+  playerInput: {fileID: 5227715775948070525}
 --- !u!114 &8663410093063307288
 MonoBehaviour:
   m_ObjectHideFlags: 0

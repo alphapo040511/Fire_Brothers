@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public InputDevice inputDevice;
     public int playerIndex;
 
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
     private Animator m_Animator;
 
     private Rigidbody rb;
@@ -86,8 +86,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // 카메라의 Y축 회전만 반영해서 이동 방향 계산
-        Vector3 forward = Camera.main.transform.forward;
-        Vector3 right = Camera.main.transform.right;
+        Vector3 forward = Vector3.left;
+        Vector3 right = Vector3.forward;
 
         // Y 축 회전은 무시하고, 수평 방향만 사용
         forward.y = 0;

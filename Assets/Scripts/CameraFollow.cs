@@ -25,6 +25,8 @@ public class CameraFollow : MonoBehaviour
     {
         VehicleMove[] temp = FindObjectsOfType<VehicleMove>();
 
+        if (temp.Length <= 0) return;
+
         targets = new Transform[temp.Length];
 
         for(int i = 0; i < temp.Length; i++)
@@ -49,6 +51,7 @@ public class CameraFollow : MonoBehaviour
         if(targets.Length <= 0)
         {
             Debug.LogWarning("차량을 찾을 수 없습니다.");
+            return;
         }
 
         Vector3 targetPos = TargetPosition();
