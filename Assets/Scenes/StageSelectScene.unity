@@ -5045,8 +5045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraStats: 1
-  targets: []
-  hasMultipleTargets: 0
+  targets: {fileID: 8822021968430310603}
   cameraOffset: {x: 0, y: 30, z: -30}
 --- !u!1001 &965626032
 PrefabInstance:
@@ -10843,6 +10842,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1342377202}
   m_SourcePrefab: {fileID: 100100000, guid: f6b1f13116c54ff42b42738156539126, type: 3}
+--- !u!4 &8822021968430310603 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5860565938791533119, guid: f6b1f13116c54ff42b42738156539126,
+    type: 3}
+  m_PrefabInstance: {fileID: 8822021968430310602}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
