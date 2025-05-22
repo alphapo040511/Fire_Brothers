@@ -22,8 +22,21 @@ public class ProgressUI : MonoBehaviour
         Vector3 pos = targetPosition.position;
         pos.y += 1.5f;
 
-        Vector2 screenPos = Camera.main.WorldToScreenPoint(pos);
-        transform.position = screenPos;
+        Vector3 viewportPos = Camera.main.WorldToViewportPoint(pos);
+
+        bool isVisible = viewportPos.z > 0 &&
+                         viewportPos.x >= 0 && viewportPos.x <= 1 &&
+                         viewportPos.y >= 0 && viewportPos.y <= 1;
+
+        if (isVisible) //화면 안에 있는 경우
+        {
+            Vector2 screenPos = Camera.main.WorldToScreenPoint(pos);
+            transform.position = screenPos;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void UpdateProgess(float percent)

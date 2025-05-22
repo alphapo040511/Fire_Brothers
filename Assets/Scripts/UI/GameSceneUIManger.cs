@@ -15,6 +15,7 @@ public class GameSceneUIManger : MonoBehaviour
 
     public CooldownUI cooldownUIPrefab;
     public ProgressUI progressUIPrefab;
+    public PlayerPositionUI playerPositionUIPrefab;
 
     public CooldownUI CreatingCooldownUI(Sprite sprite, Transform worldTransform)
     {
@@ -28,5 +29,11 @@ public class GameSceneUIManger : MonoBehaviour
         ProgressUI temp = Instantiate(progressUIPrefab, canvas);
         temp.Initialize(worldTransform);
         return temp;
+    }
+
+    public void CreatingPlayerUI(int playerIndex, Transform worldTransform, PlayerMovement player)
+    {
+        PlayerPositionUI temp = Instantiate(playerPositionUIPrefab, canvas);
+        temp.Initialize(playerIndex, worldTransform, player);
     }
 }

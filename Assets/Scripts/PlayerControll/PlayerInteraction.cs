@@ -78,8 +78,12 @@ public class PlayerInteraction : MonoBehaviour
 
     public void GetNewItem()
     {
-        heldItem.BreakItem();
-        heldItem = null;
+        if (heldItem != null)
+        {
+            heldItem.BreakItem();
+            heldItem = null;
+        }
+
         if (playerMovement != null)
         {
             playerMovement.RemoveIK();

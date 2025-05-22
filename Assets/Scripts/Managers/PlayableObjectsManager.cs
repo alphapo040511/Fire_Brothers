@@ -83,12 +83,6 @@ public class PlayableObjectsManager : MonoBehaviour
         return sum / (vehiclesPos.Count > 0 ? vehiclesPos.Count : 1);
     }
 
-    public Vector3 GetPosition()
-    {
-        Vector2 randomPoint = UnityEngine.Random.insideUnitCircle * 3;
-        return transform.position + new Vector3(randomPoint.x, 0f, randomPoint.y);
-    }
-
     public void ChangeState(GameState newState)
     {
 

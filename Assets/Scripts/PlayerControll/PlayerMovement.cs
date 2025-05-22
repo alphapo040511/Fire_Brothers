@@ -28,6 +28,10 @@ public class PlayerMovement : MonoBehaviour
     private Transform leftHandTarget = null;
     private Transform rightHandTarget = null;
 
+    public bool outOfView = false;
+    private float respawnTime = 3f;
+    private float timer = 0;
+
     public PlayerStats playerStats { get; private set; } = PlayerStats.Controllable;
 
     private void OnEnable()
@@ -54,6 +58,11 @@ public class PlayerMovement : MonoBehaviour
 
         inputDevice = InputDeviceManager.Instance.FindDevice(playerIndex);
         Debug.Log($"{playerIndex} 플레이어 {inputDevice}와 연결됨");
+
+        if(GameSceneUIManger.instance != null )
+        {
+            GameSceneUIManger.instance.CreatingPlayerUI(playerIndex, transform, this);
+        }
     }
 
     void Update()
@@ -75,6 +84,25 @@ public class PlayerMovement : MonoBehaviour
         }
 
         m_Animator.SetFloat("Vert", rb.velocity.magnitude);
+    }
+
+    private void LateUpdate()
+    {
+        if(outOfView)
+        {
+            timer += Time.deltaTime;
+
+            if(timer >= respawnTime && PlayableObjectsManager.Instance != null)
+            {
+
+                transform.position = PlayableObjectsManager.Instance.transform.position;
+            }
+        }
+        else
+        {
+            timer = 0;
+        }
+        
     }
 
     public void OnMove(InputAction.CallbackContext context)
