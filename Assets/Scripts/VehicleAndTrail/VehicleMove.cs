@@ -10,7 +10,7 @@ public class VehicleMove : MonoBehaviour
 
     public Waypoint waypoint;
 
-    private bool canMove = false;
+    [SerializeField] private bool canMove = false;
     private Rigidbody rb;
     private int waypointIndex = 0;
 
@@ -29,7 +29,12 @@ public class VehicleMove : MonoBehaviour
             return;
         }
 
-        if(!canMove) return;
+        if (!canMove || !waypoint.isAccessible)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
+
 
         Movement();
         Rotation();

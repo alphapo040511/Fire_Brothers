@@ -81,7 +81,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.control.device != inputDevice)
         {
-            Debug.LogWarning($"{context.control.device}이게 들어왔는데 {inputDevice}랑 다르다는데요.");
             return;
         }
 

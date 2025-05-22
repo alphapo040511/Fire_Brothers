@@ -40,7 +40,11 @@ public class TrailsManager : MonoBehaviour
             return null;
         }
 
-
+        if(!waypoins[index].isAccessible)       //현재 waypoint가 접근 불가라면 차량 모두 정지
+        {
+            PlayableObjectsManager.Instance.CanMoveChanged?.Invoke(false);
+        }
+        
         return waypoins[index];
     }
 

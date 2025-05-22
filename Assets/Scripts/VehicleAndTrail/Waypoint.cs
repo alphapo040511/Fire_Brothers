@@ -6,9 +6,9 @@ public class Waypoint : MonoBehaviour
 {
     public bool isAccessible = true;
 
-    void Start()
+    public void UnlockPath()
     {
-        //자체적으로 길을 추가할거 아니라면 필요 없을듯
-        //TrailsManager.instance.AddPoint(this);
+        isAccessible = true;
+        PlayableObjectsManager.Instance.AccessibleChecking();
     }
 }

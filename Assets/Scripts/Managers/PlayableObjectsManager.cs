@@ -6,15 +6,25 @@ using UnityEngine.InputSystem;
 
 public class PlayableObjectsManager : MonoBehaviour
 {
+    public static PlayableObjectsManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public Action<bool> CanMoveChanged;
 
-    public GameObject firstPlayerPref;
-    public GameObject secondPlayerPref;
+    public Transform fireTruckPosition;
+    public Transform ambulancePosition;
 
-    public VehicleMove fireTruck;
-    public VehicleMove ambulance;
+    public VehicleMove fireTruckPref;
+    public VehicleMove ambulancePref;
+
+    private VehicleMove fireTruck;
 
     private List<Transform> vehiclesPos = new List<Transform>();
+    private Transform[] playersPosition;
 
     private bool ready = false;
 
@@ -37,38 +47,28 @@ public class PlayableObjectsManager : MonoBehaviour
         }
     }
 
+    public void AccessibleChecking()
+    {
+        CanMoveChanged.Invoke(fireTruck.waypoint.isAccessible);
+    }
+
     private void GameReady()
     {
-        if (fireTruck != null)
+        if (fireTruckPref != null && fireTruckPosition != null)
         {
+            fireTruck = Instantiate(fireTruckPref, fireTruckPosition.position, transform.rotation);
             CanMoveChanged += fireTruck.OnCanMoveChanged;
             vehiclesPos.Add(fireTruck.transform);
         }
 
-        if(ambulance != null)
+        if(ambulancePref != null && ambulancePosition != null)
         {
-            CanMoveChanged += ambulance.OnCanMoveChanged;
-            vehiclesPos.Add(ambulance.transform);
-        }
-
-
-        if (InputDeviceManager.Instance != null)
-        {
-            foreach (var value in InputDeviceManager.Instance.InputDevices)
-            {
-                //SpawnPlayer(value.Key);
-            }
+            VehicleMove ambul = Instantiate(ambulancePref, ambulancePosition.position, transform.rotation);
+            CanMoveChanged += ambul.OnCanMoveChanged;
+            vehiclesPos.Add(ambul.transform);
         }
 
         GameManager.Instance.ChangeState(GameState.Playing);        //나중에는 시작 버튼 만드는걸로
-    }
-
-    public void SpawnPlayer(InputDevice device)
-    {
-        var player = PlayerInput.Instantiate(firstPlayerPref, InputDeviceManager.Instance.InputDevices[device], controlScheme: null, pairWithDevice: device);
-        player.GetComponent<PlayerMovement>().inputDevice = device;
-        player.GetComponent<PlayerMovement>().playerIndex = InputDeviceManager.Instance.InputDevices[device];
-        player.transform.position = GetPosition();
     }
 
 

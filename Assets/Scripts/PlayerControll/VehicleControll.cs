@@ -42,7 +42,9 @@ public class VehicleControll : MonoBehaviour
         {
             // 이동 방향을 향하도록 회전
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+
+            float t = 1f - Mathf.Exp(-moveSpeed * Time.deltaTime);
+            rb.MoveRotation(Quaternion.Slerp(transform.rotation, targetRotation, t));
         }
     }
 

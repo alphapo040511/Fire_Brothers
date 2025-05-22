@@ -6673,6 +6673,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1ddf10c8-40ff-4eef-a946-ee631f13cf71
     m_ActionName: VehicleActions/Pause[/DualSenseGamepadHID/start,/XInputControllerWindows/start,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bfa2e882-aed2-4cf9-80f3-976317f3613c
+    m_ActionName: SecondPlayerActions/Move[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4955ca49-44fa-4f7a-b342-e8dab761384d
+    m_ActionName: SecondPlayerActions/Pause[/XInputControllerWindows/start,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 383f624d-ca18-40af-90a2-b262120e4b95
+    m_ActionName: SecondPlayerActions/Interaction[/Keyboard/slash,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 38547579-abc5-4371-a8bd-7a872cf90d55
+    m_ActionName: SecondPlayerActions/ItemDrop[/Keyboard/period,/XInputControllerWindows/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: VehicleActions
@@ -10788,6 +10804,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7323971969236892298, guid: f6b1f13116c54ff42b42738156539126,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 7445210913330806408, guid: f6b1f13116c54ff42b42738156539126,
         type: 3}
