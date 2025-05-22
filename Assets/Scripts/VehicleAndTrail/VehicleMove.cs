@@ -50,8 +50,11 @@ public class VehicleMove : MonoBehaviour
         Vector3 direction = (waypoint.transform.position - transform.position);
         direction.y = 0;
 
+
         Quaternion targetRotation = Quaternion.LookRotation(direction);
-        rb.MoveRotation(Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime));
+
+        float t = 1f - Mathf.Exp(-moveSpeed * Time.deltaTime);
+        rb.MoveRotation(Quaternion.Slerp(transform.rotation, targetRotation, t));
     }
 
     private void GettingWaypoint()
