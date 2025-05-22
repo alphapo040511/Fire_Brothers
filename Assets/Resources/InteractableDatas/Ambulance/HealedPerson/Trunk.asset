@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f21e22bdfe01348a042b56fcf41c00, type: 3}
   m_Name: Trunk
   m_EditorClassIdentifier: 
-  interactObjectName: "\uD2B8\uB801\uD06C"
-  sprite: {fileID: 0}
-  needItems: 08000000
+  interactObjectName: "\uD658\uC790 \uC774\uC1A1"
+  sprite: {fileID: 1479646710, guid: 1e4d0ba19eef8fb498906efa2da67cf2, type: 3}
+  needItems: 09000000
   maxProgress: 0
-  rewardItem: 0
+  rewardItem: {fileID: 0}
   reuseable: 1
   reuseDelay: 1

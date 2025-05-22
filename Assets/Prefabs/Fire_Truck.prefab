@@ -65,7 +65,7 @@ Transform:
   m_GameObject: {fileID: 5427673249213949727}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7600002, z: -7.21}
+  m_LocalPosition: {x: 0, y: 0, z: -7.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -90,8 +90,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.0307574, y: 1.2364919, z: 1.4532766}
-  m_Center: {x: -0.0009782314, y: -0.11824596, z: 0.08868456}
+  m_Size: {x: 4.0307574, y: 2, z: 1.4532766}
+  m_Center: {x: -0.0009782314, y: 1, z: 0.08868456}
 --- !u!114 &550443511410904027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 5839310659511099890}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5565557, y: 0.8710693, z: -1.5099978}
+  m_LocalPosition: {x: 1.5565557, y: 0, z: -1.5099978}
   m_LocalScale: {x: 1.84197, y: 1.3, z: 2.66007}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -169,8 +169,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.15430701, y: 1, z: 2.6274395}
-  m_Center: {x: 0.17637615, y: 0, z: -0.34326872}
+  m_Size: {x: 0.15430701, y: 2, z: 2.6274395}
+  m_Center: {x: 0.17637615, y: 1, z: -0.34326872}
 --- !u!114 &864472161832580014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +211,7 @@ Transform:
   m_GameObject: {fileID: 8334319771722734023}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.09, y: 0.8710693, z: -1.5100001}
+  m_LocalPosition: {x: -2.09, y: 0, z: -1.5100001}
   m_LocalScale: {x: 1.84197, y: 1.3, z: 2.66007}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -236,8 +236,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.15430701, y: 1, z: 2.6274395}
-  m_Center: {x: 0.17637615, y: 0, z: -0.34326872}
+  m_Size: {x: 0.15430701, y: 2, z: 2.6274395}
+  m_Center: {x: 0.17637615, y: 1, z: -0.34326872}
 --- !u!114 &1301121057900429130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +359,7 @@ MonoBehaviour:
   rotationSpeed: 1
   arriveDistance: 0.5
   waypoint: {fileID: 0}
+  canMove: 0
 --- !u!1001 &369917691238121413
 PrefabInstance:
   m_ObjectHideFlags: 0

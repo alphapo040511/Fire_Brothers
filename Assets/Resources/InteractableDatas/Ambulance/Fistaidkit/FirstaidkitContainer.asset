@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: FirstaidkitContainer
   m_EditorClassIdentifier: 
   interactObjectName: "\uAD6C\uAE09\uD0A4\uD2B8 \uBCF4\uAD00\uD568"
-  sprite: {fileID: 0}
-  needItems: 00000000
+  sprite: {fileID: -102898707, guid: a91314540969e6a4f9769e436da696b2, type: 3}
+  needItems: 01000000
   maxProgress: 0
-  rewardItem: 7
+  rewardItem: {fileID: 0}
   reuseable: 1
   reuseDelay: 15
