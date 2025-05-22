@@ -44,8 +44,8 @@ public class PlayerPositionUI : MonoBehaviour
             int screenWidth = Screen.width;
             int screenHeight = Screen.height;
 
-            float x = Mathf.Clamp(screenPos.x, 35, screenWidth - 35);
-            float y = Mathf.Clamp(screenPos.y, 35, screenHeight - 35);
+            float x = Mathf.Clamp(screenPos.x, 60, screenWidth - 60);
+            float y = Mathf.Clamp(screenPos.y, 60, screenHeight - 60);
             
             transform.position = new Vector3(x, y, 0);
 
