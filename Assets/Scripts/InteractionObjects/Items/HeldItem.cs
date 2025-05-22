@@ -32,6 +32,7 @@ public class HeldItem : MonoBehaviour
         Vector3 groundPosition= transform.localPosition;
         groundPosition.y = 0;
         transform.position = groundPosition;
+        transform.rotation = Quaternion.identity;
         _collider.enabled = true;
     }
 
