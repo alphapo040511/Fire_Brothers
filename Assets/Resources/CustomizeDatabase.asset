@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: CustomizeDatabase
   m_EditorClassIdentifier: 
   hatMesh:
+  - unlockStarCount: 0
+    mesh: {fileID: 6657998009922166292, guid: ad472b939cd48144e9521d873c2e3018, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: -25535521549600216, guid: c8ef145d788d0804f9e31c8079352c06, type: 3}
   - unlockStarCount: 3
@@ -23,12 +25,16 @@ MonoBehaviour:
     mesh: {fileID: -6976336618207450407, guid: 59564854f919a404f8eeeb391b17c12e, type: 3}
   hairMesh:
   - unlockStarCount: 0
+    mesh: {fileID: -2315652163027026327, guid: ad472b939cd48144e9521d873c2e3018, type: 3}
+  - unlockStarCount: 0
     mesh: {fileID: -8820499275058686143, guid: c00be380054f3aa469720cb9cd40ef14, type: 3}
   - unlockStarCount: 0
     mesh: {fileID: 2589799688786906243, guid: 634df7d5a6da6804f95f30ed030ec528, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: -4695107088515116087, guid: 49afccecce4f7b446a34b4e3223cf8ff, type: 3}
   accessoriesMesh:
+  - unlockStarCount: 0
+    mesh: {fileID: 4554999278103424840, guid: ad472b939cd48144e9521d873c2e3018, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: 7061910613977320673, guid: 9ca093b63b32bc6479e8706c849e1ee2, type: 3}
   - unlockStarCount: 6
@@ -45,12 +51,16 @@ MonoBehaviour:
     mesh: {fileID: 4124652187440467762, guid: 8ce1c24b95f214d4bb53ebe8be080a49, type: 3}
   faceMesh:
   - unlockStarCount: 0
+    mesh: {fileID: 7277813940581652077, guid: ad472b939cd48144e9521d873c2e3018, type: 3}
+  - unlockStarCount: 0
     mesh: {fileID: -7927354642031663450, guid: 819bbc3929ae14e43b0d8405d65589f9, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: -4389200089894859703, guid: e4f543c638ecbfd40b8dc37cd298e48a, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: -8518051590879840720, guid: e2a9edf3127d00246a60fb52ef4856b9, type: 3}
   clothesMesh:
+  - unlockStarCount: 0
+    mesh: {fileID: -5866934017332945184, guid: ad472b939cd48144e9521d873c2e3018, type: 3}
   - unlockStarCount: 0
     mesh: {fileID: 9154480696012802162, guid: de746c65be1d3594384300bbc4f9e168, type: 3}
   - unlockStarCount: 3
@@ -63,6 +73,8 @@ MonoBehaviour:
     mesh: {fileID: 8213599088856497855, guid: 3e038445d159c3545bbcb19acc70593f, type: 3}
   pantsMesh:
   - unlockStarCount: 0
+    mesh: {fileID: 7666266049737368757, guid: ad472b939cd48144e9521d873c2e3018, type: 3}
+  - unlockStarCount: 0
     mesh: {fileID: -7058832261164120551, guid: 1e74168fbee4e5c4097912723ebf6de7, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: -987022824948863293, guid: 0f24f9714abd24a4596c28822aaa7a39, type: 3}
@@ -70,10 +82,12 @@ MonoBehaviour:
     mesh: {fileID: -4396149814923931179, guid: 67dfe8b1e1ed9b34c985396c6282c820, type: 3}
   shoesMesh:
   - unlockStarCount: 0
+    mesh: {fileID: -278085929633702562, guid: ad472b939cd48144e9521d873c2e3018, type: 3}
+  - unlockStarCount: 0
     mesh: {fileID: -1419061772662269867, guid: 20384ecd8466c804eb14b502b62acc3b, type: 3}
-  - unlockStarCount: 0
+  - unlockStarCount: 3
     mesh: {fileID: -5648626978545720014, guid: bfab5a5ca14002a469bd5912e025f274, type: 3}
-  - unlockStarCount: 0
-    mesh: {fileID: 0}
-  - unlockStarCount: 0
-    mesh: {fileID: 0}
+  - unlockStarCount: 6
+    mesh: {fileID: 2990419855401034948, guid: 0fc9184e885899c408b2467848981766, type: 3}
+  - unlockStarCount: 9
+    mesh: {fileID: 2525575882034029105, guid: 1ce007de4fc6e4645b0ea41258fde30a, type: 3}
