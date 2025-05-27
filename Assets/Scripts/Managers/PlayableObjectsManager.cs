@@ -10,7 +10,14 @@ public class PlayableObjectsManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public Action<bool> CanMoveChanged;
