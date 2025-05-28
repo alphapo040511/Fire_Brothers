@@ -36,13 +36,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        InputSystem.onDeviceChange += DisconnectDevice;
+        InputDeviceManager.Instance.OnDevicesChange += DisconnectDevice;
         GameManager.Instance.OnGameStateChanged += OnGameStatsChange;
     }
 
     private void OnDisable()
     {
-        InputSystem.onDeviceChange -= DisconnectDevice;
+        InputDeviceManager.Instance.OnDevicesChange -= DisconnectDevice;
         GameManager.Instance.OnGameStateChanged -= OnGameStatsChange;
     }
 
@@ -132,21 +132,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void DisconnectDevice(InputDevice device, InputDeviceChange change)
+    public void DisconnectDevice()
     {
-        if (device == inputDevice)
-        {
-            if (change == InputDeviceChange.Removed)
-            {
-                inputDevice = null;
-                GameManager.Instance.ChangeState(GameState.Paused);
-            }
-            else if (change == InputDeviceChange.Added)
-            {
-                inputDevice = InputDeviceManager.Instance.FindDevice(playerIndex);
-            }
-        }
-
+        inputDevice = InputDeviceManager.Instance.FindDevice(playerIndex);
     }
 
     public void SetIK(Transform left, Transform right)

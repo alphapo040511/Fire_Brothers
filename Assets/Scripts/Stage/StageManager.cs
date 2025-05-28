@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -71,7 +72,8 @@ public class StageManager : MonoBehaviour
             {
                 stageIndex = info.stageIndex,
                 isCleared = false,
-                bestStars = 0
+                bestStars = 0,
+                highScore = 0
             });
         }
 
@@ -162,11 +164,31 @@ public class StageManager : MonoBehaviour
 
     public int[] GetStarThreshold()
     {
-        if(stageInfoData != null && stageInfoData.stages.Count > GameManager.Instance.currentStageIndex)
+        if (stageInfoData != null && stageInfoData.stages.Count > GameManager.Instance.currentStageIndex)
         {
-            return stageInfoData.stages[GameManager.Instance.currentStageIndex].starScoreThresholds;
+            StageInfo save = stageInfoData.stages.Find(x => x.stageIndex == GameManager.Instance.currentStageIndex);
+
+            return save.starScoreThresholds;
         }
 
         return new int[3] {1000,1000,1000};
+    }
+
+    public int[] GetStarThreshold(int index)
+    {
+        if (stageInfoData != null && stageInfoData.stages.Count > index)
+        {
+            StageInfo save = stageInfoData.stages.Find(x => x.stageIndex == index);
+
+            return save.starScoreThresholds;
+        }
+
+        return new int[3] { 1000, 1000, 1000 };
+    }
+
+    public int GetHighScore(int index)
+    {
+        StageSave save = saveData.saves.Find(x => x.stageIndex == index);
+        return save.highScore;
     }
 }

@@ -8,6 +8,7 @@ public class StageSave
     public int stageIndex;
     public bool isCleared;
     public int bestStars;
+    public int highScore;
 }
 
 [System.Serializable]

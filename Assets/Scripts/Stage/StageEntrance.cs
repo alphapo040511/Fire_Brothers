@@ -49,4 +49,20 @@ public class StageEntrance : MonoBehaviour
         StageLoader.nextStageIndex = stageIndex;
         SceneManager.LoadScene(sceneName);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("FireTruck") && StageInfoPresenter.Instance != null)
+        {
+            StageInfoPresenter.Instance.ShowStageInfo(stageIndex, transform);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("FireTruck") && StageInfoPresenter.Instance != null)
+        {
+            StageInfoPresenter.Instance.HideInfo();
+        }
+    }
 }
