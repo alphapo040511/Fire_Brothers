@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169d714c6fb8fe54da06abe445261009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.25
+  moveSpeed: 2
   rotationSpeed: 1
   arriveDistance: 0.5
   waypoint: {fileID: 0}
