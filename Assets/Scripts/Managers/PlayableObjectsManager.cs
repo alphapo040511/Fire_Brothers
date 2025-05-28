@@ -84,7 +84,7 @@ public class PlayableObjectsManager : MonoBehaviour
         Vector3 sum = Vector3.zero;
         for(int i = 0; i < vehiclesPos.Count; i++)
         {
-            sum += vehiclesPos[i].position;
+            sum += vehiclesPos[i].position - vehiclesPos[i].transform.forward * 3f;
         }
 
         return sum / (vehiclesPos.Count > 0 ? vehiclesPos.Count : 1);
