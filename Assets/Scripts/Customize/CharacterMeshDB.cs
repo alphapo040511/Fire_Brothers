@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [CreateAssetMenu(fileName = "CustomizeDatabase", menuName = "Cumtomize/Database")]
 public class CharacterMeshDB : ScriptableObject
 {
@@ -13,48 +14,30 @@ public class CharacterMeshDB : ScriptableObject
     [SerializeField] private List<CharacterMeshData> pantsMesh = new List<CharacterMeshData>();
     [SerializeField] private List<CharacterMeshData> shoesMesh = new List<CharacterMeshData>();
 
+    private Dictionary<ClothesType, List<CharacterMeshData>> meshList;
+
+    private void OnEnable()
+    {
+        meshList = new Dictionary<ClothesType, List<CharacterMeshData>> {
+            { ClothesType.Hat, hatMesh},
+            { ClothesType.Hair, hairMesh},
+            { ClothesType.Accessorises, accessoriesMesh},
+            { ClothesType.Face, faceMesh},
+            { ClothesType.Clothes, clothesMesh},
+            { ClothesType.Pants, pantsMesh},
+            { ClothesType.Shoes, shoesMesh},
+            };
+    }
+
     public Mesh GetMesh(ClothesType type, int index = 0)
     {
-        Mesh mesh;
+        Mesh mesh = new Mesh();
 
-        switch(type)
+        if (meshList[type].Count > 0)       //mesh = meshList[type][index] 해금 조건 달성 시
         {
-            case ClothesType.Hat:
-                mesh = UsableChecking(hatMesh, index);
-                break;
-            case ClothesType.Hair:
-                mesh = UsableChecking(hairMesh, index);
-                break;
-            case ClothesType.Accessorises:
-                mesh = UsableChecking(accessoriesMesh, index);
-                break;
-            case ClothesType.Face:
-                mesh = UsableChecking(faceMesh, index);
-                break;
-            case ClothesType.Clothes:
-                mesh = UsableChecking(clothesMesh, index);
-                break;
-            case ClothesType.Pants:
-                mesh = UsableChecking(pantsMesh, index);
-                break;
-            case ClothesType.Shoes:
-                mesh = UsableChecking(shoesMesh, index);
-                break;
-            default:
-                mesh = hatMesh[0].mesh;
-                break;
+            mesh = meshList[type][index].mesh;
         }
 
         return mesh;
-    }
-    
-    private Mesh UsableChecking(List<CharacterMeshData> meshList, int index)
-    {
-        if (index > meshList.Count)     //또는 의상이 잠겨있는 경우 추가
-        {
-            return meshList[0].mesh;
-        }
-
-        return meshList[index].mesh;
     }
 }

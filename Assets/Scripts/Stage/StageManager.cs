@@ -52,10 +52,15 @@ public class StageManager : MonoBehaviour
         else
         {
             InitializeNewSaveData();
+
+            if(DataManager.Instance != null)                //스테이지 정보가 없는 경우에는 게임 데이터도 초기화
+            {
+                DataManager.Instance.ResetGamesData();
+            }
         }
     }
 
-    private void InitializeNewSaveData()
+    public void InitializeNewSaveData()
     {
         saveData = new StageSaveWrapper();
         saveData.saves = new List<StageSave>();

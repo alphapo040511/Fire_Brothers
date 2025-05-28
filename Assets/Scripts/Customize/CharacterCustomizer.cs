@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CharacterCustomizer : MonoBehaviour
 {
-    public CustomizeData sampleData;                                            //커스터마이징 임시 데이터
+    public int playerIndex;
+
+    [SerializeField] private CustomizeData sampleData;                                            //커스터마이징 임시 데이터
 
     [SerializeField] private CharacterMeshDB m_CharacterMeshDB;                 //의상 DB
 
@@ -34,6 +36,11 @@ public class CharacterCustomizer : MonoBehaviour
     // 게임 시작시로 변경
     void Start()
     {
+        if (DataManager.Instance != null)
+        {
+            sampleData = DataManager.Instance.gameData.playersCustomData[playerIndex];
+        }
+
         if (sampleData != null)
         {
             for(int i = 0; i < sampleData.customizeData.Length; i++)
