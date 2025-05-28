@@ -9,12 +9,12 @@ public class PlayerSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        InputDeviceManager.Instance.OnInputDeviceConnected += SpawnPlayer;
+        //InputDeviceManager.Instance.OnInputDeviceConnected += SpawnPlayer;
     }
 
     private void OnDisable()
     {
-        InputDeviceManager.Instance.OnInputDeviceConnected -= SpawnPlayer;
+        //InputDeviceManager.Instance.OnInputDeviceConnected -= SpawnPlayer;
     }
 
     public void SpawnPlayer()

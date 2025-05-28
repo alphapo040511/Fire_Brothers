@@ -80,6 +80,12 @@ public class UIManager : MonoBehaviour
 
         if (screenDictionary.ContainsKey(screenType))
         {
+
+            if (screenType == ScreenType.ControllerSet && InputDeviceManager.Instance != null)
+            {
+                InputDeviceManager.Instance.ResetDevices();
+            }
+
             screenDictionary[screenType].SetActive(true);
             CurrentScreen = screenType;
             playerInput.enabled = true;

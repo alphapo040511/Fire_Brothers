@@ -33,7 +33,7 @@ public class CharacterMeshDB : ScriptableObject
     {
         Mesh mesh = new Mesh();
 
-        if (meshList[type].Count > 0)       //mesh = meshList[type][index] 해금 조건 달성 시
+        if (meshList[type].Count > index)       //mesh = meshList[type][index] 해금 조건 달성 시
         {
             mesh = meshList[type][index].mesh;
         }

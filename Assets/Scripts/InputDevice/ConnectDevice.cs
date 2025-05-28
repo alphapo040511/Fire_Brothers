@@ -11,7 +11,13 @@ public class ConnectDevice : MonoBehaviour
     private void Start()
     {
         CheckDevice();
-        InputDeviceManager.Instance.OnInputDeviceConnected += InputDeviceConnected;
+        InputDeviceManager.Instance.AddEvent();
+        InputDeviceManager.Instance.OnDevicesChange += CheckDevice;
+    }
+
+    private void OnEnable()
+    {
+        CheckDevice();
     }
 
     // Update is called once per frame
@@ -41,11 +47,6 @@ public class ConnectDevice : MonoBehaviour
         }
     }
 
-    //비활성화 상태에서도 사용 가능하도록 변경
-    public void InputDeviceConnected(InputDevice device)
-    {
-        CheckDevice();
-    }
 
     //임시로 현재 연결된 디바이스 확인
     private void CheckDevice()
@@ -68,13 +69,16 @@ public class ConnectDevice : MonoBehaviour
 
         Debug.Log(count + " 개 연결됨");
 
-        if(count >= 2)
+        if (UIManager.Instance != null)
         {
-            UIManager.Instance.HideScreen();
-        }
-        else if(UIManager.Instance.CurrentScreen != ScreenType.ControllerSet)
-        {
-            UIManager.Instance.ShowScreen(ScreenType.ControllerSet);
+            if (count >= 2)
+            {
+                UIManager.Instance.HideScreen();
+            }
+            else if (UIManager.Instance.CurrentScreen != ScreenType.ControllerSet)
+            {
+                UIManager.Instance.ShowScreen(ScreenType.ControllerSet);
+            }
         }
     }
 }

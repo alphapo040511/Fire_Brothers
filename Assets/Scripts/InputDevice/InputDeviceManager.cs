@@ -14,16 +14,22 @@ public class InputDeviceManager
             if (instance == null)
             {
                 instance = new InputDeviceManager();
-                InputSystem.onDeviceChange += OnDeviceChange;
             }
 
             return instance;
         }
     }
 
+    
+
     private Dictionary<InputDevice, int> inputDevices = new Dictionary<InputDevice, int>();
     public IReadOnlyDictionary<InputDevice, int> InputDevices => inputDevices; // 외부에서는 읽기 전용으로 공개
-    public event Action<InputDevice> OnInputDeviceConnected;
+    public event Action OnDevicesChange;
+
+    public void AddEvent()
+    {
+        InputSystem.onDeviceChange += OnDeviceChange;
+    }
 
     public bool IsConnectedDevice(InputDevice newDevice)
     {
@@ -45,7 +51,7 @@ public class InputDeviceManager
 
         Debug.Log($"{newDevice}가 연결됨");
 
-        OnInputDeviceConnected?.Invoke(newDevice);
+        OnDevicesChange?.Invoke();
     }
 
     public InputDevice FindDevice(int index)
@@ -61,11 +67,22 @@ public class InputDeviceManager
         return null;
     }
 
-    private static void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    public void ResetDevices()
+    {
+        inputDevices = new Dictionary<InputDevice, int>();
+    }
+
+
+    private void OnDeviceChange(InputDevice device, InputDeviceChange change)
     {
         if (Instance.inputDevices.ContainsKey(device) && change == InputDeviceChange.Removed)
         {
             Instance.inputDevices.Remove(device);
+            OnDevicesChange?.Invoke();
+            if(UIManager.Instance != null)
+            {
+                UIManager.Instance.ShowScreen(ScreenType.ControllerSet);
+            }
         }
     }
 }
