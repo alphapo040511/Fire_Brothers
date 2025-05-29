@@ -14,7 +14,7 @@ public class CharacterMeshDB : ScriptableObject
     [SerializeField] private List<CharacterMeshData> pantsMesh = new List<CharacterMeshData>();
     [SerializeField] private List<CharacterMeshData> shoesMesh = new List<CharacterMeshData>();
 
-    private Dictionary<ClothesType, List<CharacterMeshData>> meshList;
+    public Dictionary<ClothesType, List<CharacterMeshData>> meshList;
 
     private void OnEnable()
     {

@@ -43,7 +43,7 @@ public class CharacterCustomizer : MonoBehaviour
 
         if (sampleData != null)
         {
-            for(int i = 0; i < sampleData.customizeData.Length; i++)
+            for(int i = 0; i < sampleData.customizeData.Count; i++)
             {
                 ClothesType type = sampleData.customizeData[i].type;
 

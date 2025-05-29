@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class CustomizeData
 {
-    public TypeData[] customizeData = new TypeData[7]
+    public List<TypeData> customizeData = new List<TypeData>
     {
         new TypeData(ClothesType.Hat, 0),
         new TypeData(ClothesType.Hair, 0),

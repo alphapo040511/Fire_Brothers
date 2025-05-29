@@ -7,4 +7,5 @@ public class CharacterMeshData
 {
     public int unlockStarCount = -1;
     public Mesh mesh;
+    public Sprite sprite;
 }
