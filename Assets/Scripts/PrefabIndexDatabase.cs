@@ -9,6 +9,7 @@ public class PrefabIndexDatabase : ScriptableObject
     {
         public string prefabName;
         public int prefabIndex;
+        public GameObject prefab;
     }
 
     public List<PrefabIndexEntry> prefabList = new();
@@ -17,5 +18,11 @@ public class PrefabIndexDatabase : ScriptableObject
     {
         var entry = prefabList.Find(e => e.prefabIndex == index);
         return entry != null ? entry.prefabName : string.Empty;
+    }
+
+    public GameObject GetPrefabByIndex(int index)
+    {
+        var entry = prefabList.Find(e => e.prefabIndex == index);
+        return entry != null ? entry.prefab : null;
     }
 }

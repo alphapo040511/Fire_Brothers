@@ -51,38 +51,51 @@ public static class LevelDataConverter
 
     public static void LoadLevelData(int levelIndex)
     {
-        string path = Path.Combine(c_SavePath, $"Level_{levelIndex}.json");
-
-        if (!File.Exists(path))
-        {
-            Debug.LogError($"레벨 {levelIndex} JSON 파일 없음");
-            return;
-        }
-
+        // 데이터베이스 로드
         PrefabIndexDatabase db = Resources.Load<PrefabIndexDatabase>(c_PrefabDatabasePath);
         if (db == null)
         {
-            Debug.LogError("PrefabIndexDatabase를 Resources/Database에 배치해야 합니다.");
+            Debug.LogError("PrefabIndexDatabase 로드 실패");
             return;
         }
 
-        string json = File.ReadAllText(path);
-        LevelData levelData = JsonUtility.FromJson<LevelData>(json);
-
-        foreach (var objData in levelData.objectDatas)
+        // JSON 로드
+        string json;
+        string filePath = Path.Combine(Application.persistentDataPath, $"Level_{levelIndex}.json");
+        if (File.Exists(filePath))
         {
-            string prefabName = db.GetPrefabNameByIndex(objData.prefabIndex);
-            GameObject prefab = Resources.Load<GameObject>($"{c_PrefabPath}{prefabName}");
-            if (prefab == null)
+            json = File.ReadAllText(filePath);
+        }
+        else
+        {
+            TextAsset jsonAsset = Resources.Load<TextAsset>($"Json/Level_{levelIndex}");
+            if (jsonAsset == null)
             {
-                Debug.LogError($"프리팹 로드 실패: {prefabName}");
-                continue;
+                Debug.LogError($"레벨 {levelIndex} JSON 리소스 없음");
+                return;
             }
-
-            GameObject instance = Object.Instantiate(prefab, objData.position, Quaternion.Euler(objData.rotation));
-            instance.transform.localScale = objData.scale;
+            json = jsonAsset.text;
         }
 
-        Debug.Log($"Level {levelIndex} 로드 완료");
+        LevelData levelData = JsonUtility.FromJson<LevelData>(json);
+
+        // 프리팹 인스턴스
+        foreach (var objData in levelData.objectDatas)
+        {
+            GameObject prefab = db.GetPrefabByIndex(objData.prefabIndex);
+            if (!prefab)
+            {
+                Debug.LogError($"프리팹 인덱스 {objData.prefabIndex} 로드 실패");
+                continue;
+            }
+            Transform tf = Object.Instantiate(
+                prefab,
+                objData.position,
+                Quaternion.Euler(objData.rotation)
+            ).transform;
+            tf.localScale = objData.scale;
+        }
+
+        Debug.Log($"Level {levelIndex} 로드 완료 ({levelData.objectDatas.Count})");
     }
 }

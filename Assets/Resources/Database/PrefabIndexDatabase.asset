@@ -15,5 +15,9 @@ MonoBehaviour:
   prefabList:
   - prefabName: Fire_Hydrant
     prefabIndex: 1
+    prefab: {fileID: 3090865672921115019, guid: 711247ffba4ae104bae7edef9fa0ffb3,
+      type: 3}
   - prefabName: FireEvent
     prefabIndex: 0
+    prefab: {fileID: 8945526007120290565, guid: 4f54fd337f7a6204faddf73d3e082274,
+      type: 3}
