@@ -1083,7 +1083,7 @@
                 {
                     "name": "",
                     "id": "e2852b91-3fd8-4173-b7b5-d0d2ab4f8078",
-                    "path": "<Keyboard>/a",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -1281,7 +1281,7 @@
                 {
                     "name": "",
                     "id": "f98b7d1a-03c1-45b9-b787-c42e8a9c7f3f",
-                    "path": "<Keyboard>/a",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
