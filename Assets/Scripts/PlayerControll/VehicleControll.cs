@@ -51,8 +51,7 @@ public class VehicleControll : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         //해당 디바이스가 없거나 1번 디바이스가 아닌 경우
-        if (!InputDeviceManager.Instance.InputDevices.ContainsKey(context.control.device)) return;
-        if (InputDeviceManager.Instance.InputDevices[context.control.device] != 0) return;
+        if (InputDeviceManager.Instance.InputDevices[0] != context.control.device) return;
 
         // 카메라의 Y축 회전만 반영해서 이동 방향 계산
         Vector3 forward = Vector3.forward;

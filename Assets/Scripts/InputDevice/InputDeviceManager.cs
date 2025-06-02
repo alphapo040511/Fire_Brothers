@@ -22,8 +22,8 @@ public class InputDeviceManager
 
     
 
-    private Dictionary<InputDevice, int> inputDevices = new Dictionary<InputDevice, int>();
-    public IReadOnlyDictionary<InputDevice, int> InputDevices => inputDevices; // 외부에서는 읽기 전용으로 공개
+    private Dictionary<int, InputDevice> inputDevices = new Dictionary<int, InputDevice>();
+    public IReadOnlyDictionary<int, InputDevice> InputDevices => inputDevices; // 외부에서는 읽기 전용으로 공개
     public event Action OnDevicesChange;
 
     public void AddEvent()
@@ -33,20 +33,20 @@ public class InputDeviceManager
 
     public bool IsConnectedDevice(InputDevice newDevice)
     {
-        return inputDevices.ContainsKey(newDevice);
+        return inputDevices.ContainsValue(newDevice);
     }
 
     public void ConnectNewDevice(InputDevice newDevice)
     {
-        if (inputDevices.ContainsKey(newDevice) || inputDevices.Count >= 2) return;
+        if (inputDevices.ContainsValue(newDevice) || inputDevices.Count >= 2) return;
 
-        if (inputDevices.ContainsValue(0))
+        if (inputDevices.ContainsKey(0))
         {
-            inputDevices.Add(newDevice, 1);
+            inputDevices.Add(1, newDevice);
         }
         else
         {
-            inputDevices.Add(newDevice, 0);
+            inputDevices.Add(0, newDevice);
         }
 
         Debug.Log($"{newDevice}가 연결됨");
@@ -54,30 +54,41 @@ public class InputDeviceManager
         OnDevicesChange?.Invoke();
     }
 
-    public InputDevice FindDevice(int index)
+    public void ConnectNewKeyboard(InputDevice newDevice)
+    {
+        if (inputDevices.Count >= 2) return;
+
+        inputDevices.Add(inputDevices.Count, newDevice);
+
+        Debug.Log($"{newDevice}가 연결됨");
+
+        OnDevicesChange?.Invoke();
+    }
+
+    public int FindIndex(InputDevice device)
     {
         foreach(var input in InputDevices)
         {
-            if(input.Value == index)
+            if(input.Value == device)
             {
                 return input.Key;
             }
         }
 
-        return null;
+        return -1;
     }
 
     public void ResetDevices()
     {
-        inputDevices = new Dictionary<InputDevice, int>();
+        inputDevices = new Dictionary<int, InputDevice>();
     }
 
 
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)
     {
-        if (Instance.inputDevices.ContainsKey(device) && change == InputDeviceChange.Removed)
+        if (Instance.inputDevices.ContainsValue(device) && change == InputDeviceChange.Removed)
         {
-            Instance.inputDevices.Remove(device);
+            Instance.inputDevices.Remove(FindIndex(device));
             OnDevicesChange?.Invoke();
             if(UIManager.Instance != null)
             {

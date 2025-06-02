@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         m_Animator.SetFloat("State", 1);
         m_Animator.SetFloat("Hor", 0);
 
-        inputDevice = InputDeviceManager.Instance.FindDevice(playerIndex);
+        inputDevice = InputDeviceManager.Instance.InputDevices[playerIndex];
         Debug.Log($"{playerIndex} 플레이어 {inputDevice}와 연결됨");
 
         if(GameSceneUIManger.instance != null )
@@ -134,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void DisconnectDevice()
     {
-        inputDevice = InputDeviceManager.Instance.FindDevice(playerIndex);
+        inputDevice = InputDeviceManager.Instance.InputDevices[playerIndex];
     }
 
     public void SetIK(Transform left, Transform right)

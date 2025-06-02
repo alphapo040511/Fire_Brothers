@@ -128,5 +128,9 @@ public class UIManager : MonoBehaviour
         {
             HideScreen();
         }
+        else
+        {
+            ShowScreen(ScreenType.Pause);
+        }
     }
 }

@@ -27,21 +27,18 @@ public class ConnectDevice : MonoBehaviour
 
         foreach (InputDevice device in InputSystem.devices)
         {
-            if (InputDeviceManager.Instance.IsConnectedDevice(device) == false)
+            if (device is Gamepad gamepad)
             {
-                if (device is Gamepad gamepad)
+                if (gamepad.leftShoulder.isPressed && gamepad.rightShoulder.isPressed)
                 {
-                    if (gamepad.leftShoulder.isPressed && gamepad.rightShoulder.isPressed)
-                    {
-                        InputDeviceManager.Instance.ConnectNewDevice(device);
-                    }
+                    InputDeviceManager.Instance.ConnectNewDevice(device);
                 }
-                else if (device is Keyboard keyboard)
+            }
+            else if (device is Keyboard keyboard)
+            {
+                if (keyboard.enterKey.wasPressedThisFrame)
                 {
-                    if (keyboard.enterKey.isPressed)
-                    {
-                        InputDeviceManager.Instance.ConnectNewDevice(device);
-                    }
+                    InputDeviceManager.Instance.ConnectNewKeyboard(device);
                 }
             }
         }
@@ -60,9 +57,9 @@ public class ConnectDevice : MonoBehaviour
 
         foreach (var device in InputDeviceManager.Instance.InputDevices)
         {
-            if(device.Value < 2)
+            if(device.Key < 2)
             {
-                deviceText[device.Value].text = "Connected";
+                deviceText[device.Key].text = "Connected";
                 count++;
             }
         }
