@@ -13,11 +13,18 @@ public class ClothesPresenter : MonoBehaviour
 
     public float duration = 0.5f;
 
+    public CharacterCustomizer customizer;
+
+    public GameObject apply;
+    public GameObject cancel;
+
     private ClothesModel model = new ClothesModel();
     //private Dictionary<ClothesType, ClothesView> views;
 
     private int currentVIewIndex = 0;
     private RectTransform targetTransform;
+
+    private bool isDisplaying = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,11 +33,6 @@ public class ClothesPresenter : MonoBehaviour
         InitializeViews();
 
         targetTransform = clothesViews[currentVIewIndex].GetComponent<RectTransform>();
-
-        for(int i = 0; i < clothesViews.Count; i++)
-        {
-            UpdateView(i);
-        }
     }
 
     private void InitializeModel()
@@ -41,17 +43,17 @@ public class ClothesPresenter : MonoBehaviour
 
             for (int i = 0; i < data.customizeData.Count; i++)
             {
-                model.index.Add(data.customizeData[i].type,data.customizeData[i].index);  //현재 플레이어의 커스터마이징 인덱스 저장
+                model.index.Add(data.customizeData[i].type, data.customizeData[i].index);  //현재 플레이어의 커스터마이징 인덱스 저장
             }
         }
     }
 
     private void InitializeViews()
     {
-        //for (int i = 0; i < clothesViews.Count; i++)
-        //{
-            //views[clothesViews[i].clothesType] = clothesViews[i];
-        //}
+        for (int i = 0; i < clothesViews.Count; i++)
+        {
+            UpdateView(i);
+        }
     }
 
 
@@ -70,8 +72,6 @@ public class ClothesPresenter : MonoBehaviour
         if (context.started && context.control.device == InputDeviceManager.Instance.InputDevices[playerIndex])
         {
             float value = context.ReadValue<float>();
-
-            Debug.Log(value);
 
             if (value == 0) return;
 
@@ -124,6 +124,11 @@ public class ClothesPresenter : MonoBehaviour
         Sprite next = meshDB.meshList[type][(int)Mathf.Repeat(index + 1, meshDB.meshList[type].Count)].sprite;
 
         clothesViews[currentVIewIndex].UpdateItems(current, pre, next);
+
+        //캐릭터 의상 변경
+        Mesh mesh = meshDB.meshList[type][index].mesh;
+
+        customizer.ChangeMesh(type, mesh);
     }
 
     private void UpdateView(int viewIndex)
@@ -137,5 +142,78 @@ public class ClothesPresenter : MonoBehaviour
         Sprite next = meshDB.meshList[type][(int)Mathf.Repeat(index + 1, meshDB.meshList[type].Count)].sprite;
 
         clothesViews[viewIndex].UpdateItems(current, pre, next);
+
+        //캐릭터 의상 변경
+        Mesh mesh = meshDB.meshList[type][index].mesh;
+
+        customizer.ChangeMesh(type, mesh);
+    }
+
+    public void ApplyCustomize(InputAction.CallbackContext context)
+    {
+        //메세지 출력중 일 때도 리턴
+        if (!context.started || context.control.device != InputDeviceManager.Instance.InputDevices[playerIndex] || isDisplaying) return;
+
+        foreach(var data in model.index)
+        {
+            bool available = meshDB.IsAvailable(data.Key, data.Value);
+
+            if(!available)
+            {
+                StartCoroutine(DisableMessege(cancel));
+                Debug.LogWarning("별이 부족합니다.");
+                return;
+            }
+        }
+
+        if (DataManager.Instance != null)
+        {
+            foreach (var data in model.index)
+            {
+                DataManager.Instance.UpdateCustomizeData(playerIndex, data.Key, data.Value);
+            }
+            DataManager.Instance.SaveData();
+
+            StartCoroutine(DisableMessege(apply));
+            Debug.Log("의상 정보 저장 완료");
+        }
+        else
+        {
+            StartCoroutine(DisableMessege(cancel));
+            Debug.LogWarning("DataManager를 찾을 수 없습니다.");
+            return;
+        }
+    }    
+
+
+    private IEnumerator DisableMessege(GameObject target)
+    {
+        isDisplaying = true;
+
+        target.SetActive(true);
+
+        yield return new WaitForSeconds(1);
+
+        target.SetActive(false);
+
+        isDisplaying = false;
+    }
+
+    public void Pause(InputAction.CallbackContext context)
+    {
+        if (context.started && UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowScreen(ScreenType.Pause);
+            //일단 UI띄우는 걸로, 이전 씬으로 돌아가게 할 수도
+        }
+    }
+
+    public void Back(InputAction.CallbackContext context)
+    {
+        if(context.started && UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowScreen(ScreenType.Pause);
+            //일단 UI띄우는 걸로, 이전 씬으로 돌아가게 할 수도
+        }    
     }
 }

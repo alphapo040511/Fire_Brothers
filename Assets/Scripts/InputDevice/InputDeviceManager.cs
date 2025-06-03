@@ -60,7 +60,7 @@ public class InputDeviceManager
 
         inputDevices.Add(inputDevices.Count, newDevice);
 
-        Debug.Log($"{newDevice}가 연결됨");
+        Debug.Log($"{newDevice}가 {inputDevices.Count -1}번으로 연결됨");
 
         OnDevicesChange?.Invoke();
     }

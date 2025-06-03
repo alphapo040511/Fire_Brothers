@@ -40,4 +40,15 @@ public class CharacterMeshDB : ScriptableObject
 
         return mesh;
     }
+
+    public bool IsAvailable(ClothesType type, int index = 0)
+    {
+        if(StageManager.Instance != null)
+        {
+            return meshList[type][index].unlockStarCount <= StageManager.Instance.GetTotalStars();
+        }
+
+        Debug.LogWarning("StageManager를 찾을 수 없습니다.");
+        return false;
+    }    
 }

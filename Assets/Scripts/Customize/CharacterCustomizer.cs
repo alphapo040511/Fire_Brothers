@@ -55,4 +55,9 @@ public class CharacterCustomizer : MonoBehaviour
         }
     }
 
+    public void ChangeMesh(ClothesType type, Mesh mesh)
+    {
+        renderers[type].sharedMesh = mesh;
+    }
+
 }
