@@ -2142,10 +2142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -4490,6 +4490,38 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 38547579-abc5-4371-a8bd-7a872cf90d55
     m_ActionName: SecondPlayerActions/ItemDrop[/Keyboard/period]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9ee9f579-4c5c-4aa5-801b-1e83dc647b67
+    m_ActionName: FirstCustomizer/Next[/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2e8cd6c9-a2e3-488d-8b37-8f95fe460a13
+    m_ActionName: FirstCustomizer/Pre[/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 21d79ff9-fcaa-4ee8-8359-1943adc0bc3f
+    m_ActionName: FirstCustomizer/Select[/Keyboard/w,/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ae45eb21-5e95-4adb-8ff7-7d560ddd3998
+    m_ActionName: FirstCustomizer/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c7aeb515-63f0-4aaa-9f47-2c02c28bd5d4
+    m_ActionName: SecondCustomizer/Next[/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 501e45b1-4f04-4b50-b36d-922875db940b
+    m_ActionName: SecondCustomizer/Pre[/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a53bfc8e-73a6-4fdd-8c41-5355871a5123
+    m_ActionName: SecondCustomizer/Select[/Keyboard/upArrow,/Keyboard/downArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ff9c60fb-ebe1-4c89-a3cf-338531d7aa7d
+    m_ActionName: SecondCustomizer/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerActions
