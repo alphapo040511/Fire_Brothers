@@ -94,7 +94,6 @@ public class PlayerMovement : MonoBehaviour
 
             if(timer >= respawnTime && PlayableObjectsManager.Instance != null)
             {
-
                 transform.position = PlayableObjectsManager.Instance.transform.position;
             }
         }

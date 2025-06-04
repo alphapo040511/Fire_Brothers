@@ -26,6 +26,15 @@
                 900
             ],
             "unlockRequiredStars": 3
+        },
+        {
+            "stageIndex": 10,
+            "starScoreThresholds": [
+                500,
+                700,
+                900
+            ],
+            "unlockRequiredStars": 3
         }
     ]
 }

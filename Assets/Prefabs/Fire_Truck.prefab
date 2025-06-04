@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  rotationSpeed: 1
+  rotationSpeed: 0.5
   arriveDistance: 0.5
   waypoint: {fileID: 0}
   canMove: 0

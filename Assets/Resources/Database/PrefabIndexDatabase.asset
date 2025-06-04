@@ -14,10 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabList:
   - prefabName: Fire_Hydrant
-    prefabIndex: 1
+    prefabIndex: 0
     prefab: {fileID: 3090865672921115019, guid: 711247ffba4ae104bae7edef9fa0ffb3,
       type: 3}
   - prefabName: FireEvent
-    prefabIndex: 0
+    prefabIndex: 1
     prefab: {fileID: 8945526007120290565, guid: 4f54fd337f7a6204faddf73d3e082274,
+      type: 3}
+  - prefabName: PlayableSpawner
+    prefabIndex: 2
+    prefab: {fileID: 6739400528913642085, guid: 4a037f53a0323364e85000dae4d46fb4,
+      type: 3}
+  - prefabName: Test_Character
+    prefabIndex: 3
+    prefab: {fileID: 668586970448991730, guid: e1a4eb58e864b994b8d0193b9787232c, type: 3}
+  - prefabName: Test_Character_2
+    prefabIndex: 4
+    prefab: {fileID: 5696693637854044689, guid: 298fe2131e7eeb547b0f5505828df91b,
       type: 3}
