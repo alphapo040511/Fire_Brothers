@@ -2900,6 +2900,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreBar: {fileID: 2060717373}
+  starbar:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  stars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &66513154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28110,6 +28118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf1c4b2887a6dc41be0322dc5d6dab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentState: 0
+  currentStageIndex: 0
 --- !u!4 &553378287
 Transform:
   m_ObjectHideFlags: 0
@@ -57565,8 +57575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraStats: 1
-  targets: []
-  hasMultipleTargets: 1
+  targets: {fileID: 0}
   cameraOffset: {x: 8, y: 18, z: 0}
 --- !u!1001 &1191978152
 PrefabInstance:
@@ -91905,6 +91914,7 @@ MonoBehaviour:
   rotationSpeed: 1
   arriveDistance: 0.5
   waypoint: {fileID: 0}
+  canMove: 0
 --- !u!4 &1803813326 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2772153949957568269, guid: 05a357c739fcd4330b9773407e8d9331,
@@ -95319,6 +95329,7 @@ MonoBehaviour:
     type: 3}
   progressUIPrefab: {fileID: 4253827820279283753, guid: 47f78fbcd4b46904689bc2969ffdedd6,
     type: 3}
+  playerPositionUIPrefab: {fileID: 0}
 --- !u!4 &1870719289
 Transform:
   m_ObjectHideFlags: 0
@@ -110216,6 +110227,7 @@ MonoBehaviour:
   rotationSpeed: 1
   arriveDistance: 0.5
   waypoint: {fileID: 0}
+  canMove: 0
 --- !u!65 &4581540941962040956
 BoxCollider:
   m_ObjectHideFlags: 0
