@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
@@ -119,11 +120,14 @@ public class ClothesPresenter : MonoBehaviour
 
         ClothesType type = clothesViews[currentVIewIndex].clothesType;
 
-        Sprite current = meshDB.meshList[type][index].sprite;
-        Sprite pre = meshDB.meshList[type][(int)Mathf.Repeat(index - 1, meshDB.meshList[type].Count)].sprite;
-        Sprite next = meshDB.meshList[type][(int)Mathf.Repeat(index + 1, meshDB.meshList[type].Count)].sprite;
+        ClothesViewData currnet = GetViewData(type, index);
+        clothesViews[currentVIewIndex].UpdateItems(currnet);
 
-        clothesViews[currentVIewIndex].UpdateItems(current, pre, next);
+        ClothesViewData pre = GetViewData(type, (int)Mathf.Repeat(index - 1, meshDB.meshList[type].Count));
+        clothesViews[currentVIewIndex].UpdatePre(pre);
+
+        ClothesViewData next = GetViewData(type, (int)Mathf.Repeat(index + 1, meshDB.meshList[type].Count));
+        clothesViews[currentVIewIndex].UpdateNext(next);
 
         //캐릭터 의상 변경
         Mesh mesh = meshDB.meshList[type][index].mesh;
@@ -137,16 +141,29 @@ public class ClothesPresenter : MonoBehaviour
 
         ClothesType type = clothesViews[viewIndex].clothesType;
 
-        Sprite current = meshDB.meshList[type][index].sprite;
-        Sprite pre = meshDB.meshList[type][(int)Mathf.Repeat(index - 1, meshDB.meshList[type].Count)].sprite;
-        Sprite next = meshDB.meshList[type][(int)Mathf.Repeat(index + 1, meshDB.meshList[type].Count)].sprite;
+        ClothesViewData currnet = GetViewData(type, index);
+        clothesViews[viewIndex].UpdateItems(currnet);
 
-        clothesViews[viewIndex].UpdateItems(current, pre, next);
+        ClothesViewData pre = GetViewData(type, (int)Mathf.Repeat(index - 1, meshDB.meshList[type].Count));
+        clothesViews[viewIndex].UpdatePre(pre);
+
+        ClothesViewData next = GetViewData(type, (int)Mathf.Repeat(index + 1, meshDB.meshList[type].Count));
+        clothesViews[viewIndex].UpdateNext(next);
 
         //캐릭터 의상 변경
         Mesh mesh = meshDB.meshList[type][index].mesh;
 
         customizer.ChangeMesh(type, mesh);
+    }
+
+    private ClothesViewData GetViewData(ClothesType type, int index)
+    {
+        Sprite sprite = meshDB.meshList[type][index].sprite;
+
+        bool useble = meshDB.IsAvailable(type, index);
+        int unlockStar = meshDB.meshList[type][index].unlockStarCount;
+
+        return new ClothesViewData(sprite, useble, unlockStar);
     }
 
     public void ApplyCustomize(InputAction.CallbackContext context)
