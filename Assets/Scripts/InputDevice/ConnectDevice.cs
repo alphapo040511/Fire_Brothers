@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ConnectDevice : MonoBehaviour
 {
-    public TextMeshProUGUI[] deviceText = new TextMeshProUGUI[2];
+    public Image[] deviceImage = new Image[2];
+    public Sprite controllerImage;
+    public Sprite keyboardImage;
 
     private void Start()
     {
@@ -36,7 +39,7 @@ public class ConnectDevice : MonoBehaviour
             }
             else if (device is Keyboard keyboard)
             {
-                if (keyboard.enterKey.wasPressedThisFrame)
+                if (keyboard.spaceKey.wasPressedThisFrame)
                 {
                     InputDeviceManager.Instance.ConnectNewKeyboard(device);
                 }
@@ -48,18 +51,26 @@ public class ConnectDevice : MonoBehaviour
     //임시로 현재 연결된 디바이스 확인
     private void CheckDevice()
     {
-        if (deviceText[0] == null || deviceText[1] == null) return;
+        if (deviceImage[0] == null || deviceImage[1] == null) return;
 
         int count = 0;
 
-        deviceText[0].text = "Disconnected";
-        deviceText[1].text = "Disconnected";
+        deviceImage[0].sprite = null;
+        deviceImage[1].sprite = null;
 
         foreach (var device in InputDeviceManager.Instance.InputDevices)
         {
             if(device.Key < 2)
             {
-                deviceText[device.Key].text = "Connected";
+                if(device.Value is Keyboard keyboard)
+                {
+                    deviceImage[device.Key].sprite = keyboardImage;
+                }
+                else if(device.Value is Gamepad gamepad)
+                {
+                    deviceImage[device.Key].sprite = controllerImage;
+                }
+
                 count++;
             }
         }
@@ -70,7 +81,7 @@ public class ConnectDevice : MonoBehaviour
         {
             if (count >= 2)
             {
-                UIManager.Instance.HideScreen();
+                UIManager.Instance.HideScreen(0.5f);
             }
             else if (UIManager.Instance.CurrentScreen != ScreenType.ControllerSet)
             {

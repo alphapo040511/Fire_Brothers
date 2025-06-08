@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
 
     private PlayerInput playerInput;
 
+    private bool isWaiting = false;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -72,6 +74,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowScreen(ScreenType screenType)
     {
+        if (isWaiting) return;
         //기존 화변 비활성화
         if (CurrentScreen != ScreenType.None && screenDictionary.ContainsKey(CurrentScreen))
         {
@@ -99,6 +102,7 @@ public class UIManager : MonoBehaviour
 
     public void HideScreen()
     {
+        if (isWaiting) return;
         //기존 화변 비활성화
         if (CurrentScreen != ScreenType.None && screenDictionary.ContainsKey(CurrentScreen))
         {
@@ -106,6 +110,29 @@ public class UIManager : MonoBehaviour
         }
 
         GameManager.Instance.ChangeState(GameState.Playing);
+    }
+
+    public void HideScreen(float timer)
+    {
+        if (isWaiting) return;
+        StartCoroutine(HideScreenWait(timer));
+    }
+
+    private IEnumerator HideScreenWait(float timer)
+    {
+        isWaiting = true;
+
+        yield return new WaitForSecondsRealtime(timer);
+
+        //기존 화변 비활성화
+        if (CurrentScreen != ScreenType.None && screenDictionary.ContainsKey(CurrentScreen))
+        {
+            screenDictionary[CurrentScreen].SetActive(false);
+        }
+
+        GameManager.Instance.ChangeState(GameState.Playing);
+
+        isWaiting = false;
     }
 
     public void AddOnScreen(UIScreen newScreen)

@@ -34,6 +34,14 @@ public class TitleSceneUI : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public void Pause()
+    {
+        if(UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowScreen(ScreenType.Pause);
+        }
+    }
+
     public void Quit()
     {
         Application.Quit();
