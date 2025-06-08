@@ -20,7 +20,7 @@ public class VehicleMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (waypoint == null)
         {

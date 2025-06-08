@@ -34,7 +34,7 @@ public class VehicleControll : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         rb.velocity = moveDirection * moveSpeed;
 
