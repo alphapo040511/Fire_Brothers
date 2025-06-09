@@ -20081,10 +20081,6 @@ MonoBehaviour:
     m_ActionName: PlayerActions/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 65702348-c7a5-40cf-92e4-14ba07f5c78d
-    m_ActionName: PlayerActions/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 1f88237c-0f30-42f7-9ccf-a748e1b94a78
     m_ActionName: PlayerActions/Interaction[/Keyboard/space]
   - m_PersistentCalls:
@@ -20097,10 +20093,6 @@ MonoBehaviour:
     m_ActionName: SecondPlayerActions/Move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 4955ca49-44fa-4f7a-b342-e8dab761384d
-    m_ActionName: SecondPlayerActions/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 383f624d-ca18-40af-90a2-b262120e4b95
     m_ActionName: SecondPlayerActions/Interaction[/Keyboard/slash]
   - m_PersistentCalls:
@@ -20111,10 +20103,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5458a920-e825-46f5-9c44-59e150ddea69
     m_ActionName: VehicleActions/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1ddf10c8-40ff-4eef-a946-ee631f13cf71
-    m_ActionName: VehicleActions/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 08d69703-a85f-446e-9b38-e436dc01fb54
@@ -20151,10 +20139,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 586adb82-6a24-4aeb-bbd6-b089a02cf751
     m_ActionName: UIActions/RightClick[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fbc00f0d-1c0c-441e-97ce-18e3170aa3c4
-    m_ActionName: UIActions/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 934468720}
@@ -20204,22 +20188,6 @@ MonoBehaviour:
     m_ActionId: 21d79ff9-fcaa-4ee8-8359-1943adc0bc3f
     m_ActionName: FirstCustomizer/Select[/Keyboard/w,/Keyboard/s]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 934468720}
-        m_TargetAssemblyTypeName: ClothesPresenter, Assembly-CSharp
-        m_MethodName: Pause
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: ae45eb21-5e95-4adb-8ff7-7d560ddd3998
-    m_ActionName: FirstCustomizer/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
       m_Calls: []
     m_ActionId: c7aeb515-63f0-4aaa-9f47-2c02c28bd5d4
     m_ActionName: SecondCustomizer/Next[/Keyboard/rightArrow,/Keyboard/a]
@@ -20231,10 +20199,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a53bfc8e-73a6-4fdd-8c41-5355871a5123
     m_ActionName: SecondCustomizer/Select[/Keyboard/upArrow,/Keyboard/downArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ff9c60fb-ebe1-4c89-a3cf-338531d7aa7d
-    m_ActionName: SecondCustomizer/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 934468720}
@@ -27715,7 +27679,7 @@ GameObject:
   - component: {fileID: 1300141770}
   - component: {fileID: 1300141769}
   m_Layer: 7
-  m_Name: Test_Character (1)
+  m_Name: Test_Character_2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27733,7 +27697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf777c9c1443f41a338cd2ed57c4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerIndex: 0
+  playerIndex: 1
   sampleData:
     customizeData:
     - type: 0
@@ -27874,36 +27838,8 @@ MonoBehaviour:
     m_ActionName: UIActions/RightClick[/Mouse/rightButton]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: fbc00f0d-1c0c-441e-97ce-18e3170aa3c4
-    m_ActionName: UIActions/Pause[/DualSenseGamepadHID/start,/XInputControllerWindows/start,/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: GamePause
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 65702348-c7a5-40cf-92e4-14ba07f5c78d
-    m_ActionName: PlayerActions/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1ddf10c8-40ff-4eef-a946-ee631f13cf71
-    m_ActionName: VehicleActions/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: bfa2e882-aed2-4cf9-80f3-976317f3613c
     m_ActionName: SecondPlayerActions/Move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 4955ca49-44fa-4f7a-b342-e8dab761384d
-    m_ActionName: SecondPlayerActions/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 383f624d-ca18-40af-90a2-b262120e4b95
@@ -27926,10 +27862,6 @@ MonoBehaviour:
     m_ActionName: FirstCustomizer/Select[/Keyboard/w,/Keyboard/s]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: ae45eb21-5e95-4adb-8ff7-7d560ddd3998
-    m_ActionName: FirstCustomizer/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: c7aeb515-63f0-4aaa-9f47-2c02c28bd5d4
     m_ActionName: SecondCustomizer/Next[/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -27940,10 +27872,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a53bfc8e-73a6-4fdd-8c41-5355871a5123
     m_ActionName: SecondCustomizer/Select[/Keyboard/upArrow,/Keyboard/downArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ff9c60fb-ebe1-4c89-a3cf-338531d7aa7d
-    m_ActionName: SecondCustomizer/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 4f884223-5f6b-4835-9c1e-58597e02e7f7
@@ -29825,10 +29753,6 @@ MonoBehaviour:
     m_ActionName: PlayerActions/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 65702348-c7a5-40cf-92e4-14ba07f5c78d
-    m_ActionName: PlayerActions/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 1f88237c-0f30-42f7-9ccf-a748e1b94a78
     m_ActionName: PlayerActions/Interaction[/Keyboard/space]
   - m_PersistentCalls:
@@ -29841,10 +29765,6 @@ MonoBehaviour:
     m_ActionName: SecondPlayerActions/Move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 4955ca49-44fa-4f7a-b342-e8dab761384d
-    m_ActionName: SecondPlayerActions/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 383f624d-ca18-40af-90a2-b262120e4b95
     m_ActionName: SecondPlayerActions/Interaction[/Keyboard/slash]
   - m_PersistentCalls:
@@ -29855,10 +29775,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5458a920-e825-46f5-9c44-59e150ddea69
     m_ActionName: VehicleActions/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1ddf10c8-40ff-4eef-a946-ee631f13cf71
-    m_ActionName: VehicleActions/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 08d69703-a85f-446e-9b38-e436dc01fb54
@@ -29897,10 +29813,6 @@ MonoBehaviour:
     m_ActionName: UIActions/RightClick[/Mouse/rightButton]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: fbc00f0d-1c0c-441e-97ce-18e3170aa3c4
-    m_ActionName: UIActions/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 9ee9f579-4c5c-4aa5-801b-1e83dc647b67
     m_ActionName: FirstCustomizer/Next[/Keyboard/d,/Keyboard/a]
   - m_PersistentCalls:
@@ -29911,10 +29823,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 21d79ff9-fcaa-4ee8-8359-1943adc0bc3f
     m_ActionName: FirstCustomizer/Select[/Keyboard/w,/Keyboard/s]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ae45eb21-5e95-4adb-8ff7-7d560ddd3998
-    m_ActionName: FirstCustomizer/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1441786115}
@@ -29963,22 +29871,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a53bfc8e-73a6-4fdd-8c41-5355871a5123
     m_ActionName: SecondCustomizer/Select[/Keyboard/upArrow,/Keyboard/downArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1441786115}
-        m_TargetAssemblyTypeName: ClothesPresenter, Assembly-CSharp
-        m_MethodName: Pause
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: ff9c60fb-ebe1-4c89-a3cf-338531d7aa7d
-    m_ActionName: SecondCustomizer/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 4f884223-5f6b-4835-9c1e-58597e02e7f7
@@ -30036,7 +29928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fdfbc3f971420241942cba817434371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerIndex: 0
+  playerIndex: 1
   meshDB: {fileID: 11400000, guid: a46b89e42803761498b2a24365e2a99c, type: 2}
   clothesViews:
   - {fileID: 1333418207}
@@ -39497,10 +39389,6 @@ MonoBehaviour:
     m_ActionName: PlayerActions/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 65702348-c7a5-40cf-92e4-14ba07f5c78d
-    m_ActionName: PlayerActions/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 1f88237c-0f30-42f7-9ccf-a748e1b94a78
     m_ActionName: PlayerActions/Interaction[/Keyboard/space]
   - m_PersistentCalls:
@@ -39513,10 +39401,6 @@ MonoBehaviour:
     m_ActionName: SecondPlayerActions/Move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 4955ca49-44fa-4f7a-b342-e8dab761384d
-    m_ActionName: SecondPlayerActions/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 383f624d-ca18-40af-90a2-b262120e4b95
     m_ActionName: SecondPlayerActions/Interaction[/Keyboard/slash]
   - m_PersistentCalls:
@@ -39527,10 +39411,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5458a920-e825-46f5-9c44-59e150ddea69
     m_ActionName: VehicleActions/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1ddf10c8-40ff-4eef-a946-ee631f13cf71
-    m_ActionName: VehicleActions/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 08d69703-a85f-446e-9b38-e436dc01fb54
@@ -39569,10 +39449,6 @@ MonoBehaviour:
     m_ActionName: UIActions/RightClick[/Mouse/rightButton]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: fbc00f0d-1c0c-441e-97ce-18e3170aa3c4
-    m_ActionName: UIActions/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 9ee9f579-4c5c-4aa5-801b-1e83dc647b67
     m_ActionName: FirstCustomizer/Next[/Keyboard/d,/Keyboard/a]
   - m_PersistentCalls:
@@ -39583,10 +39459,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 21d79ff9-fcaa-4ee8-8359-1943adc0bc3f
     m_ActionName: FirstCustomizer/Select[/Keyboard/w,/Keyboard/s]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ae45eb21-5e95-4adb-8ff7-7d560ddd3998
-    m_ActionName: FirstCustomizer/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1952627656}
@@ -39635,22 +39507,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a53bfc8e-73a6-4fdd-8c41-5355871a5123
     m_ActionName: SecondCustomizer/Select[/Keyboard/upArrow,/Keyboard/downArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1952627656}
-        m_TargetAssemblyTypeName: ClothesPresenter, Assembly-CSharp
-        m_MethodName: Pause
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: ff9c60fb-ebe1-4c89-a3cf-338531d7aa7d
-    m_ActionName: SecondCustomizer/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 4f884223-5f6b-4835-9c1e-58597e02e7f7
@@ -43690,36 +43546,8 @@ MonoBehaviour:
     m_ActionName: UIActions/RightClick[/Mouse/rightButton]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: fbc00f0d-1c0c-441e-97ce-18e3170aa3c4
-    m_ActionName: UIActions/Pause[/DualSenseGamepadHID/start,/XInputControllerWindows/start,/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: GamePause
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 65702348-c7a5-40cf-92e4-14ba07f5c78d
-    m_ActionName: PlayerActions/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1ddf10c8-40ff-4eef-a946-ee631f13cf71
-    m_ActionName: VehicleActions/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: bfa2e882-aed2-4cf9-80f3-976317f3613c
     m_ActionName: SecondPlayerActions/Move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 4955ca49-44fa-4f7a-b342-e8dab761384d
-    m_ActionName: SecondPlayerActions/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 383f624d-ca18-40af-90a2-b262120e4b95
@@ -43742,10 +43570,6 @@ MonoBehaviour:
     m_ActionName: FirstCustomizer/Select[/Keyboard/w,/Keyboard/s]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: ae45eb21-5e95-4adb-8ff7-7d560ddd3998
-    m_ActionName: FirstCustomizer/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: c7aeb515-63f0-4aaa-9f47-2c02c28bd5d4
     m_ActionName: SecondCustomizer/Next[/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -43756,10 +43580,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a53bfc8e-73a6-4fdd-8c41-5355871a5123
     m_ActionName: SecondCustomizer/Select[/Keyboard/upArrow,/Keyboard/downArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ff9c60fb-ebe1-4c89-a3cf-338531d7aa7d
-    m_ActionName: SecondCustomizer/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 4f884223-5f6b-4835-9c1e-58597e02e7f7
