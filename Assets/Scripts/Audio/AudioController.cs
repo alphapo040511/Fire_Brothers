@@ -70,7 +70,7 @@ public class AudioController : MonoBehaviour, ISelectHandler, IPointerEnterHandl
 
         if (volume == 0)
         {
-            audioMixer.SetFloat(groupName, 0);
+            audioMixer.SetFloat(groupName, -80);
             return;
         }
         audioMixer.SetFloat(groupName, Mathf.Log10(volume / 10) * 20);                //볼륨에서의 0 ~ 1 <- Mathf.Log10(volume) * 20
