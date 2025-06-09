@@ -16,6 +16,9 @@ MonoBehaviour:
   sprite: {fileID: 876371560, guid: a91314540969e6a4f9769e436da696b2, type: 3}
   needItems: 01000000
   maxProgress: 0
-  rewardItem: {fileID: 0}
+  rewardItem: {fileID: 5163788559872985519, guid: 3bf9aeb816bf7b94fa8b13e3e98570fc,
+    type: 3}
   reuseable: 1
   reuseDelay: 15
+  usingSound: 
+  compliteSound: 

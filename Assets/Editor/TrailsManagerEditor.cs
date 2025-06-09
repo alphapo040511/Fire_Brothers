@@ -86,15 +86,15 @@ public class TrailsManagerEditor : Editor
         var loaded = WaypointIO.LoadWaypointPositions(tm.stageIndex);
         if (loaded != null && tm.waypointPrefab != null)
         {
-            foreach (var pos in loaded)
+            for (int i = 0; i < loaded.points.Count; i++)
             {
                 GameObject go = (GameObject)PrefabUtility.InstantiatePrefab(tm.waypointPrefab, tm.transform);
-                go.transform.position = pos;
-
+                go.transform.position = loaded.points[i];
                 Waypoint wp = go.GetComponent<Waypoint>();
+                wp.isAccessible = loaded.isAccessible[i];
                 tm.waypoins.Add(wp);
             }
-            Debug.Log($"웨이포인트 {loaded.Count}개 불러오기 완료");
+            Debug.Log($"웨이포인트 {loaded.points.Count}개 불러오기 완료");
         }
         else
         {

@@ -32,3 +32,6 @@ MonoBehaviour:
     prefabIndex: 4
     prefab: {fileID: 5696693637854044689, guid: 298fe2131e7eeb547b0f5505828df91b,
       type: 3}
+  - prefabName: Obstacles
+    prefabIndex: 5
+    prefab: {fileID: 261636200019511271, guid: 056a2b90376012046b9163e53f52b546, type: 3}

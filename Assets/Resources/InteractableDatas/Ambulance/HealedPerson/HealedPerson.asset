@@ -19,3 +19,5 @@ MonoBehaviour:
   rewardItem: {fileID: 0}
   reuseable: 0
   reuseDelay: 0
+  usingSound: Recover
+  compliteSound: 

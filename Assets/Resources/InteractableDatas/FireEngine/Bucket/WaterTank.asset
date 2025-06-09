@@ -19,3 +19,5 @@ MonoBehaviour:
   rewardItem: {fileID: 0}
   reuseable: 1
   reuseDelay: 1
+  usingSound: 
+  compliteSound: WaterTank

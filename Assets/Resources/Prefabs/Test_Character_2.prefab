@@ -1871,7 +1871,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4170019106478882801}
   - component: {fileID: 2752525240409347554}
-  - component: {fileID: 3127529715290143070}
   - component: {fileID: 1847515286595878350}
   - component: {fileID: 4931153765468432867}
   - component: {fileID: 3440218592918215777}
@@ -1939,21 +1938,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3127529715290143070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5696693637854044689}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a69a902533bc5af478efff13cc47894f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _faceMeshes:
-  - Type: 11
-    Mesh: {fileID: -7927354642031663450, guid: 819bbc3929ae14e43b0d8405d65589f9, type: 3}
 --- !u!114 &1847515286595878350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1986,10 +1970,6 @@ MonoBehaviour:
     m_ActionName: PlayerActions/Move[/DualSenseGamepadHID/leftStick/up,/XInputControllerWindows/leftStick/up,/DualSenseGamepadHID/leftStick/down,/XInputControllerWindows/leftStick/down,/DualSenseGamepadHID/leftStick/left,/XInputControllerWindows/leftStick/left,/DualSenseGamepadHID/leftStick/right,/XInputControllerWindows/leftStick/right,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 65702348-c7a5-40cf-92e4-14ba07f5c78d
-    m_ActionName: PlayerActions/Pause[/DualSenseGamepadHID/start,/XInputControllerWindows/start,/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 1f88237c-0f30-42f7-9ccf-a748e1b94a78
     m_ActionName: PlayerActions/Interaction[/Keyboard/space,/DualSenseGamepadHID/buttonEast,/XInputControllerWindows/buttonEast,/DualSenseGamepadHID/buttonSouth,/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
@@ -2000,10 +1980,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5458a920-e825-46f5-9c44-59e150ddea69
     m_ActionName: VehicleActions/Move[/DualSenseGamepadHID/leftStick/up,/XInputControllerWindows/leftStick/up,/DualSenseGamepadHID/leftStick/down,/XInputControllerWindows/leftStick/down,/DualSenseGamepadHID/leftStick/left,/XInputControllerWindows/leftStick/left,/DualSenseGamepadHID/leftStick/right,/XInputControllerWindows/leftStick/right,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1ddf10c8-40ff-4eef-a946-ee631f13cf71
-    m_ActionName: VehicleActions/Pause[/DualSenseGamepadHID/start,/XInputControllerWindows/start,/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 08d69703-a85f-446e-9b38-e436dc01fb54
@@ -2041,10 +2017,6 @@ MonoBehaviour:
     m_ActionId: 586adb82-6a24-4aeb-bbd6-b089a02cf751
     m_ActionName: UIActions/RightClick[/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fbc00f0d-1c0c-441e-97ce-18e3170aa3c4
-    m_ActionName: UIActions/Pause[/DualSenseGamepadHID/start,/XInputControllerWindows/start,/Keyboard/escape]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3440218592918215777}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
@@ -2060,22 +2032,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bfa2e882-aed2-4cf9-80f3-976317f3613c
     m_ActionName: SecondPlayerActions/Move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3440218592918215777}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: GamePause
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 4955ca49-44fa-4f7a-b342-e8dab761384d
-    m_ActionName: SecondPlayerActions/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4931153765468432867}
@@ -2122,10 +2078,6 @@ MonoBehaviour:
     m_ActionName: FirstCustomizer/Select[/Keyboard/w,/Keyboard/s]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: ae45eb21-5e95-4adb-8ff7-7d560ddd3998
-    m_ActionName: FirstCustomizer/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: c7aeb515-63f0-4aaa-9f47-2c02c28bd5d4
     m_ActionName: SecondCustomizer/Next[/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -2136,10 +2088,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a53bfc8e-73a6-4fdd-8c41-5355871a5123
     m_ActionName: SecondCustomizer/Select[/Keyboard/upArrow,/Keyboard/downArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ff9c60fb-ebe1-4c89-a3cf-338531d7aa7d
-    m_ActionName: SecondCustomizer/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 4f884223-5f6b-4835-9c1e-58597e02e7f7
@@ -2294,7 +2242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d794963bcaf0be4fa59d517970c179c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PrefabIndex: 4
+  m_PrefabIndex: 5
 --- !u!1 &5766446525549617559
 GameObject:
   m_ObjectHideFlags: 0

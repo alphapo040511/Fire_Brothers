@@ -51,6 +51,8 @@ public class InputDeviceManager
 
         Debug.Log($"{newDevice}가 연결됨");
 
+        SoundManager.instance.PlayShootSound("ControllerConnected");
+
         OnDevicesChange?.Invoke();
     }
 
@@ -61,6 +63,8 @@ public class InputDeviceManager
         inputDevices.Add(inputDevices.Count, newDevice);
 
         Debug.Log($"{newDevice}가 {inputDevices.Count -1}번으로 연결됨");
+
+        SoundManager.instance.PlayShootSound("ControllerConnected");
 
         OnDevicesChange?.Invoke();
     }

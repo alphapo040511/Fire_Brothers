@@ -44,6 +44,8 @@ public class PauseUI : MonoBehaviour
     {
         UIManager.Instance.HideScreen();
 
+        DataManager.Instance.SaveData();
+
         int index = SceneManager.GetActiveScene().buildIndex;
         if(index == 0)
         {

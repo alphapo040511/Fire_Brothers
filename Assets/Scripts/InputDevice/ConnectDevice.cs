@@ -81,7 +81,8 @@ public class ConnectDevice : MonoBehaviour
         {
             if (count >= 2)
             {
-                UIManager.Instance.HideScreen(0.5f);
+                UIManager.Instance.HideScreen(1.25f);
+                SoundManager.instance.PlaySound("ControllerConnectedAll");
             }
             else if (UIManager.Instance.CurrentScreen != ScreenType.ControllerSet)
             {
