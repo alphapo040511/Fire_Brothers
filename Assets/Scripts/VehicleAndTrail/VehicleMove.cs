@@ -47,7 +47,9 @@ public class VehicleMove : MonoBehaviour
         Vector3 direction = (waypoint.transform.position - transform.position);
         direction.y = 0;
 
-        rb.velocity = direction.normalized * moveSpeed;
+        Vector3 desiredVelocity = direction.normalized * moveSpeed;
+        Vector3 force = (desiredVelocity - rb.velocity) * 10f; // 가속을 보정
+        rb.AddForce(force, ForceMode.Acceleration);
     }
 
     private void Rotation()
