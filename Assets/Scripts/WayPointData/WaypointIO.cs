@@ -23,14 +23,17 @@ public static class WaypointIO
 
         var data = new WaypointData();
         foreach (var wp in waypoints)
+        {
             data.points.Add(wp.transform.position);
+            data.isAccessible.Add(wp.isAccessible);
+        }
 
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(GetFullPath(stageIndex), json);
         Debug.Log($"웨이포인트 저장 완료: {GetFullPath(stageIndex)}");
     }
 
-    public static List<Vector3> LoadWaypointPositions(int stageIndex)
+    public static WaypointData LoadWaypointPositions(int stageIndex)
     {
         TextAsset jsonFile = Resources.Load<TextAsset>(GetResourcesLoadPath(stageIndex));
 
@@ -41,7 +44,7 @@ public static class WaypointIO
         }
 
         var data = JsonUtility.FromJson<WaypointData>(jsonFile.text);
-        return data.points;
+        return data;
     }
 }
 

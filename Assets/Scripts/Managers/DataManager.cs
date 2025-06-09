@@ -30,7 +30,6 @@ public class DataManager : MonoBehaviour
         Initialize();
     }
 
-
     private void Initialize()
     {
         if(LoadData())      //기존 데이터가 있는 경우
@@ -43,6 +42,22 @@ public class DataManager : MonoBehaviour
             gameData = new GameData();
 
             //게임 데이터는 스테이지 클리어 정보에 영향을 끼치진 않으니 게임 데이터만 초기화
+        }
+    }
+
+    public void SetVolume(AudioType type, float value)
+    {
+        switch (type)
+        {
+            case AudioType.Master:
+                gameData.masterVolume = value; 
+                break;
+            case AudioType.BGM:
+                gameData.bgmVolume = value;
+                break;
+            case AudioType.SFX:
+                gameData.sfxVolume = value;
+                break;
         }
     }
 

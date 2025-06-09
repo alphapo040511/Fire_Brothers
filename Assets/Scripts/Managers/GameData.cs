@@ -6,9 +6,9 @@ using UnityEngine;
 public class GameData
 {
     // 게임 설정
-    public float masterVolume;
-    public float bgmVolume;
-    public float sfxVolume;
+    public float masterVolume = 5;
+    public float bgmVolume = 5;
+    public float sfxVolume = 5;
     public bool isMuted;
 
     //플레이어 커스터마이징 정보

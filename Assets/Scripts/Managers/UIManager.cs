@@ -39,8 +39,6 @@ public class UIManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        InitializeScreens();
     }
 
     [SerializeField] private List<UIScreen> screens = new List<UIScreen>();
@@ -55,10 +53,48 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        InitializeScreens();
+
         playerInput = GetComponent<PlayerInput>();
 
         // 초기 화면 설정 (메인 메뉴)
         ShowScreen(ScreenType.ControllerSet);
+    }
+
+    private void Update()
+    {
+        foreach (InputDevice device in InputSystem.devices)
+        {
+            if (device is Gamepad gamepad)
+            {
+                if (gamepad.startButton.isPressed && gamepad.rightShoulder.isPressed)
+                {
+                    Pause();
+                }
+            }
+            else if (device is Keyboard keyboard)
+            {
+                if (keyboard.escapeKey.wasPressedThisFrame)
+                {
+                    Pause();
+                }
+            }
+        } 
+    }
+
+    private void Pause()
+    {
+        if (CurrentScreen == ScreenType.ControllerSet) return;
+
+        Debug.Log("일시정지");
+        if(CurrentScreen == ScreenType.Pause)
+        {
+            HideScreen();
+        }
+        else
+        {
+            ShowScreen(ScreenType.Pause);
+        }
     }
 
     private void InitializeScreens()
@@ -107,6 +143,7 @@ public class UIManager : MonoBehaviour
         if (CurrentScreen != ScreenType.None && screenDictionary.ContainsKey(CurrentScreen))
         {
             screenDictionary[CurrentScreen].SetActive(false);
+            CurrentScreen = ScreenType.None;
         }
 
         GameManager.Instance.ChangeState(GameState.Playing);
@@ -128,6 +165,7 @@ public class UIManager : MonoBehaviour
         if (CurrentScreen != ScreenType.None && screenDictionary.ContainsKey(CurrentScreen))
         {
             screenDictionary[CurrentScreen].SetActive(false);
+            CurrentScreen = ScreenType.None;
         }
 
         GameManager.Instance.ChangeState(GameState.Playing);

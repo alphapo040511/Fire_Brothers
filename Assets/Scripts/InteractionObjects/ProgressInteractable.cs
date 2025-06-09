@@ -42,6 +42,9 @@ public class ProgressInteractable : Interactable
             }
         }
 
+        if(interactData.usingSound != null)
+            SoundManager.instance.PlayShootSound(interactData.usingSound);
+
         if (interactData.maxProgress > 0)
         {
             if (ProgressInteraction())
@@ -63,6 +66,9 @@ public class ProgressInteractable : Interactable
         {
             effect.OnInteractComplete();
         }
+
+        if (interactData.compliteSound != null)
+            SoundManager.instance.PlayShootSound(interactData.compliteSound);
 
         if (interactData.rewardItem != null)
         {

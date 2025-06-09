@@ -12,6 +12,8 @@ public class InteractData : ScriptableObject
     public HeldItem rewardItem;                     //작업 완료 시 보상
     public bool reuseable;                              //재사용 가능한지
     public float reuseDelay;                            //재사용 쿨타임
+    public string usingSound;                           //사용시 사운드
+    public string compliteSound;                        //완료 사운드
 
     public bool CurrentItemChecking(HeldItem itemtype)
     {   

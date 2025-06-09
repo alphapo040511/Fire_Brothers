@@ -52,19 +52,21 @@ public class TrailsManager : MonoBehaviour
     {
         waypoins.Clear();
 
-        List<Vector3> loaded = WaypointIO.LoadWaypointPositions(index);
+        WaypointData loaded = WaypointIO.LoadWaypointPositions(index);
         if (loaded == null) return;
 
-        foreach (var pos in loaded)
+        for(int i = 0; i < loaded.points.Count; i++)
         {
-            GameObject obj = Instantiate(waypointPrefab, pos, Quaternion.identity, transform);
+            GameObject obj = Instantiate(waypointPrefab, loaded.points[i], Quaternion.identity, transform);
             Waypoint wp = obj.GetComponent<Waypoint>();
+            wp.isAccessible = loaded.isAccessible[i];
             waypoins.Add(wp);
         }
 
-        Debug.Log($"웨이포인트 {loaded.Count}개 로드됨");
+        Debug.Log($"웨이포인트 {loaded.points.Count}개 로드됨");
         GameManager.Instance.ChangeState(GameState.Playing);
     }
+
     private void OnDrawGizmos()
     {
         if (waypoins == null || waypoins.Count < 2)
