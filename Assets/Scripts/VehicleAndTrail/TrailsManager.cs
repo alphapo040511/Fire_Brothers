@@ -60,6 +60,7 @@ public class TrailsManager : MonoBehaviour
             GameObject obj = Instantiate(waypointPrefab, loaded.points[i], Quaternion.identity, transform);
             Waypoint wp = obj.GetComponent<Waypoint>();
             wp.isAccessible = loaded.isAccessible[i];
+
             waypoins.Add(wp);
         }
 

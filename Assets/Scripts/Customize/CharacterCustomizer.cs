@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterCustomizer : MonoBehaviour
 {
     public int playerIndex;
+    public bool useRandomData = false;
 
     [SerializeField] private CustomizeData sampleData;                                            //커스터마이징 임시 데이터
 
@@ -36,7 +37,12 @@ public class CharacterCustomizer : MonoBehaviour
     // 게임 시작시로 변경
     void Start()
     {
-        if (DataManager.Instance != null)
+        if(useRandomData)
+        {
+            sampleData = new CustomizeData();
+            sampleData.GetRandomData(m_CharacterMeshDB);                                //랜덤한 의상 데이터 생성
+        }
+        else if (DataManager.Instance != null)
         {
             sampleData = DataManager.Instance.gameData.playersCustomData[playerIndex];
         }

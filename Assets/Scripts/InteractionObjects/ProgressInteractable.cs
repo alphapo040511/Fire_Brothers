@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ProgressInteractable : Interactable
@@ -42,7 +43,7 @@ public class ProgressInteractable : Interactable
             }
         }
 
-        if(interactData.usingSound != null)
+        if(interactData.usingSound != string.Empty)
             SoundManager.instance.PlayShootSound(interactData.usingSound);
 
         if (interactData.maxProgress > 0)
@@ -67,7 +68,7 @@ public class ProgressInteractable : Interactable
             effect.OnInteractComplete();
         }
 
-        if (interactData.compliteSound != null)
+        if (interactData.compliteSound != string.Empty)
             SoundManager.instance.PlayShootSound(interactData.compliteSound);
 
         if (interactData.rewardItem != null)

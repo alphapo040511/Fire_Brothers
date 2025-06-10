@@ -21,6 +21,13 @@ MonoBehaviour:
     prefabIndex: 1
     prefab: {fileID: 8945526007120290565, guid: 4f54fd337f7a6204faddf73d3e082274,
       type: 3}
+  - prefabName: Injured
+    prefabIndex: 6
+    prefab: {fileID: 1648195296136682194, guid: e241bc72d905b344295f229a2e8150b0,
+      type: 3}
+  - prefabName: Obstacles
+    prefabIndex: 5
+    prefab: {fileID: 261636200019511271, guid: 056a2b90376012046b9163e53f52b546, type: 3}
   - prefabName: PlayableSpawner
     prefabIndex: 2
     prefab: {fileID: 6739400528913642085, guid: 4a037f53a0323364e85000dae4d46fb4,
@@ -32,6 +39,3 @@ MonoBehaviour:
     prefabIndex: 4
     prefab: {fileID: 5696693637854044689, guid: 298fe2131e7eeb547b0f5505828df91b,
       type: 3}
-  - prefabName: Obstacles
-    prefabIndex: 5
-    prefab: {fileID: 261636200019511271, guid: 056a2b90376012046b9163e53f52b546, type: 3}

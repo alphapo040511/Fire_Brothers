@@ -15,6 +15,26 @@ public class CustomizeData
         new TypeData(ClothesType.Pants, 0),
         new TypeData(ClothesType.Shoes, 0 ),
     };
+
+    public void GetRandomData(CharacterMeshDB meshDB)
+    {
+        customizeData = new List<TypeData>
+        {
+            GetTypeData(ClothesType.Hat, meshDB),
+            GetTypeData(ClothesType.Hair, meshDB),
+            GetTypeData(ClothesType.Accessorises, meshDB),
+            GetTypeData(ClothesType.Face, meshDB),
+            GetTypeData(ClothesType.Clothes, meshDB),
+            GetTypeData(ClothesType.Pants, meshDB),
+            GetTypeData(ClothesType.Shoes, meshDB)
+        };
+    }
+
+    private TypeData GetTypeData(ClothesType type, CharacterMeshDB meshDB)
+    {
+        int index = Random.Range(0, meshDB.meshList[type].Count);
+        return new TypeData(type, index);
+    }
 }
 
 [System.Serializable]

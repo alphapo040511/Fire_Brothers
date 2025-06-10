@@ -45,6 +45,5 @@ public class ScoreHUD : MonoBehaviour
         starbar[0].anchoredPosition = new Vector2(5, (StageStatsManager.Instance.scoreStarThreshold[0] / 1000f) * 600);
         starbar[1].anchoredPosition = new Vector2(5, (StageStatsManager.Instance.scoreStarThreshold[1] / 1000f) * 600);
         starbar[2].anchoredPosition = new Vector2(5, (StageStatsManager.Instance.scoreStarThreshold[2] / 1000f) * 600);
-        Debug.Log($"첫번째 별 위치 {new Vector2(5, (StageStatsManager.Instance.scoreStarThreshold[0] / 1000f) * 600)}");
     }
 }

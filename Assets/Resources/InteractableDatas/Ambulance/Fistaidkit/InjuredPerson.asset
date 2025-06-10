@@ -15,7 +15,9 @@ MonoBehaviour:
   interactObjectName: "\uB2E4\uCE5C \uC0AC\uB78C"
   sprite: {fileID: 0}
   needItems: 08000000
-  maxProgress: 15
+  maxProgress: 8
   rewardItem: {fileID: 0}
   reuseable: 0
   reuseDelay: 0
+  usingSound: Recover
+  compliteSound: 

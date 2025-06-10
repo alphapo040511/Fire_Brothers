@@ -202,7 +202,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5128944629901729764}
   - component: {fileID: 4784661913054981011}
-  - component: {fileID: 3932880980210938803}
   - component: {fileID: 5227715775948070525}
   - component: {fileID: 2437440402706687547}
   - component: {fileID: 8663410093063307288}
@@ -270,18 +269,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3932880980210938803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 668586970448991730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f2e230a406c166439e418786b0633bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5227715775948070525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,6 +551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 0
+  useRandomData: 0
   sampleData:
     customizeData: []
   m_CharacterMeshDB: {fileID: 11400000, guid: a46b89e42803761498b2a24365e2a99c, type: 2}
@@ -586,7 +574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d794963bcaf0be4fa59d517970c179c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PrefabIndex: 4
+  m_PrefabIndex: 5
 --- !u!1 &1015783256070216866
 GameObject:
   m_ObjectHideFlags: 0

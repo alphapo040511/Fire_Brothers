@@ -28,16 +28,20 @@ public class PrefabIndexDatabaseGenerator
 
             string prefabName = Path.GetFileNameWithoutExtension(path);
 
-            // ObjectDataComponent 없으면 자동 추가
             bool updated = false;
-            if (prefab.GetComponent<ObjectDataComponent>() == null)
-            {
-                var tempInstance = Object.Instantiate(prefab);
-                tempInstance.AddComponent<ObjectDataComponent>();
-                PrefabUtility.SaveAsPrefabAsset(tempInstance, path);
-                Object.DestroyImmediate(tempInstance);
-                updated = true;
-            }
+
+            // ObjectDataComponent 없으면 자동 추가
+
+            //if (prefab.GetComponent<ObjectDataComponent>() == null)
+            //{
+            //    var tempInstance = Object.Instantiate(prefab);
+            //    tempInstance.AddComponent<ObjectDataComponent>();
+            //    PrefabUtility.SaveAsPrefabAsset(tempInstance, path);
+            //    Object.DestroyImmediate(tempInstance);
+            //    updated = true;
+            //}
+
+            //ObjectDataComponent 없으면 건너뛰기 (프리팹 추가 할 때 마다 인덱스가 꼬여서 번호 변경이 없도록 수정)
 
             // 인덱스 주입
             GameObject updatedPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
@@ -45,7 +49,7 @@ public class PrefabIndexDatabaseGenerator
             if (comp != null)
             {
                 SerializedObject so = new SerializedObject(comp);
-                so.FindProperty("m_PrefabIndex").intValue = i;
+                so.FindProperty("m_PrefabIndex").intValue = comp.PrefabIndex;                   //적어놓은 인덱스로 저장 되도록 수정
                 so.ApplyModifiedProperties();
                 EditorUtility.SetDirty(updatedPrefab);
                 updated = true;

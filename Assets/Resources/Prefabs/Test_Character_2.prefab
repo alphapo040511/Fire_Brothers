@@ -2220,6 +2220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 1
+  useRandomData: 0
   sampleData:
     customizeData: []
   m_CharacterMeshDB: {fileID: 11400000, guid: a46b89e42803761498b2a24365e2a99c, type: 2}
@@ -2242,7 +2243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d794963bcaf0be4fa59d517970c179c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PrefabIndex: 5
+  m_PrefabIndex: 6
 --- !u!1 &5766446525549617559
 GameObject:
   m_ObjectHideFlags: 0
