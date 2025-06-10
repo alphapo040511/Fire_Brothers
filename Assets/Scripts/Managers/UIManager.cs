@@ -39,6 +39,8 @@ public class UIManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        InitializeScreens();
     }
 
     [SerializeField] private List<UIScreen> screens = new List<UIScreen>();
@@ -53,8 +55,6 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InitializeScreens();
-
         playerInput = GetComponent<PlayerInput>();
 
         // 초기 화면 설정 (메인 메뉴)
@@ -90,6 +90,7 @@ public class UIManager : MonoBehaviour
         if(CurrentScreen == ScreenType.Pause)
         {
             HideScreen();
+            DataManager.Instance.SaveData();
         }
         else
         {

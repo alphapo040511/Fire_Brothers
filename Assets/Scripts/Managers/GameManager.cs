@@ -10,7 +10,8 @@ public enum GameState
     Ready,      // 플레이 대기 중
     Playing,    // 게임 플레이 중
     Paused,     // 일시정지 상태
-    GameOver    // 게임 종료 상태
+    GameOver,   // 게임 종료 상태
+    Loading,
 }
 
 public class GameManager : MonoBehaviour
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
+
     private void Start()
     {
         //맵 로딩 및 연출 완료시 시작 되도록 변경
