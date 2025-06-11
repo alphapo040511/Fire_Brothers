@@ -73,7 +73,6 @@ GameObject:
   - component: {fileID: 8601532466741653563}
   - component: {fileID: 4614872490857933162}
   - component: {fileID: 7805111574952482758}
-  - component: {fileID: 9184929358827227943}
   m_Layer: 0
   m_Name: PlayableSpawner
   m_TagString: Untagged
@@ -129,11 +128,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PrefabIndex: 2
---- !u!81 &9184929358827227943
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6739400528913642085}
-  m_Enabled: 1

@@ -106,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (context.control.device != inputDevice && GameManager.Instance.CurrentState != GameState.Playing)
+        if (context.control.device != inputDevice || GameManager.Instance.CurrentState != GameState.Playing)
         {
             return;
         }

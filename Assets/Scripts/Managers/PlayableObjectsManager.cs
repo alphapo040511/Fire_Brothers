@@ -46,6 +46,11 @@ public class PlayableObjectsManager : MonoBehaviour
         GameManager.Instance.OnGameStateChanged -= ChangeState;
     }
 
+    private void Start()
+    {
+        GameReady();
+    }
+
     private void Update()
     {
         if(ready)
@@ -75,7 +80,7 @@ public class PlayableObjectsManager : MonoBehaviour
             vehiclesPos.Add(ambul.transform);
         }
 
-        GameManager.Instance.ChangeState(GameState.Playing);        //나중에는 시작 버튼 만드는걸로
+        ready = true;
     }
 
 
@@ -96,13 +101,13 @@ public class PlayableObjectsManager : MonoBehaviour
         switch (newState)
         {
             case GameState.Ready:
-                GameReady();
                 CanMoveChanged?.Invoke(false);
                 break;
 
             case GameState.Paused:
             case GameState.GameOver:
                 CanMoveChanged?.Invoke(false);
+                ready = false;
                 break;
 
             case GameState.Playing:

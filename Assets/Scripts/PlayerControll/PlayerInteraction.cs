@@ -41,7 +41,7 @@ public class PlayerInteraction : MonoBehaviour
 
     public void OnInteraction(InputAction.CallbackContext context)
     {
-        if (context.control.device != playerMovement.inputDevice && GameManager.Instance.CurrentState != GameState.Playing) return;
+        if (context.control.device != playerMovement.inputDevice || GameManager.Instance.CurrentState != GameState.Playing) return;
 
         pressedInteractionButton = context.performed;
 
@@ -97,7 +97,7 @@ public class PlayerInteraction : MonoBehaviour
 
     public void DropHeldItem(InputAction.CallbackContext context)
     {
-        if (context.control.device != playerMovement.inputDevice && GameManager.Instance.CurrentState != GameState.Playing) return;
+        if (context.control.device != playerMovement.inputDevice || GameManager.Instance.CurrentState != GameState.Playing) return;
 
         if (heldItem != null)
         {
