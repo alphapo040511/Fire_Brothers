@@ -80,14 +80,14 @@ public class ClothesPresenter : MonoBehaviour
 
     public void Rotate(InputAction.CallbackContext context)
     {
-        if (context.control.device == InputDeviceManager.Instance.InputDevices[playerIndex])
+        if (context.control.device == InputDeviceManager.Instance.InputDevices[playerIndex] && GameManager.Instance.CurrentState == GameState.Playing)
             rotateDir = -context.ReadValue<float>();
     }
 
     //위 아래 조절
     public void ChangeClothesType(InputAction.CallbackContext context)
     {
-        if (context.started && context.control.device == InputDeviceManager.Instance.InputDevices[playerIndex])
+        if (context.started && context.control.device == InputDeviceManager.Instance.InputDevices[playerIndex] && GameManager.Instance.CurrentState == GameState.Playing)
         {
             float value = context.ReadValue<float>();
 
@@ -112,7 +112,7 @@ public class ClothesPresenter : MonoBehaviour
     //다음 옷으로 변경
     public void NextClothes(InputAction.CallbackContext context)
     {
-        if (context.started && context.control.device == InputDeviceManager.Instance.InputDevices[playerIndex])
+        if (context.started && context.control.device == InputDeviceManager.Instance.InputDevices[playerIndex] && GameManager.Instance.CurrentState == GameState.Playing)
         {
             int currentIndex = model.index[clothesViews[currentVIewIndex].clothesType];
             model.index[clothesViews[currentVIewIndex].clothesType] = (int)Mathf.Repeat(currentIndex + 1, meshDB.meshList[clothesViews[currentVIewIndex].clothesType].Count);
@@ -123,7 +123,7 @@ public class ClothesPresenter : MonoBehaviour
     //이전 옷으로 변경
     public void PreClothes(InputAction.CallbackContext context)
     {
-        if (context.started && context.control.device == InputDeviceManager.Instance.InputDevices[playerIndex])
+        if (context.started && context.control.device == InputDeviceManager.Instance.InputDevices[playerIndex] && GameManager.Instance.CurrentState == GameState.Playing)
         {
             int currentIndex = model.index[clothesViews[currentVIewIndex].clothesType];
             model.index[clothesViews[currentVIewIndex].clothesType] = (int)Mathf.Repeat(currentIndex - 1, meshDB.meshList[clothesViews[currentVIewIndex].clothesType].Count);
@@ -168,7 +168,7 @@ public class ClothesPresenter : MonoBehaviour
     {
         //메세지 출력중 일 때도 리턴
         if (!context.started || context.control.device != InputDeviceManager.Instance.InputDevices[playerIndex]
-            || isDisplaying || GameManager.Instance.CurrentState == GameState.Paused) return;
+            || isDisplaying || GameManager.Instance.CurrentState != GameState.Playing) return;
 
         foreach(var data in model.index)
         {
