@@ -2814,8 +2814,6 @@ GameObject:
   - component: {fileID: 963055781}
   - component: {fileID: 963055780}
   - component: {fileID: 963055779}
-  - component: {fileID: 963055778}
-  - component: {fileID: 963055777}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -2843,36 +2841,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &963055777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963055775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72f0b672fc81e0b428c6cfb4d21a955f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deviceImage:
-  - {fileID: 0}
-  - {fileID: 0}
-  controllerImage: {fileID: 192094395, guid: fdf9a69eebf1b534d80d0f50ecacfe51, type: 3}
-  keyboardImage: {fileID: 243723531, guid: fdf9a69eebf1b534d80d0f50ecacfe51, type: 3}
---- !u!114 &963055778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963055775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b74ea26510afde408d3f255c07a75b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstSelected: {fileID: 0}
 --- !u!114 &963055779
 MonoBehaviour:
   m_ObjectHideFlags: 0
