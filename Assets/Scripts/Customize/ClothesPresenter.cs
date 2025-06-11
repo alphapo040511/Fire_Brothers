@@ -28,6 +28,8 @@ public class ClothesPresenter : MonoBehaviour
 
     private bool isDisplaying = false;
 
+    [SerializeField]private float rotateDir;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +74,14 @@ public class ClothesPresenter : MonoBehaviour
         {
             selectBox.anchoredPosition = Vector2.Lerp(selectBox.anchoredPosition, targetTransform.anchoredPosition, Time.deltaTime / duration);
         }
+
+        customizer.transform.Rotate(0, rotateDir * 60f * Time.deltaTime, 0);
+    }
+
+    public void Rotate(InputAction.CallbackContext context)
+    {
+        if (context.control.device == InputDeviceManager.Instance.InputDevices[playerIndex])
+            rotateDir = -context.ReadValue<float>();
     }
 
     //위 아래 조절
