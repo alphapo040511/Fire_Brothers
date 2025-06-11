@@ -47,17 +47,17 @@ public class PauseUI : MonoBehaviour
         DataManager.Instance.SaveData();
 
         int index = SceneManager.GetActiveScene().buildIndex;
-        if(index == 0)
+        if(index <= 1)
         {
             Application.Quit();
         }
-        else if(index == 1)
-        {
-            SceneManager.LoadScene(0);
-        }
-        else if(index >= 2)
+        else if(index == 2)
         {
             SceneManager.LoadScene(1);
+        }
+        else if(index >= 3)
+        {
+            SceneManager.LoadScene(2);
         }
     }
 }

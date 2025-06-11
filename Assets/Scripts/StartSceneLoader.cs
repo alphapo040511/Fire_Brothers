@@ -27,7 +27,9 @@ public class StartSceneLoader : MonoBehaviour
 
     private IEnumerator LogoFadeIn()
     {
-        yield return new WaitForSecondsRealtime(0.5f);              //잠시 대기
+        yield return new WaitForSecondsRealtime(1.5f);              //잠시 대기
+
+        SoundManager.instance.PlayShootSound("Start");
 
         canvasGroup.alpha = 0;
         float alpha = 0;

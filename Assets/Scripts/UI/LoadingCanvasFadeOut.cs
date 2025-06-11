@@ -9,7 +9,7 @@ public class LoadingCanvasFadeOut : MonoBehaviour
     public float fadeTime = 1.0f;
 
     private CanvasGroup canvasGroup;
-
+    private bool isWorked = false;
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -17,7 +17,21 @@ public class LoadingCanvasFadeOut : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(FadeOut());
+        GameManager.Instance.OnGameStateChanged += OnGameStateChanged;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.OnGameStateChanged -= OnGameStateChanged;
+    }
+
+    private void OnGameStateChanged(GameState gameState)
+    {
+        if(gameState == GameState.Ready && !isWorked)
+        {
+            isWorked = true;
+            StartCoroutine(FadeOut());
+        }
     }
 
     private IEnumerator FadeOut()
@@ -34,5 +48,7 @@ public class LoadingCanvasFadeOut : MonoBehaviour
         }
         canvasGroup.alpha = 0;
         gameObject.SetActive(false);
+
+        GameManager.Instance.ChangeState(GameState.Playing);
     }
 }

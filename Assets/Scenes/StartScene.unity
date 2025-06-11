@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 662908999}
   - component: {fileID: 662908998}
   m_Layer: 0
-  m_Name: StageLoader
+  m_Name: StageManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -717,9 +717,25 @@ MonoBehaviour:
     mixerGroup: {fileID: 1409142903816391660, guid: edf3b1e84d53bba4a93824839661f467,
       type: 2}
     sources: {fileID: 0}
+  - name: Start
+    clip: {fileID: 8300000, guid: b562829ef53517243b6ba695ba89300f, type: 3}
+    volume: 0.15
+    pitch: 0.8
+    loop: 0
+    mixerGroup: {fileID: 1409142903816391660, guid: edf3b1e84d53bba4a93824839661f467,
+      type: 2}
+    sources: {fileID: 0}
+  - name: Customize
+    clip: {fileID: 8300000, guid: 419187dfd14b1ac43a535c31152fb155, type: 3}
+    volume: 0.15
+    pitch: 1
+    loop: 1
+    mixerGroup: {fileID: 1409142903816391660, guid: edf3b1e84d53bba4a93824839661f467,
+      type: 2}
+    sources: {fileID: 0}
   - name: Extinguisher
     clip: {fileID: 8300000, guid: a3d96d6d8ee6df14a8dfe197a8a031d9, type: 3}
-    volume: 0.1
+    volume: 0.15
     pitch: 1
     loop: 0
     mixerGroup: {fileID: 5822029546186030973, guid: edf3b1e84d53bba4a93824839661f467,
@@ -735,7 +751,7 @@ MonoBehaviour:
     sources: {fileID: 0}
   - name: FillingWater
     clip: {fileID: 8300000, guid: 25317d3b968c4de468ac9f74dfa54ec8, type: 3}
-    volume: 0.15
+    volume: 0.13
     pitch: 1
     loop: 0
     mixerGroup: {fileID: 5822029546186030973, guid: edf3b1e84d53bba4a93824839661f467,
@@ -749,18 +765,34 @@ MonoBehaviour:
     mixerGroup: {fileID: 5822029546186030973, guid: edf3b1e84d53bba4a93824839661f467,
       type: 2}
     sources: {fileID: 0}
-  - name: Customize
-    clip: {fileID: 8300000, guid: 419187dfd14b1ac43a535c31152fb155, type: 3}
-    volume: 0.15
-    pitch: 1
-    loop: 1
-    mixerGroup: {fileID: 1409142903816391660, guid: edf3b1e84d53bba4a93824839661f467,
-      type: 2}
-    sources: {fileID: 0}
   - name: Recover
     clip: {fileID: 8300000, guid: 705624abed591d94fa42ec3b9b816295, type: 3}
     volume: 0.15
+    pitch: 0.8
+    loop: 0
+    mixerGroup: {fileID: 5822029546186030973, guid: edf3b1e84d53bba4a93824839661f467,
+      type: 2}
+    sources: {fileID: 0}
+  - name: GetStar
+    clip: {fileID: 8300000, guid: 3d7c78b8e54c05143bb823449fce8e97, type: 3}
+    volume: 0.15
     pitch: 1
+    loop: 0
+    mixerGroup: {fileID: 5822029546186030973, guid: edf3b1e84d53bba4a93824839661f467,
+      type: 2}
+    sources: {fileID: 0}
+  - name: Pickup
+    clip: {fileID: 8300000, guid: 58bfb95d943bcaf4c896eb46c5aa200c, type: 3}
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    mixerGroup: {fileID: 5822029546186030973, guid: edf3b1e84d53bba4a93824839661f467,
+      type: 2}
+    sources: {fileID: 0}
+  - name: Break
+    clip: {fileID: 8300000, guid: f15091ff6a5d14d43ada0581bda7c45f, type: 3}
+    volume: 0.15
+    pitch: 0.8
     loop: 0
     mixerGroup: {fileID: 5822029546186030973, guid: edf3b1e84d53bba4a93824839661f467,
       type: 2}

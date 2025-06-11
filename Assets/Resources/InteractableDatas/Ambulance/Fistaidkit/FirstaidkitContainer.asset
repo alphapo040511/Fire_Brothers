@@ -19,4 +19,6 @@ MonoBehaviour:
   rewardItem: {fileID: 8065353814858119207, guid: 1ef80fb20d501104c82733ddeed4fe71,
     type: 3}
   reuseable: 1
-  reuseDelay: 15
+  reuseDelay: 8
+  usingSound: 
+  compliteSound: Pickup

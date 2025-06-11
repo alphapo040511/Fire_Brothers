@@ -7,16 +7,17 @@ public class StageStatsManager : MonoBehaviour
 {
     public static StageStatsManager Instance { get; private set; }
 
-    public int currentScore { get; private set; }                     //현재 점수
+    public int currentScore { get; private set; }               //현재 점수
 
-    public int[] scoreStarThreshold = new int[3];                  //각 별을 획득할 기준
-    private int minScore = 0;                                         //별 획득시 감소를 막을 수치
+    public int[] scoreStarThreshold = new int[3];               //각 별을 획득할 기준
+    private int minScore = 0;                                   //별 획득시 감소를 막을 수치
 
-    private int decreaseRate = 3;                                    //매 초 감소할 수치
+    private int decreaseRate = 7;                               //매 초 감소할 수치
 
+    private int currenStarCount = 0;
 
-    public event Action<float> OnScoreChanged;                          //점수 변경 이벤트
-    public event Action<int> GetStar;                          //점수 변경 이벤트
+    public event Action<float> OnScoreChanged;                  //점수 변경 이벤트
+    public event Action<int> GetStar;                           //점수 변경 이벤트
 
     private void Awake()
     {
@@ -49,7 +50,7 @@ public class StageStatsManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(3f);
             currentScore = Mathf.Max(minScore, currentScore - decreaseRate);
 
             OnScoreChanged?.Invoke(currentScore);
@@ -62,10 +63,14 @@ public class StageStatsManager : MonoBehaviour
 
         for(int i = scoreStarThreshold.Length - 1; i >= 0; i--)
         {
+            if (i < currenStarCount) return;
+
             if(currentScore >= scoreStarThreshold[i])
             {
                 minScore = scoreStarThreshold[i];
                 Debug.Log($"{i + 1}번째 별 획득");
+                currenStarCount = i + 1;
+                SoundManager.instance.PlayShootSound("GetStar");
                 GetStar?.Invoke(i + 1);
                 break;
             }

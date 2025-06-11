@@ -20,3 +20,5 @@ MonoBehaviour:
     type: 3}
   reuseable: 1
   reuseDelay: 5
+  usingSound: 
+  compliteSound: Pickup

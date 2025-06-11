@@ -67,8 +67,12 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.GameOver:
-                Time.timeScale = 1f;
+                Time.timeScale = 0f;
                 //무언가 게임 오버시 연출들?
+                break;
+
+            case GameState.Loading:
+                Time.timeScale = 1f;
                 break;
         }
 

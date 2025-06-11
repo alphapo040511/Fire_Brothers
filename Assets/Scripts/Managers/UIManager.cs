@@ -67,7 +67,7 @@ public class UIManager : MonoBehaviour
         {
             if (device is Gamepad gamepad)
             {
-                if (gamepad.startButton.isPressed && gamepad.rightShoulder.isPressed)
+                if (gamepad.startButton.wasPressedThisFrame)
                 {
                     Pause();
                 }

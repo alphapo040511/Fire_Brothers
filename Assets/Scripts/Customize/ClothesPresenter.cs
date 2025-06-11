@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.XR;
+using UnityEngine.UI;
 
 public class ClothesPresenter : MonoBehaviour
 {
@@ -10,6 +10,8 @@ public class ClothesPresenter : MonoBehaviour
     public CharacterMeshDB meshDB;
     public List<ClothesView> clothesViews = new List<ClothesView>();
     public RectTransform selectBox;
+    public Image clothesTypeImage;
+    public List<Sprite> clothesTypes = new List<Sprite>();
 
     public float duration = 0.5f;
 
@@ -30,7 +32,7 @@ public class ClothesPresenter : MonoBehaviour
     void Start()
     {
         InitializeModel();
-        InitializeViews();
+        StartCoroutine(InitializeViews());
 
         targetTransform = clothesViews[currentVIewIndex].GetComponent<RectTransform>();
     }
@@ -48,11 +50,17 @@ public class ClothesPresenter : MonoBehaviour
         }
     }
 
-    private void InitializeViews()
+    private IEnumerator InitializeViews()
     {
         for (int i = 0; i < clothesViews.Count; i++)
         {
             UpdateView(i);
+            yield return null;
+        }
+
+        if (playerIndex == 0)
+        {
+            GameManager.Instance.ChangeState(GameState.Ready);
         }
     }
 
@@ -85,8 +93,8 @@ public class ClothesPresenter : MonoBehaviour
             {
                 index = (int)Mathf.Repeat(index - 1, clothesViews.Count);
             }
-
             currentVIewIndex = index;
+            clothesTypeImage.sprite = clothesTypes[index];
             targetTransform = clothesViews[currentVIewIndex].GetComponent<RectTransform>();
         }
     }
@@ -113,29 +121,10 @@ public class ClothesPresenter : MonoBehaviour
         }
     }
 
-    private void UpdateView()
+    private void UpdateView(int viewIndex = -1)
     {
-        int index = model.index[clothesViews[currentVIewIndex].clothesType];
+        if(viewIndex < 0) viewIndex = currentVIewIndex;
 
-        ClothesType type = clothesViews[currentVIewIndex].clothesType;
-
-        ClothesViewData currnet = GetViewData(type, index);
-        clothesViews[currentVIewIndex].UpdateItems(currnet);
-
-        ClothesViewData pre = GetViewData(type, (int)Mathf.Repeat(index - 1, meshDB.meshList[type].Count));
-        clothesViews[currentVIewIndex].UpdatePre(pre);
-
-        ClothesViewData next = GetViewData(type, (int)Mathf.Repeat(index + 1, meshDB.meshList[type].Count));
-        clothesViews[currentVIewIndex].UpdateNext(next);
-
-        //캐릭터 의상 변경
-        Mesh mesh = meshDB.meshList[type][index].mesh;
-
-        customizer.ChangeMesh(type, mesh);
-    }
-
-    private void UpdateView(int viewIndex)
-    {
         int index = model.index[clothesViews[viewIndex].clothesType];
 
         ClothesType type = clothesViews[viewIndex].clothesType;
@@ -168,7 +157,8 @@ public class ClothesPresenter : MonoBehaviour
     public void ApplyCustomize(InputAction.CallbackContext context)
     {
         //메세지 출력중 일 때도 리턴
-        if (!context.started || context.control.device != InputDeviceManager.Instance.InputDevices[playerIndex] || isDisplaying) return;
+        if (!context.started || context.control.device != InputDeviceManager.Instance.InputDevices[playerIndex]
+            || isDisplaying || GameManager.Instance.CurrentState == GameState.Paused) return;
 
         foreach(var data in model.index)
         {

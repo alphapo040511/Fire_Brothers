@@ -14,6 +14,7 @@ public class GameSceneUIManger : MonoBehaviour
     public Transform canvas;
 
     public CooldownUI cooldownUIPrefab;
+    public AccentUI accentUIPrefab;
     public ProgressUI progressUIPrefab;
     public PlayerPositionUI playerPositionUIPrefab;
 
@@ -21,6 +22,13 @@ public class GameSceneUIManger : MonoBehaviour
     {
         CooldownUI temp = Instantiate(cooldownUIPrefab, canvas);
         temp.Initialize(sprite, worldTransform);
+        return temp;
+    }
+
+    public AccentUI CreatingaccentUI(Transform worldTransform)
+    {
+        AccentUI temp = Instantiate(accentUIPrefab, canvas);
+        temp.Initialize(worldTransform);
         return temp;
     }
 

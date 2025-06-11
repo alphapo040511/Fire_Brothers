@@ -38,6 +38,7 @@ public class HeldItem : MonoBehaviour
 
     public void BreakItem()
     {
+        SoundManager.instance.PlayShootSound("Break");
         Destroy(gameObject);    //일단 오브젝트 파괴로 진행
     }
 }

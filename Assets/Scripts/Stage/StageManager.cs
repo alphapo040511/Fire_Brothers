@@ -94,6 +94,14 @@ public class StageManager : MonoBehaviour
         if (info == null)
         {
             Debug.LogError($"스테이지 {stageIndex} 정보가 StageInfo에 존재하지 않습니다.");
+            saveData.saves.Add(new StageSave
+            {
+                stageIndex = info.stageIndex,
+                isCleared = false,
+                bestStars = 0,
+                highScore = 0
+            });
+            SaveStageData();
             return false;
         }
 
@@ -103,9 +111,19 @@ public class StageManager : MonoBehaviour
     public bool IsStageClaer(int index)
     {
         StageSave save = saveData.saves.Find(x => x.stageIndex == index);
+
+
         if (save == null)
         {
             Debug.LogError($"스테이지 {index} 정보가 StageInfo에 존재하지 않습니다.");
+            saveData.saves.Add(new StageSave
+            {
+                stageIndex = index,
+                isCleared = false,
+                bestStars = 0,
+                highScore = 0
+            });
+            SaveStageData();
             return false;
         }
 
@@ -141,6 +159,7 @@ public class StageManager : MonoBehaviour
         {
             int additionalStars = earnedStars - save.bestStars;
             save.bestStars = earnedStars;
+            save.highScore = Mathf.Max(save.highScore, StageStatsManager.Instance.currentScore);
             saveData.totalStars += additionalStars;
         }
 

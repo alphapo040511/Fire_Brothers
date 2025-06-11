@@ -235,6 +235,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire extinguisher
       objectReference: {fileID: 0}
+    - target: {fileID: 2044653206531999416, guid: e07f06a77ea356d40ac1c02b71dd9049,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -27,10 +27,11 @@ public class AudioController : MonoBehaviour, ISelectHandler, IPointerEnterHandl
         MusicMasterSlider.onValueChanged.AddListener(SetMasterVolume);                  //UI Slider의 값이 변경 되었을 경우 SetMasterVolume 함수를 호출 한다.
         MusicBGMSlider.onValueChanged.AddListener(SetBGMVolume);                        //UI Slider의 값이 변경 되었을 경우 SetBGMVolume 함수를 호출 한다.
         MusicSFXSlider.onValueChanged.AddListener(SetSFXVolume);                        //UI Slider의 값이 변경 되었을 경우 SetSFXVolume 함수를 호출 한다.
+        Init();
     }
 
 
-    private void Start()
+    private void Init()
     {
         Debug.Log("사운드 데이터 로드 시작");
 
@@ -44,6 +45,10 @@ public class AudioController : MonoBehaviour, ISelectHandler, IPointerEnterHandl
             MusicSFXSlider.value = DataManager.Instance.gameData.sfxVolume;
 
             Debug.Log("사운드 데이터 로드 완료");
+        }
+        else
+        {
+            Debug.LogWarning("DataManager 없음");
         }
     }
 

@@ -65,6 +65,9 @@ public class PlayerInteraction : MonoBehaviour
         {
             heldItem.BreakItem();
         }
+
+        SoundManager.instance.PlayShootSound("Pickup");
+
         heldItem = itemType;
         Debug.Log($"{itemType}를 손에 듦");
 

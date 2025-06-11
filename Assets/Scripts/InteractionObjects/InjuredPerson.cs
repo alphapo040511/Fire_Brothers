@@ -7,7 +7,8 @@ public class InjuredPerson : ProgressInteractable
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Animator>().SetInteger("Type", Random.Range(0, 2));
+        //GetComponent<Animator>().SetInteger("Type", Random.Range(0, 2));      //애니메이션이 별로라서..
+        GetComponent<Animator>().SetInteger("Type", 1);
     }
 
     public override void Complite(PlayerInteraction playerData)
@@ -16,7 +17,7 @@ public class InjuredPerson : ProgressInteractable
 
         if(StageStatsManager.Instance != null)
         {
-            StageStatsManager.Instance.GainScore(60);
+            StageStatsManager.Instance.GainScore(70);
         }
 
         //사라지는 효과 추가

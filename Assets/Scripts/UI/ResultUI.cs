@@ -54,18 +54,8 @@ public class ResultUI : MonoBehaviour
 
     public void Quit()
     {
-        int index = SceneManager.GetActiveScene().buildIndex;
-        if (index == 0)
-        {
-            Application.Quit();
-        }
-        else if (index == 1)
-        {
-            SceneManager.LoadScene(0);
-        }
-        else if (index >= 2)
-        {
-            SceneManager.LoadScene(1);
-        }
+        SceneManager.LoadScene("StageSelectScene");
+
+        GameManager.Instance.ChangeState(GameState.Playing);
     }
 }

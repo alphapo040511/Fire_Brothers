@@ -28,13 +28,13 @@
             "unlockRequiredStars": 3
         },
         {
-            "stageIndex": 10,
+            "stageIndex": 0,
             "starScoreThresholds": [
-                500,
-                700,
-                900
+                60,
+                140,
+                210
             ],
-            "unlockRequiredStars": 3
+            "unlockRequiredStars": 0
         }
     ]
 }

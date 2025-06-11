@@ -6,7 +6,7 @@ using UnityEngine;
 public class ProgressInteractable : Interactable
 {
     private CooldownUI coodownUI;
-
+    private AccentUI accentUI;
     private ProgressUI progressUI;
 
     private int currentProgress = 0;
@@ -17,6 +17,10 @@ public class ProgressInteractable : Interactable
         if (interactData.reuseable)
         {
             coodownUI = GameSceneUIManger.instance?.CreatingCooldownUI(interactData.sprite, transform);
+        }
+        else
+        {
+            accentUI = GameSceneUIManger.instance?.CreatingaccentUI(transform);
         }
     }
 
@@ -82,6 +86,11 @@ public class ProgressInteractable : Interactable
             playerData.GetNewItem();
         }
         interactable = false;
+
+        if(accentUI != null)
+        {
+            accentUI.Complite();
+        }
     }
 
     public bool ProgressInteraction()
