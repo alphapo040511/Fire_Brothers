@@ -13,10 +13,6 @@ public class LoadingCanvasFadeOut : MonoBehaviour
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-    }
-
-    private void Start()
-    {
         GameManager.Instance.OnGameStateChanged += OnGameStateChanged;
     }
 

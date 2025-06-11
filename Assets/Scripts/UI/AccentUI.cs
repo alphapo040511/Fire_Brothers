@@ -16,10 +16,10 @@ public class AccentUI : MonoBehaviour
     void Update()
     {
         Vector3 pos = targetPosition.position;
-        pos.y += 2f;
+        pos.y += 1.5f;
 
         Vector2 screenPos = Camera.main.WorldToScreenPoint(pos);
-        screenPos.y += 100;
+        screenPos.y += 50;
         transform.position = screenPos;
     }
 

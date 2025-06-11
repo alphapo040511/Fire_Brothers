@@ -9,7 +9,8 @@ public class LevelLoader : MonoBehaviour
 
     void Start()
     {
-        
+        if(GameManager.Instance != null)
+        StartCoroutine(Loading(GameManager.Instance.currentStageIndex));
     }
 
 
