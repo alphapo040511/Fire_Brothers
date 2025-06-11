@@ -793,6 +793,17 @@
                 },
                 {
                     "name": "",
+                    "id": "95d16d93-8360-4fa5-9b86-dec453a1d5ed",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ddbe4b04-b584-404b-80ab-21d3a32e978e",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
