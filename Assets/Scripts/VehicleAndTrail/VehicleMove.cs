@@ -17,6 +17,13 @@ public class VehicleMove : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        if (waypoint == null)
+        {
+            GettingWaypoint();
+            rb.velocity = Vector3.zero;
+            return;
+        }
     }
 
     // Update is called once per frame
