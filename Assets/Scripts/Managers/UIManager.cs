@@ -86,7 +86,6 @@ public class UIManager : MonoBehaviour
     {
         if (CurrentScreen == ScreenType.ControllerSet) return;
 
-        Debug.Log("일시정지");
         if(CurrentScreen == ScreenType.Pause)
         {
             HideScreen();
@@ -111,7 +110,8 @@ public class UIManager : MonoBehaviour
 
     public void ShowScreen(ScreenType screenType)
     {
-        if (isWaiting) return;
+        if (isWaiting || GameManager.Instance.CurrentState == GameState.Loading) return;
+
         //기존 화변 비활성화
         if (CurrentScreen != ScreenType.None && screenDictionary.ContainsKey(CurrentScreen))
         {
@@ -120,7 +120,6 @@ public class UIManager : MonoBehaviour
 
         if (screenDictionary.ContainsKey(screenType))
         {
-
             if (screenType == ScreenType.ControllerSet && InputDeviceManager.Instance != null)
             {
                 InputDeviceManager.Instance.ResetDevices();

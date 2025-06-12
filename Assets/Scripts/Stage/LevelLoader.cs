@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelLoader : MonoBehaviour
 {
+    public Image loadingBar;
     private const string c_PrefabDatabasePath = "Database/PrefabIndexDatabase";
 
     void Start()
@@ -44,9 +46,12 @@ public class LevelLoader : MonoBehaviour
 
         LevelData levelData = JsonUtility.FromJson<LevelData>(json);
 
+        int count = 0;
+
         // 프리팹 인스턴스
         foreach (var objData in levelData.objectDatas)
         {
+            count++;
             GameObject prefab = db.GetPrefabByIndex(objData.prefabIndex);
             if (!prefab)
             {
@@ -60,7 +65,17 @@ public class LevelLoader : MonoBehaviour
             ).transform;
             tf.localScale = objData.scale;
 
+            if (loadingBar != null)
+            {
+                loadingBar.fillAmount = 0.9f + ((float)count / levelData.objectDatas.Count) * 0.1f;     //기존에 차있던 0.9에 더하기
+            }
+
             yield return null;
+        }
+
+        if (loadingBar != null)
+        {
+            loadingBar.fillAmount = 1;
         }
 
         Debug.Log($"Level {levelIndex} 로드 완료 ({levelData.objectDatas.Count})");

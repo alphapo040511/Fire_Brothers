@@ -10,6 +10,8 @@ public class LoadingCanvasFadeOut : MonoBehaviour
 
     private CanvasGroup canvasGroup;
     private bool isWorked = false;
+
+
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -32,7 +34,7 @@ public class LoadingCanvasFadeOut : MonoBehaviour
 
     private IEnumerator FadeOut()
     {
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSecondsRealtime(0.5f);
 
         canvasGroup.alpha = 1;
         float alpha = 1;

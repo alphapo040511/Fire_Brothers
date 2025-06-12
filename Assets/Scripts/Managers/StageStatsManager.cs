@@ -36,7 +36,6 @@ public class StageStatsManager : MonoBehaviour
         StartCoroutine(ScoreDecrease());
         scoreStarThreshold = StageManager.Instance.GetStarThreshold();
         Debug.Log($"이번 스테이지의 클리어 조건 {scoreStarThreshold[0]}, {scoreStarThreshold[1]}, {scoreStarThreshold[2]}");
-        GameManager.Instance.ChangeState(GameState.Ready);
     }
 
 

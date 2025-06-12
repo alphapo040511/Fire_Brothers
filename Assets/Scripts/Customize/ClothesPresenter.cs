@@ -20,6 +20,8 @@ public class ClothesPresenter : MonoBehaviour
     public GameObject apply;
     public GameObject cancel;
 
+    public Image loadingBar;
+
     private ClothesModel model = new ClothesModel();
     //private Dictionary<ClothesType, ClothesView> views;
 
@@ -58,6 +60,16 @@ public class ClothesPresenter : MonoBehaviour
         {
             UpdateView(i);
             yield return null;
+
+            if (loadingBar != null)
+            {
+                loadingBar.fillAmount = 0.9f + ((float)i / clothesViews.Count);     //기존에 차있던 0.9에 더하기
+            }
+        }
+
+        if (loadingBar != null)
+        {
+            loadingBar.fillAmount = 1;
         }
 
         if (playerIndex == 0)
@@ -219,7 +231,7 @@ public class ClothesPresenter : MonoBehaviour
     {
         if (context.started && UIManager.Instance != null)
         {
-            UIManager.Instance.ShowScreen(ScreenType.Pause);
+            //UIManager.Instance.ShowScreen(ScreenType.Pause);
             //일단 UI띄우는 걸로, 이전 씬으로 돌아가게 할 수도
         }
     }
@@ -228,7 +240,7 @@ public class ClothesPresenter : MonoBehaviour
     {
         if(context.started && UIManager.Instance != null)
         {
-            UIManager.Instance.ShowScreen(ScreenType.Pause);
+            //UIManager.Instance.ShowScreen(ScreenType.Pause);
             //일단 UI띄우는 걸로, 이전 씬으로 돌아가게 할 수도
         }    
     }

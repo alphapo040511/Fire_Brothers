@@ -31,7 +31,7 @@ public class TitleSceneUI : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        SceneLoader.LoadScene(sceneName);
     }
 
     public void Pause()

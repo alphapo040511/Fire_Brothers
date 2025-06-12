@@ -47,7 +47,7 @@ public class StageEntrance : MonoBehaviour
 
         GameManager.Instance.CurrentStageSetting(stageIndex);
         //StageLoader.nextStageIndex = stageIndex;
-        SceneManager.LoadScene(sceneName);
+        SceneLoader.LoadScene(sceneName);
     }
 
     private void OnTriggerEnter(Collider other)
