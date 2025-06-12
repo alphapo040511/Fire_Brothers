@@ -19,10 +19,18 @@ public class ControllerButtonPresenter : MonoBehaviour
         InputDeviceManager.Instance.OnDevicesChange -= ChangeDevice;
     }
 
+    private void Start()
+    {
+        ChangeDevice();
+    }
+
     public void ChangeDevice()
     {
-        bool isKeyboard = InputDeviceManager.Instance.InputDevices[0] is Keyboard keyboard;
-        keyboardImage.SetActive(isKeyboard);
-        gamepadImage.SetActive(!isKeyboard);
+        if (InputDeviceManager.Instance.InputDevices.ContainsKey(0))
+        {
+            bool isKeyboard = InputDeviceManager.Instance.InputDevices[0] is Keyboard keyboard;
+            keyboardImage.SetActive(isKeyboard);
+            gamepadImage.SetActive(!isKeyboard);
+        }
     }
 }
