@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FirstaidkitContainer
   m_EditorClassIdentifier: 
   interactObjectName: "\uAD6C\uAE09\uD0A4\uD2B8 \uBCF4\uAD00\uD568"
-  sprite: {fileID: -102898707, guid: a91314540969e6a4f9769e436da696b2, type: 3}
+  sprite: {fileID: 1712932379, guid: 4bd09081fe3a9934eb91ba57b9efb1dc, type: 3}
   needItems: 01000000
   maxProgress: 0
   rewardItem: {fileID: 8065353814858119207, guid: 1ef80fb20d501104c82733ddeed4fe71,
