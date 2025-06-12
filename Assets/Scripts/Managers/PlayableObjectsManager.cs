@@ -111,7 +111,7 @@ public class PlayableObjectsManager : MonoBehaviour
                 break;
 
             case GameState.Playing:
-                CanMoveChanged?.Invoke(true);
+                AccessibleChecking();
                 ready = true;
                 break;
 
