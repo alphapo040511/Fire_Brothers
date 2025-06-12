@@ -72,6 +72,8 @@ public class ClothesPresenter : MonoBehaviour
             loadingBar.fillAmount = 1;
         }
 
+        yield return new WaitForSecondsRealtime(0.5f);
+
         if (playerIndex == 0)
         {
             GameManager.Instance.ChangeState(GameState.Ready);

@@ -20,7 +20,6 @@ public class TitleSceneUI : MonoBehaviour
 
     public void ChangeGameState(GameState gameState)
     {
-
         //추후 메인 메뉴 상태일때로 변경
         if(gameState == GameState.Playing)
         {

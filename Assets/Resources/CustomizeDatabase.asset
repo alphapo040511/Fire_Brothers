@@ -18,103 +18,103 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: d41a63ee9769e5d48a4828414a2597ab, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: -25535521549600216, guid: c8ef145d788d0804f9e31c8079352c06, type: 3}
-    sprite: {fileID: 308978031, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: f4bae6c15b7cc804bbec827ab8d83173, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: -5514853612500976910, guid: 96f9061b735e1454c8444afd2c8cabb1, type: 3}
-    sprite: {fileID: -1782724441, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: 8f0bfc4f35dea4c40a0f12793bb1b6dd, type: 3}
   - unlockStarCount: 6
     mesh: {fileID: -7955281462440156075, guid: ce66d77ff5aabf548903d7b30693fbc0, type: 3}
-    sprite: {fileID: 597820243, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: 453d9316bd7c74443aefd5845743e5fe, type: 3}
   - unlockStarCount: 4
     mesh: {fileID: -6976336618207450407, guid: 59564854f919a404f8eeeb391b17c12e, type: 3}
-    sprite: {fileID: 830554442, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: 0ec892bcb3b28c04ab916405bee2ed79, type: 3}
   hairMesh:
   - unlockStarCount: 0
     mesh: {fileID: -2315652163027026327, guid: ad472b939cd48144e9521d873c2e3018, type: 3}
     sprite: {fileID: 21300000, guid: d41a63ee9769e5d48a4828414a2597ab, type: 3}
   - unlockStarCount: 0
     mesh: {fileID: -8820499275058686143, guid: c00be380054f3aa469720cb9cd40ef14, type: 3}
-    sprite: {fileID: 308978031, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: 04848d8b8eea7d841baaf66228cf93e7, type: 3}
   - unlockStarCount: 0
     mesh: {fileID: 2589799688786906243, guid: 634df7d5a6da6804f95f30ed030ec528, type: 3}
-    sprite: {fileID: -1782724441, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: c30ffe19c62eb5f49824b0c7bc464d4f, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: -4695107088515116087, guid: 49afccecce4f7b446a34b4e3223cf8ff, type: 3}
-    sprite: {fileID: 597820243, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: 489087ed48aeca2439a8a37014969a4f, type: 3}
   accessoriesMesh:
   - unlockStarCount: 0
     mesh: {fileID: 4554999278103424840, guid: ad472b939cd48144e9521d873c2e3018, type: 3}
     sprite: {fileID: 21300000, guid: d41a63ee9769e5d48a4828414a2597ab, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: 7061910613977320673, guid: 9ca093b63b32bc6479e8706c849e1ee2, type: 3}
-    sprite: {fileID: 308978031, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: 6c81769532609e143ba1ecb1e0c43e9a, type: 3}
   - unlockStarCount: 6
     mesh: {fileID: 2609398250338908505, guid: 106c56f4b86971e4393de6fb97ee6cdb, type: 3}
-    sprite: {fileID: -1782724441, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: c9fe3343b5ad4f24a9ec0bec6b661502, type: 3}
   - unlockStarCount: 6
     mesh: {fileID: -3811569408259832331, guid: 7f08cab61f953cd4693ac58a98b96079, type: 3}
-    sprite: {fileID: 597820243, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: 01c0be6b7406e6c4d880193e0b8a856d, type: 3}
   - unlockStarCount: 9
     mesh: {fileID: 2912484300477787147, guid: b4d34f152c73703499b03a8b9beab646, type: 3}
-    sprite: {fileID: 830554442, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: 9ff5b8ca6ceebf047b531b36bba3f001, type: 3}
   - unlockStarCount: 9
     mesh: {fileID: -7842831479439361333, guid: da1fb7324b7aa04488964cec50dec732, type: 3}
-    sprite: {fileID: 21300000, guid: 062e5fad3cc43d04788799e0efd0a8da, type: 3}
+    sprite: {fileID: 21300000, guid: 2b01705e1f9410e40bc220f05674d38a, type: 3}
   - unlockStarCount: 0
     mesh: {fileID: 3231055992845446417, guid: 37ecfcaf8ce0c064d92bcec65eba3e31, type: 3}
-    sprite: {fileID: 21300000, guid: 80dd408a303c0324ba863ce14e1b59e5, type: 3}
+    sprite: {fileID: 21300000, guid: b1a9af20ecf3a3e4a9e2481d7f8dc56e, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: 4124652187440467762, guid: 8ce1c24b95f214d4bb53ebe8be080a49, type: 3}
-    sprite: {fileID: 21300000, guid: 8c7d151af12a6b04eb6a8f978d3171e5, type: 3}
+    sprite: {fileID: 21300000, guid: e8b7d28041f62ff49842e5061bfbd8bb, type: 3}
   faceMesh:
   - unlockStarCount: 0
     mesh: {fileID: -7927354642031663450, guid: 819bbc3929ae14e43b0d8405d65589f9, type: 3}
-    sprite: {fileID: 308978031, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: 77f1e40817f8eaf4583d7769cbd542cc, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: -4389200089894859703, guid: e4f543c638ecbfd40b8dc37cd298e48a, type: 3}
-    sprite: {fileID: -1782724441, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: daa4954170d7c8a4b8b65fa210f571d2, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: -8518051590879840720, guid: e2a9edf3127d00246a60fb52ef4856b9, type: 3}
-    sprite: {fileID: 597820243, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: a503e8af424b9584e8d62c9a071812e6, type: 3}
   clothesMesh:
   - unlockStarCount: 0
     mesh: {fileID: 1617087265200637012, guid: e79b799a85000cd4ea6d2332153cbd7b, type: 3}
-    sprite: {fileID: 308978031, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: 301fb82a0f2112f4ea46b380035325d4, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: 9154480696012802162, guid: de746c65be1d3594384300bbc4f9e168, type: 3}
-    sprite: {fileID: -1782724441, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: 07e379dbbdd5cf2498db0076446a1ffe, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: -3950228387462889971, guid: d0367ce8ac8ac514a9278f7eb0ed66ac, type: 3}
-    sprite: {fileID: 597820243, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: 4213c0b442546214b803288fbc0ec87d, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: 9053217031431064551, guid: 5a531847cd74a654b97ef249cb9306d5, type: 3}
-    sprite: {fileID: 830554442, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: a21ee1900eab5e542b5c30f49a314d73, type: 3}
   - unlockStarCount: 9
     mesh: {fileID: 8213599088856497855, guid: 3e038445d159c3545bbcb19acc70593f, type: 3}
-    sprite: {fileID: 21300000, guid: 062e5fad3cc43d04788799e0efd0a8da, type: 3}
+    sprite: {fileID: 21300000, guid: 934bb1b0f247d584e9919fc2ceeba0dd, type: 3}
   pantsMesh:
   - unlockStarCount: 0
     mesh: {fileID: -7058832261164120551, guid: 1e74168fbee4e5c4097912723ebf6de7, type: 3}
-    sprite: {fileID: 308978031, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: 265889ad6c328eb42b93fa1798bcf941, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: -987022824948863293, guid: 0f24f9714abd24a4596c28822aaa7a39, type: 3}
-    sprite: {fileID: -1782724441, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: bb7bbb84a37663d48b7c10598078d2b1, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: -4396149814923931179, guid: 67dfe8b1e1ed9b34c985396c6282c820, type: 3}
-    sprite: {fileID: 597820243, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: 351c9ab00f6a2114c9d7217fd95a9afe, type: 3}
   shoesMesh:
   - unlockStarCount: 0
     mesh: {fileID: -278085929633702562, guid: ad472b939cd48144e9521d873c2e3018, type: 3}
     sprite: {fileID: 21300000, guid: d41a63ee9769e5d48a4828414a2597ab, type: 3}
   - unlockStarCount: 0
     mesh: {fileID: -1419061772662269867, guid: 20384ecd8466c804eb14b502b62acc3b, type: 3}
-    sprite: {fileID: 308978031, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: 5cc4b3a0d50aaef48bbb5cafafe3619d, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: -5648626978545720014, guid: bfab5a5ca14002a469bd5912e025f274, type: 3}
-    sprite: {fileID: -1782724441, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: 5018d5f4486cab546be5f9d7db63d31b, type: 3}
   - unlockStarCount: 6
     mesh: {fileID: 2990419855401034948, guid: 0fc9184e885899c408b2467848981766, type: 3}
-    sprite: {fileID: 597820243, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: dd45cf4c44f74c948b99d4e385ce9589, type: 3}
   - unlockStarCount: 9
     mesh: {fileID: 2525575882034029105, guid: 1ce007de4fc6e4645b0ea41258fde30a, type: 3}
-    sprite: {fileID: 830554442, guid: f68664b723e73e34e9c80b0735ca4ed9, type: 3}
+    sprite: {fileID: 21300000, guid: d674311490d0922458652d37ac240f92, type: 3}
