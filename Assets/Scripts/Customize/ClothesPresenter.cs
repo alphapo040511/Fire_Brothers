@@ -89,13 +89,15 @@ public class ClothesPresenter : MonoBehaviour
             selectBox.anchoredPosition = Vector2.Lerp(selectBox.anchoredPosition, targetTransform.anchoredPosition, Time.deltaTime / duration);
         }
 
-        customizer.transform.Rotate(0, rotateDir * 60f * Time.deltaTime, 0);
+        customizer.transform.Rotate(0, rotateDir * 120f * Time.deltaTime, 0);
     }
 
     public void Rotate(InputAction.CallbackContext context)
     {
         if (context.control.device == InputDeviceManager.Instance.InputDevices[playerIndex] && GameManager.Instance.CurrentState == GameState.Playing)
-            rotateDir = -context.ReadValue<float>();
+        {
+            //rotateDir = -context.ReadValue<float>();
+        }
     }
 
     //위 아래 조절
@@ -240,10 +242,9 @@ public class ClothesPresenter : MonoBehaviour
 
     public void Back(InputAction.CallbackContext context)
     {
-        if(context.started && UIManager.Instance != null)
+        if(context.started)
         {
-            //UIManager.Instance.ShowScreen(ScreenType.Pause);
-            //일단 UI띄우는 걸로, 이전 씬으로 돌아가게 할 수도
+            UIManager.Instance.ShowScreen(ScreenType.BackTitle);
         }    
     }
 }

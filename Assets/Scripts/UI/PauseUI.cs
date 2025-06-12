@@ -46,18 +46,26 @@ public class PauseUI : MonoBehaviour
 
         DataManager.Instance.SaveData();
 
-        int index = SceneManager.GetActiveScene().buildIndex;
-        if(index <= 1)
+        string name = SceneManager.GetActiveScene().name;
+        if(name == "TitleScene")
         {
             Application.Quit();
         }
-        else if(index == 2)
+        else if(name == "StageSelectScene")
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("TitleScene");
         }
-        else if(index >= 3)
+        else if(name == "Chapter1")
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("StageSelectScene");
+        }
+        else if (name == "CustomizeScene")
+        {
+            SceneManager.LoadScene("TitleScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("TitleScene");
         }
     }
 }
