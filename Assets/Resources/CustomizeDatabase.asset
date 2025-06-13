@@ -15,7 +15,7 @@ MonoBehaviour:
   hatMesh:
   - unlockStarCount: 0
     mesh: {fileID: 6657998009922166292, guid: ad472b939cd48144e9521d873c2e3018, type: 3}
-    sprite: {fileID: 656476972, guid: fdf9a69eebf1b534d80d0f50ecacfe51, type: 3}
+    sprite: {fileID: 21300000, guid: a08e1d9947984024eb03fc235ab2e420, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: -25535521549600216, guid: c8ef145d788d0804f9e31c8079352c06, type: 3}
     sprite: {fileID: 21300000, guid: f4bae6c15b7cc804bbec827ab8d83173, type: 3}
@@ -31,7 +31,7 @@ MonoBehaviour:
   hairMesh:
   - unlockStarCount: 0
     mesh: {fileID: -2315652163027026327, guid: ad472b939cd48144e9521d873c2e3018, type: 3}
-    sprite: {fileID: 656476972, guid: fdf9a69eebf1b534d80d0f50ecacfe51, type: 3}
+    sprite: {fileID: 21300000, guid: a08e1d9947984024eb03fc235ab2e420, type: 3}
   - unlockStarCount: 0
     mesh: {fileID: -8820499275058686143, guid: c00be380054f3aa469720cb9cd40ef14, type: 3}
     sprite: {fileID: 21300000, guid: 04848d8b8eea7d841baaf66228cf93e7, type: 3}
@@ -44,7 +44,7 @@ MonoBehaviour:
   accessoriesMesh:
   - unlockStarCount: 0
     mesh: {fileID: 4554999278103424840, guid: ad472b939cd48144e9521d873c2e3018, type: 3}
-    sprite: {fileID: 656476972, guid: fdf9a69eebf1b534d80d0f50ecacfe51, type: 3}
+    sprite: {fileID: 21300000, guid: a08e1d9947984024eb03fc235ab2e420, type: 3}
   - unlockStarCount: 3
     mesh: {fileID: 7061910613977320673, guid: 9ca093b63b32bc6479e8706c849e1ee2, type: 3}
     sprite: {fileID: 21300000, guid: 6c81769532609e143ba1ecb1e0c43e9a, type: 3}
@@ -105,7 +105,7 @@ MonoBehaviour:
   shoesMesh:
   - unlockStarCount: 0
     mesh: {fileID: -278085929633702562, guid: ad472b939cd48144e9521d873c2e3018, type: 3}
-    sprite: {fileID: 656476972, guid: fdf9a69eebf1b534d80d0f50ecacfe51, type: 3}
+    sprite: {fileID: 21300000, guid: a08e1d9947984024eb03fc235ab2e420, type: 3}
   - unlockStarCount: 0
     mesh: {fileID: -1419061772662269867, guid: 20384ecd8466c804eb14b502b62acc3b, type: 3}
     sprite: {fileID: 21300000, guid: 5cc4b3a0d50aaef48bbb5cafafe3619d, type: 3}
