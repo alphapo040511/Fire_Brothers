@@ -1,33 +1,6 @@
 {
     "stages": [
         {
-            "stageIndex": 1,
-            "starScoreThresholds": [
-                300,
-                600,
-                900
-            ],
-            "unlockRequiredStars": 0
-        },
-        {
-            "stageIndex": 2,
-            "starScoreThresholds": [
-                300,
-                600,
-                900
-            ],
-            "unlockRequiredStars": 3
-        },
-        {
-            "stageIndex": 3,
-            "starScoreThresholds": [
-                300,
-                600,
-                900
-            ],
-            "unlockRequiredStars": 3
-        },
-        {
             "stageIndex": 0,
             "starScoreThresholds": [
                 60,
@@ -35,6 +8,33 @@
                 210
             ],
             "unlockRequiredStars": 0
+        },
+        {
+            "stageIndex": 1,
+            "starScoreThresholds": [
+                200,
+                400,
+                600
+            ],
+            "unlockRequiredStars": 3
+        },
+        {
+            "stageIndex": 2,
+            "starScoreThresholds": [
+                200,
+                400,
+                600
+            ],
+            "unlockRequiredStars": 4
+        },
+        {
+            "stageIndex": 3,
+            "starScoreThresholds": [
+                250,
+                500,
+                650
+            ],
+            "unlockRequiredStars": 5
         }
     ]
 }

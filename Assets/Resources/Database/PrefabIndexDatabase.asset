@@ -13,29 +13,49 @@ MonoBehaviour:
   m_Name: PrefabIndexDatabase
   m_EditorClassIdentifier: 
   prefabList:
-  - prefabName: Fire_Hydrant
+  - prefabName: 0_Fire_Hydrant
     prefabIndex: 0
     prefab: {fileID: 3090865672921115019, guid: 711247ffba4ae104bae7edef9fa0ffb3,
       type: 3}
-  - prefabName: FireEvent
+  - prefabName: 1_FireEvent
     prefabIndex: 1
     prefab: {fileID: 8945526007120290565, guid: 4f54fd337f7a6204faddf73d3e082274,
       type: 3}
-  - prefabName: Injured
-    prefabIndex: 6
-    prefab: {fileID: 1648195296136682194, guid: e241bc72d905b344295f229a2e8150b0,
-      type: 3}
-  - prefabName: Obstacles
-    prefabIndex: 5
-    prefab: {fileID: 261636200019511271, guid: 056a2b90376012046b9163e53f52b546, type: 3}
-  - prefabName: PlayableSpawner
+  - prefabName: 2_PlayableSpawner
     prefabIndex: 2
     prefab: {fileID: 6739400528913642085, guid: 4a037f53a0323364e85000dae4d46fb4,
       type: 3}
-  - prefabName: Test_Character
+  - prefabName: 3_Test_Character
     prefabIndex: 3
     prefab: {fileID: 668586970448991730, guid: e1a4eb58e864b994b8d0193b9787232c, type: 3}
-  - prefabName: Test_Character_2
+  - prefabName: 4_Test_Character_2
     prefabIndex: 4
     prefab: {fileID: 5696693637854044689, guid: 298fe2131e7eeb547b0f5505828df91b,
+      type: 3}
+  - prefabName: 5_Obstacles
+    prefabIndex: 5
+    prefab: {fileID: 261636200019511271, guid: 056a2b90376012046b9163e53f52b546, type: 3}
+  - prefabName: 6_Injured
+    prefabIndex: 6
+    prefab: {fileID: 1648195296136682194, guid: e241bc72d905b344295f229a2e8150b0,
+      type: 3}
+  - prefabName: 7_Garbage_Fire
+    prefabIndex: 7
+    prefab: {fileID: 8642668614394444071, guid: b13b5bc055a649947a561dcc2ed4c1b9,
+      type: 3}
+  - prefabName: 8_hot-dog-stand
+    prefabIndex: 8
+    prefab: {fileID: 3086200410458468349, guid: c2c49cb2aed11c243b2ac80f1f5152ff,
+      type: 3}
+  - prefabName: 9_ice-cream-stand
+    prefabIndex: 9
+    prefab: {fileID: 8042341604112208722, guid: 34daf33fdfe5fdf4ea9ce7ed8bcafeda,
+      type: 3}
+  - prefabName: 10_lemonade-stand
+    prefabIndex: 10
+    prefab: {fileID: 7146717976482801902, guid: e85ce0da02933e940b7757f8080e541c,
+      type: 3}
+  - prefabName: 11_trash-bags
+    prefabIndex: 11
+    prefab: {fileID: 4194196648873451793, guid: eb3e5c766abe8cb4b8dbabc472ea6b9f,
       type: 3}
