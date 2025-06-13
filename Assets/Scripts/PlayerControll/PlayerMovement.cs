@@ -133,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void DisconnectDevice()
     {
+        if(InputDeviceManager.Instance.InputDevices.ContainsKey(playerIndex))
         inputDevice = InputDeviceManager.Instance.InputDevices[playerIndex];
     }
 
