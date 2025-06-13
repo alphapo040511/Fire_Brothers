@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AxeContainer
   m_EditorClassIdentifier: 
   interactObjectName: "\uB3C4\uB07C \uBCF4\uAD00\uD568"
-  sprite: {fileID: 1246630516, guid: 4bd09081fe3a9934eb91ba57b9efb1dc, type: 3}
+  sprite: {fileID: -29096037, guid: 48836e73c35deb6468bbb2aa8876acdd, type: 3}
   needItems: 01000000
   maxProgress: 0
   rewardItem: {fileID: 5163788559872985519, guid: 3bf9aeb816bf7b94fa8b13e3e98570fc,
