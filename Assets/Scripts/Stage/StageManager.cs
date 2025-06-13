@@ -59,6 +59,8 @@ public class StageManager : MonoBehaviour
                 DataManager.Instance.ResetGamesData();
             }
         }
+
+        TotalStarChecking();
     }
 
     public void InitializeNewSaveData()
@@ -83,6 +85,7 @@ public class StageManager : MonoBehaviour
 
     private void SaveStageData()
     {
+        TotalStarChecking();
         string path = Path.Combine(Application.persistentDataPath, c_SaveFileName);
         string json = JsonUtility.ToJson(saveData, true);
         File.WriteAllText(path, json);
@@ -94,19 +97,21 @@ public class StageManager : MonoBehaviour
         if (info == null)
         {
             Debug.LogError($"스테이지 {stageIndex} 정보가 StageInfo에 존재하지 않습니다.");
-            saveData.saves.Add(new StageSave
-            {
-                stageIndex = info.stageIndex,
-                isCleared = false,
-                bestStars = 0,
-                highScore = 0
-            });
-            SaveStageData();
             return false;
         }
 
         return saveData.totalStars >= info.unlockRequiredStars;
     }
+
+    public int StageUnlockStarCount(int stageIndex)
+    {
+        StageInfo info = stageInfoData.stages.Find(x => x.stageIndex == stageIndex);
+        if (info == null)
+        {
+            return 99;
+        }
+        return info.unlockRequiredStars;
+    }    
 
     public bool IsStageClaer(int index)
     {
@@ -116,14 +121,6 @@ public class StageManager : MonoBehaviour
         if (save == null)
         {
             Debug.LogError($"스테이지 {index} 정보가 StageInfo에 존재하지 않습니다.");
-            saveData.saves.Add(new StageSave
-            {
-                stageIndex = index,
-                isCleared = false,
-                bestStars = 0,
-                highScore = 0
-            });
-            SaveStageData();
             return false;
         }
 
@@ -160,12 +157,23 @@ public class StageManager : MonoBehaviour
             int additionalStars = earnedStars - save.bestStars;
             save.bestStars = earnedStars;
             save.highScore = Mathf.Max(save.highScore, StageStatsManager.Instance.currentScore);
-            saveData.totalStars += additionalStars;
+            save.isCleared = true;
         }
 
-        save.isCleared = true;
         SaveStageData();
         return true;
+    }
+
+    private void TotalStarChecking()
+    {
+        int total = 0;
+        for(int i = 0; i < saveData.saves.Count; i++)
+        {
+            total += saveData.saves[i].bestStars;
+        }
+
+        saveData.totalStars = total;
+        Debug.Log("총 별 개수 : " + total);
     }
 
     public int CalculateStars(int score, int[] thresholds)
@@ -195,7 +203,7 @@ public class StageManager : MonoBehaviour
 
     public int[] GetStarThreshold(int index)
     {
-        if (stageInfoData != null && stageInfoData.stages.Count > index)
+        if (stageInfoData != null)
         {
             StageInfo save = stageInfoData.stages.Find(x => x.stageIndex == index);
 
@@ -208,6 +216,11 @@ public class StageManager : MonoBehaviour
     public int GetHighScore(int index)
     {
         StageSave save = saveData.saves.Find(x => x.stageIndex == index);
+        if(save == null)
+        {
+            return 0;
+        }
+
         return save.highScore;
     }
 }

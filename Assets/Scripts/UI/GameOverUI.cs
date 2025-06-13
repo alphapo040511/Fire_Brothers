@@ -82,6 +82,7 @@ public class GameOverUI : MonoBehaviour
         player_2.SetTrigger(trigger);
 
         int score = StageStatsManager.Instance.currentScore;
+        Debug.Log(score);
         int playTime = StageStatsManager.Instance.playTime;
         int[] starThreshold = StageManager.Instance.GetStarThreshold();
 
@@ -89,7 +90,7 @@ public class GameOverUI : MonoBehaviour
         {
             int i = 0; 
 
-            while(i > score && i > playTime)
+            while(i <= score || i <= playTime)
             {
                 scoreText.text = $"Scroe : {Mathf.Min(i, score)}";
                 for (int j = 0; j < starThreshold.Length; j++)
@@ -110,7 +111,7 @@ public class GameOverUI : MonoBehaviour
                 int seconds = time.Seconds;
 
                 timeText.text = time.ToString(@"mm\:ss");
-
+                i++;
                 yield return null;
             }
         }

@@ -12,7 +12,8 @@ public enum ScreenType
     Pause,
     GameOver,
     ControllerSet,
-    BackTitle
+    BackTitle,
+    Tutorial
 }
 
 [System.Serializable]

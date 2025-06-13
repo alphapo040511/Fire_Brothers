@@ -16,7 +16,7 @@
                 250,
                 400
             ],
-            "unlockRequiredStars": 3
+            "unlockRequiredStars": 0
         },
         {
             "stageIndex": 2,
@@ -25,7 +25,7 @@
                 250,
                 400
             ],
-            "unlockRequiredStars": 4
+            "unlockRequiredStars": 1
         },
         {
             "stageIndex": 3,
@@ -34,7 +34,7 @@
                 300,
                 500
             ],
-            "unlockRequiredStars": 5
+            "unlockRequiredStars": 2
         }
     ]
 }

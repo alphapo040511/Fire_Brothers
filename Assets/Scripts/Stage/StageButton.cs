@@ -16,15 +16,28 @@ public class StageButton : MonoBehaviour
     public TextMeshProUGUI[] scoresText = new TextMeshProUGUI[3];
     public GameObject[] stars = new GameObject[3];
 
+    public GameObject lockedImage;
+    public TextMeshProUGUI lockCount;
+
     private bool isUnlocked = false;
 
     void Start()
     {
-        if(!StageManager.Instance.IsStageClaer(stageIndex))
+        if(!StageManager.Instance.IsStageUnlocked(stageIndex))
         {
             GetComponent<Button>().interactable = false;
+            lockedImage.SetActive(true);
+            lockCount.text = StageManager.Instance.StageUnlockStarCount(stageIndex).ToString();
+            for (int i = 0; i < 3; i++)
+            {
+                scoresText[i].text = "";
+                stars[i].SetActive(false);
+            }
+        }        
+        else
+        {
+            ShowStageInfo(stageIndex);
         }
-        
     }
 
     public void Entrance()
@@ -49,7 +62,7 @@ public class StageButton : MonoBehaviour
     }
 
     
-    public void ShowStageInfo(int index, Transform target)
+    public void ShowStageInfo(int index)
     {
         if(StageManager.Instance != null)
         {
@@ -57,7 +70,7 @@ public class StageButton : MonoBehaviour
             int starCount = StageManager.Instance.GetStageBestStars(index);
             int highScore = StageManager.Instance.GetHighScore(index);
 
-            highScoreText.text = $"Best : {highScore}";
+            highScoreText.text = highScore > 0 ? $"Best : {highScore}" : "기록 없음";
             for (int i = 0; i < 3; i++)
             {
                 scoresText[i].text = targetScores[i].ToString();
