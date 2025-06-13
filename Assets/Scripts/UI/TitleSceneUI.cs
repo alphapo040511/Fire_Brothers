@@ -20,6 +20,7 @@ public class TitleSceneUI : MonoBehaviour
 
     public void ChangeGameState(GameState gameState)
     {
+        Debug.Log("Start에 포커스");
         //추후 메인 메뉴 상태일때로 변경
         if(gameState == GameState.Playing)
         {
@@ -30,6 +31,7 @@ public class TitleSceneUI : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        Debug.Log(sceneName + " 씬 로드 시작");
         SceneLoader.LoadScene(sceneName);
     }
 

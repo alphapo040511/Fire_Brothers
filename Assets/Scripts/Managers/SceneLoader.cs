@@ -16,12 +16,12 @@ public class SceneLoader : MonoBehaviour
     {
         nextScene = sceneName;
         SceneManager.LoadScene("Loading");
-        UIManager.Instance.HideScreen();
     }
 
     void Start()
     {
-        if(nextScene == "CustomizeScene")
+        UIManager.Instance.HideScreen();
+        if (nextScene == "CustomizeScene")
         {
             toCustomScene.SetActive(true);
         }
