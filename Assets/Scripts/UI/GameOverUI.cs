@@ -1,8 +1,11 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System.Linq;
+using UnityEngine.InputSystem.Controls;
 
 public class GameOverUI : MonoBehaviour
 {
@@ -16,6 +19,7 @@ public class GameOverUI : MonoBehaviour
     public Animator player_2;
 
     private bool isWorking = false;
+    private bool animationDone = false;
 
     private void OnEnable()
     {
@@ -32,6 +36,23 @@ public class GameOverUI : MonoBehaviour
         if(state == GameState.GameOver && !isWorking)
         {
             StartCoroutine(ShowScore());
+        }
+    }
+
+    private void Update()
+    {
+        if(animationDone)
+        {
+            if (EventSystem.current.currentSelectedGameObject == null && quitButton != null)
+            {
+                // 마우스 클릭이 아닌 경우에만 감지
+                if (Keyboard.current.anyKey.wasPressedThisFrame ||
+                    Gamepad.current != null && Gamepad.current.allControls.Any(c => c is ButtonControl btn && btn.wasPressedThisFrame))
+                {
+                    EventSystem.current.SetSelectedGameObject(quitButton.gameObject);
+                    Debug.Log("포커스 재설정");
+                }
+            }
         }
     }
 
@@ -71,6 +92,7 @@ public class GameOverUI : MonoBehaviour
 
         quitButton.interactable = true;
         isWorking = false;
+        animationDone = true;
     }
 
     public void Quit()
