@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ResultUI : MonoBehaviour
+public class GameOverUI : MonoBehaviour
 {
     public GameObject ResultCanvas;
     public Button quitButton;
@@ -75,8 +75,6 @@ public class ResultUI : MonoBehaviour
 
     public void Quit()
     {
-        SceneManager.LoadScene("StageSelectScene");
-
-        GameManager.Instance.ChangeState(GameState.Playing);
+        SceneLoader.LoadScene("StageSelectScene");
     }
 }
