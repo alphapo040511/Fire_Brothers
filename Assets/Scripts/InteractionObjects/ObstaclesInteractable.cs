@@ -19,7 +19,7 @@ public class ObstaclesInteractable : ProgressInteractable
             if(way != null)
             {
                 way.UnlockPath();
-                StageStatsManager.Instance.GainScore(40);
+                StageStatsManager.Instance.GainScore(20);
             }
         }
 
