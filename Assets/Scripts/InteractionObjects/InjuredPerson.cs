@@ -5,8 +5,9 @@ using UnityEngine;
 public class InjuredPerson : ProgressInteractable
 {
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
+        base.Start();
         //GetComponent<Animator>().SetInteger("Type", Random.Range(0, 2));      //애니메이션이 별로라서..
         GetComponent<Animator>().SetInteger("Type", 1);
     }

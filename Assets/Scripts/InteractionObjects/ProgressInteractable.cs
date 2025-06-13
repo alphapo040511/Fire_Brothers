@@ -12,7 +12,7 @@ public class ProgressInteractable : Interactable
     private int currentProgress = 0;
     private float timer;
 
-    private void Start()
+    public virtual void Start()
     {
         if (interactData.reuseable)
         {
