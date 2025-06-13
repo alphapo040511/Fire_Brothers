@@ -8,6 +8,7 @@ public class StageStatsManager : MonoBehaviour
     public static StageStatsManager Instance { get; private set; }
 
     public int currentScore { get; private set; }               //현재 점수
+    public int playTime { get; private set; } = 0;              //플레이 시간 (코루틴으로 1초마다 저장)
 
     public int[] scoreStarThreshold = new int[3];               //각 별을 획득할 기준
     private int minScore = 0;                                   //별 획득시 감소를 막을 수치
@@ -51,7 +52,7 @@ public class StageStatsManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             currentScore = Mathf.Max(minScore, currentScore - decreaseRate);
-
+            playTime++;
             OnScoreChanged?.Invoke(currentScore);
         }
     }

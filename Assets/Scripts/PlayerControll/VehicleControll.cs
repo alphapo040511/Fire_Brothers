@@ -94,7 +94,7 @@ public class VehicleControll : MonoBehaviour
 
             for(int i =0; i < targets.Length; i++)
             {
-                StageEntrance interact = targets[i].GetComponent<StageEntrance>();
+                StageButton interact = targets[i].GetComponent<StageButton>();
                 if(interact != null)
                 {
                     interact.Entrance();

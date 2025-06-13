@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8200493880856196202}
   - component: {fileID: 6209046570107814048}
   - component: {fileID: -2378795519674249502}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: subway-entrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}

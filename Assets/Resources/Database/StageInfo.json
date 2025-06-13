@@ -3,9 +3,9 @@
         {
             "stageIndex": 0,
             "starScoreThresholds": [
-                60,
-                140,
-                210
+                50,
+                130,
+                180
             ],
             "unlockRequiredStars": 0
         },

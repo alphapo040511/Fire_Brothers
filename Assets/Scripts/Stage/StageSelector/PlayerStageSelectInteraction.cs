@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerStageSelectInteraction : MonoBehaviour
 {
-    private StageEntrance currentPlate;   // 현재 발판 참조
+    private StageButton currentPlate;   // 현재 발판 참조
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out StageEntrance plate))
+        if (other.TryGetComponent(out StageButton plate))
         {
             currentPlate = plate;
         }
@@ -16,7 +16,7 @@ public class PlayerStageSelectInteraction : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out StageEntrance plate) && currentPlate == plate)
+        if (other.TryGetComponent(out StageButton plate) && currentPlate == plate)
         {
             currentPlate = null;
         }
