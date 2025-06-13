@@ -59,3 +59,7 @@ MonoBehaviour:
     prefabIndex: 11
     prefab: {fileID: 4194196648873451793, guid: eb3e5c766abe8cb4b8dbabc472ea6b9f,
       type: 3}
+  - prefabName: 12_Obstacles_Fire
+    prefabIndex: 12
+    prefab: {fileID: 6246354196469549155, guid: 1ab580feb9f4b6b49b76c38ca7598e2e,
+      type: 3}

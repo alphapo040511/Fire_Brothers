@@ -12,7 +12,7 @@ public class StageStatsManager : MonoBehaviour
     public int[] scoreStarThreshold = new int[3];               //각 별을 획득할 기준
     private int minScore = 0;                                   //별 획득시 감소를 막을 수치
 
-    private int decreaseRate = 6;                               //매 초 감소할 수치
+    private int decreaseRate = 5;                               //매 초 감소할 수치
 
     private int currenStarCount = 0;
 
@@ -49,7 +49,7 @@ public class StageStatsManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1f);
             currentScore = Mathf.Max(minScore, currentScore - decreaseRate);
 
             OnScoreChanged?.Invoke(currentScore);

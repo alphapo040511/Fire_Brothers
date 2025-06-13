@@ -12,8 +12,8 @@
         {
             "stageIndex": 1,
             "starScoreThresholds": [
-                100,
-                200,
+                150,
+                250,
                 400
             ],
             "unlockRequiredStars": 3
@@ -21,8 +21,8 @@
         {
             "stageIndex": 2,
             "starScoreThresholds": [
-                100,
-                200,
+                150,
+                250,
                 400
             ],
             "unlockRequiredStars": 4
@@ -30,7 +30,7 @@
         {
             "stageIndex": 3,
             "starScoreThresholds": [
-                150,
+                200,
                 300,
                 500
             ],

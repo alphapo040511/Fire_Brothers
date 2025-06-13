@@ -18,7 +18,7 @@ public class InjuredPerson : ProgressInteractable
 
         if(StageStatsManager.Instance != null)
         {
-            StageStatsManager.Instance.GainScore(35);
+            StageStatsManager.Instance.GainScore(50);
         }
 
         //사라지는 효과 추가
