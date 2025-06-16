@@ -783,7 +783,7 @@ MonoBehaviour:
     sources: {fileID: 0}
   - name: Pickup
     clip: {fileID: 8300000, guid: 58bfb95d943bcaf4c896eb46c5aa200c, type: 3}
-    volume: 0.15
+    volume: 0.1
     pitch: 1
     loop: 0
     mixerGroup: {fileID: 5822029546186030973, guid: edf3b1e84d53bba4a93824839661f467,

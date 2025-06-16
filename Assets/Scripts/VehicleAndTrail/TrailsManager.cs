@@ -44,6 +44,12 @@ public class TrailsManager : MonoBehaviour
         {
             PlayableObjectsManager.Instance.CanMoveChanged?.Invoke(false);
         }
+
+        if (!waypoins[index].isAccessed && waypoins[index].distanceFromLastPoint > 0)        //아직 접근 한 적이 없는 경우
+        {
+            GameProgressUIPresenter.Instance.NewPoint(waypoins[index].distanceFromLastPoint);
+            waypoins[index].isAccessed = true;
+        }
         
         return waypoins[index];
     }
@@ -55,14 +61,25 @@ public class TrailsManager : MonoBehaviour
         WaypointData loaded = WaypointIO.LoadWaypointPositions(index);
         if (loaded == null) return;
 
+        float total = 0;
+
         for(int i = 0; i < loaded.points.Count; i++)
         {
             GameObject obj = Instantiate(waypointPrefab, loaded.points[i], Quaternion.identity, transform);
             Waypoint wp = obj.GetComponent<Waypoint>();
             wp.isAccessible = loaded.isAccessible[i];
 
+            if(i > 0)
+            {
+                float distance = Vector3.Distance(loaded.points[i], loaded.points[i-1]);
+                wp.distanceFromLastPoint = distance;
+                total += distance;
+            }
+
             waypoins.Add(wp);
         }
+
+        GameProgressUIPresenter.Instance.ApplyTotalValue(total);
 
         Debug.Log($"웨이포인트 {loaded.points.Count}개 로드됨");
         GameManager.Instance.ChangeState(GameState.Playing);
