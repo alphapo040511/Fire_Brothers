@@ -1528,7 +1528,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000091552734, y: -1013.00006}
+  m_AnchoredPosition: {x: -0.000091552734, y: -1013}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &325494818
@@ -7573,6 +7573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1886807783}
   - component: {fileID: 1886807782}
+  - component: {fileID: 1886807784}
   m_Layer: 0
   m_Name: CheatSystem
   m_TagString: Untagged
@@ -7613,6 +7614,20 @@ Transform:
   - {fileID: 904417308}
   m_Father: {fileID: 836258687}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1886807784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886807781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b74ea26510afde408d3f255c07a75b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstSelected: {fileID: 297742937}
+  targetState: 3
 --- !u!1 &1895777727
 GameObject:
   m_ObjectHideFlags: 0
@@ -8729,8 +8744,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1539364563}
   m_HandleRect: {fileID: 1539364562}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 1
+  m_Value: 0
+  m_Size: 0.9999979
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

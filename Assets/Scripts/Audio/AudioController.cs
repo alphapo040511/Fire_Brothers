@@ -37,9 +37,9 @@ public class AudioController : MonoBehaviour, ISelectHandler, IPointerEnterHandl
 
         if (DataManager.Instance != null)
         {
-            SetVolume(AudioType.Master);
-            SetVolume(AudioType.BGM);
-            SetVolume(AudioType.SFX);
+            SetVolume(AudioType.Master,false);
+            SetVolume(AudioType.BGM, false);
+            SetVolume(AudioType.SFX, false);
             MusicMasterSlider.value = DataManager.Instance.gameData.masterVolume;
             MusicBGMSlider.value = DataManager.Instance.gameData.bgmVolume;
             MusicSFXSlider.value = DataManager.Instance.gameData.sfxVolume;
@@ -52,7 +52,7 @@ public class AudioController : MonoBehaviour, ISelectHandler, IPointerEnterHandl
         }
     }
 
-    public void SetVolume(AudioType type)
+    public void SetVolume(AudioType type, bool soundTest = true)
     {
         float volume = 0;
         string groupName = "Master";
@@ -80,7 +80,7 @@ public class AudioController : MonoBehaviour, ISelectHandler, IPointerEnterHandl
         }
         audioMixer.SetFloat(groupName, Mathf.Log10(volume / 10) * 20);                //볼륨에서의 0 ~ 1 <- Mathf.Log10(volume) * 20
 
-        if(SoundManager.instance != null)
+        if(SoundManager.instance != null && soundTest)
         {
             SoundManager.instance.PlayShootSound("SoundCheck_" + groupName);
         }

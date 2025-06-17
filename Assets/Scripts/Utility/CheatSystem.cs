@@ -123,7 +123,7 @@ public class CheatSystem : MonoBehaviour
         }
 
         float time;
-        if(float.TryParse(parts[1].Trim(), out time))
+        if(!float.TryParse(parts[1], out time))
         {
             Log("Time을 적용 할 수 없습니다.", MessegeType.Error);
             return;
@@ -135,7 +135,7 @@ public class CheatSystem : MonoBehaviour
         }
 
         int rate;
-        if(!int.TryParse(parts[2].Trim(), out rate))
+        if(!int.TryParse(parts[2], out rate))
         {
             Log("Rate을 적용 할 수 없습니다.", MessegeType.Error);
             return;

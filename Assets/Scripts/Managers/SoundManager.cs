@@ -47,6 +47,7 @@ public class SoundManager : MonoBehaviour
         foreach (Sound sound in sounds)
         {
             sound.sources = gameObject.AddComponent<AudioSource>();                 //AddComponent는 Class 컴포넌트를 오브젝트에 붙인다.
+            sound.sources.playOnAwake = false;
             sound.sources.clip = sound.clip;
             sound.sources.volume = sound.volume;
             sound.sources.pitch = sound.pitch;
@@ -78,6 +79,7 @@ public class SoundManager : MonoBehaviour
         if (soundToPlay != null)
         {
             soundToPlay.sources.PlayOneShot(soundToPlay.clip);                      //사운드 재생
+            Debug.Log(name + " 사운드 재생");
         }
         else
         {
