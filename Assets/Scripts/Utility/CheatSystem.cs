@@ -174,12 +174,15 @@ public class CheatSystem : MonoBehaviour
                 break;
             case MessegeType.Complite:
                 color = Color.green;
+                messege = "[System.Complite] ";
                 break;
             case MessegeType.Warning:
                 color = Color.yellow;
+                messege = "[System.Warning] ";
                 break;
             case MessegeType.Error:
                 color = Color.red;
+                messege = "[System.Error] ";
                 break;
             default:
                 color = Color.gray;
