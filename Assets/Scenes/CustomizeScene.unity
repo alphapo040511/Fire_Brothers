@@ -16538,7 +16538,6 @@ MonoBehaviour:
   apply: {fileID: 1027518911}
   cancel: {fileID: 822908091}
   loadingBar: {fileID: 1463235741}
-  backTitleUI: {fileID: 0}
   rotateDir: 0
 --- !u!114 &934468721
 MonoBehaviour:
@@ -22813,7 +22812,6 @@ MonoBehaviour:
   apply: {fileID: 62044197}
   cancel: {fileID: 1759434377}
   loadingBar: {fileID: 0}
-  backTitleUI: {fileID: 0}
   rotateDir: 0
 --- !u!114 &1441786116
 MonoBehaviour:

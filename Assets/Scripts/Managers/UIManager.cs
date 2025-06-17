@@ -13,7 +13,8 @@ public enum ScreenType
     GameOver,
     ControllerSet,
     BackTitle,
-    Tutorial
+    Tutorial,
+    Cheat
 }
 
 [System.Serializable]
@@ -65,6 +66,21 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.F1))
+        {
+            if (CurrentScreen == ScreenType.Cheat)
+            {
+                HideScreen();
+            }
+            else
+            {
+                ShowScreen(ScreenType.Cheat);
+            }
+        }
+
+
+        if (CurrentScreen == ScreenType.Cheat) return;
+
         foreach (InputDevice device in InputSystem.devices)
         {
             if (device is Gamepad gamepad)
@@ -113,6 +129,8 @@ public class UIManager : MonoBehaviour
     public void ShowScreen(ScreenType screenType)
     {
         if (isWaiting || GameManager.Instance.CurrentState == GameState.Loading) return;
+
+        if (CurrentScreen == ScreenType.ControllerSet || CurrentScreen == ScreenType.Cheat) return;          //컨트롤러 연결 또는 치트 사용 중에는 불가능
 
         //기존 화변 비활성화
         if (CurrentScreen != ScreenType.None && screenDictionary.ContainsKey(CurrentScreen))

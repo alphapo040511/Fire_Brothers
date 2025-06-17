@@ -13,12 +13,15 @@ public class StageStatsManager : MonoBehaviour
     public int[] scoreStarThreshold = new int[3];               //각 별을 획득할 기준
     private int minScore = 0;                                   //별 획득시 감소를 막을 수치
 
-    private int decreaseRate = 4;                               //매 초 감소할 수치
+
 
     private int currenStarCount = 0;
 
     public event Action<float> OnScoreChanged;                  //점수 변경 이벤트
     public event Action<int> GetStar;                           //점수 변경 이벤트
+
+    private float decreaseTime = 1f;                            //점수가 감소할 시간
+    private int decreaseRate = 4;                               //매 시간 감소할 수치
 
     private void Awake()
     {
@@ -39,6 +42,12 @@ public class StageStatsManager : MonoBehaviour
         Debug.Log($"이번 스테이지의 클리어 조건 {scoreStarThreshold[0]}, {scoreStarThreshold[1]}, {scoreStarThreshold[2]}");
     }
 
+    public void DecreaseSetting(float time = 1f, int rate = 4)
+    {
+        decreaseTime = time;
+        decreaseRate = rate;
+    }
+
 
     private void InitScore()
     {
@@ -50,7 +59,7 @@ public class StageStatsManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(decreaseTime);
             currentScore = Mathf.Max(minScore, currentScore - decreaseRate);
             playTime++;
             OnScoreChanged?.Invoke(currentScore);

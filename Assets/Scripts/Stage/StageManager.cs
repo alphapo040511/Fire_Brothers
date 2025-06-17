@@ -164,6 +164,17 @@ public class StageManager : MonoBehaviour
         return true;
     }
 
+    public void AllClear()
+    {
+        foreach(var save in saveData.saves)
+        {
+            save.isCleared = true;
+            save.bestStars = 3;
+        }
+
+        SaveStageData();
+    }
+
     private void TotalStarChecking()
     {
         int total = 0;
