@@ -127,17 +127,19 @@ public class PlayerInteraction : MonoBehaviour
         Vector3 playerPos = PlanePosition(pivot.position);
 
         Vector3 targetPos = Vector3.zero;
-        if (target != null)
-        {
-            targetPos = PlanePosition(target.transform.position);
-        }
-        float dot = Vector3.Dot(pivot.forward, (targetPos - playerPos).normalized);
+
 
         foreach (var temp in targets)
         {
             if (temp == target) return;
 
-            Vector3 newPos = PlanePosition(temp.ClosestPointOnBounds(transform.position));
+            if (target != null)
+            {
+                targetPos = PlanePosition(target.transform.position);
+            }
+            float dot = Vector3.Dot(pivot.forward, (targetPos - playerPos).normalized);
+
+            Vector3 newPos = PlanePosition(temp.ClosestPoint(transform.position));
 
             float newDot = Vector3.Dot(pivot.forward, (newPos - playerPos).normalized);
 

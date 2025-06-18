@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 846d4f9eecfc502449741e78f1e07ba1
-      internalID: 959389037
+      spriteID: dafb488f9bc72d94ab18aa622ba0c7de
+      internalID: -1763908944
       vertices: []
       indices: 
       edges: []
@@ -132,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d05f631368a22384b9182dac6256e7f7
-      internalID: 1631892158
+      spriteID: 604367f305e87654bb1a983517aad75d
+      internalID: 1910409448
       vertices: []
       indices: 
       edges: []
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 186944e2b2a046647ab0cf8c4d236997
-      internalID: 1640216801
+      spriteID: fbf886047a318134aafd9522e2f32ffa
+      internalID: 1762901624
       vertices: []
       indices: 
       edges: []
@@ -174,8 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4edcbbbe0eb246a47b77b3555ddcbb34
-      internalID: 2060101218
+      spriteID: 6f899957259f93b40b90979b55fcf85d
+      internalID: 1679761737
       vertices: []
       indices: 
       edges: []
@@ -184,9 +184,9 @@ TextureImporter:
       name: StageButton_4
       rect:
         serializedVersion: 2
-        x: 2798
+        x: 2785
         y: 0
-        width: 590
+        width: 603
         height: 777
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -195,8 +195,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1196c60d660dfc0489c854a4fabe2f6a
-      internalID: -565187692
+      spriteID: 4dd35e0cbc0557641bc416cd69e31fc1
+      internalID: 1874547164
       vertices: []
       indices: 
       edges: []
@@ -204,7 +204,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 4bee1eaeadd891441a29705d2ee7c551
+    spriteID: b2937f0befe9332478ad9a2118c218c9
     internalID: 0
     vertices: []
     indices: 
@@ -212,11 +212,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      StageButton_0: 959389037
-      StageButton_1: 1631892158
-      StageButton_2: 1640216801
-      StageButton_3: 2060101218
-      StageButton_4: -565187692
+      StageButton_0: -1763908944
+      StageButton_1: 1910409448
+      StageButton_2: 1762901624
+      StageButton_3: 1679761737
+      StageButton_4: 1874547164
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
