@@ -113,17 +113,14 @@ public class CheatSystem : MonoBehaviour
 
     private void Decrease(string[] args)
     {
-        string command = commandInput.text.Trim().ToLower();
-        string[] parts = command.Split(' ');
-
-        if(parts.Length < 3)                        //내용이 빠져 있는 경우
+        if(args.Length < 3)                        //내용이 빠져 있는 경우
         {
             Log("Time과 Rate를 입력 해 주십시오.", MessegeType.Error);
             return;
         }
 
         float time;
-        if(!float.TryParse(parts[1], out time))
+        if(!float.TryParse(args[1], out time))
         {
             Log("Time을 적용 할 수 없습니다.", MessegeType.Error);
             return;
@@ -135,7 +132,7 @@ public class CheatSystem : MonoBehaviour
         }
 
         int rate;
-        if(!int.TryParse(parts[2], out rate))
+        if(!int.TryParse(args[2], out rate))
         {
             Log("Rate을 적용 할 수 없습니다.", MessegeType.Error);
             return;
