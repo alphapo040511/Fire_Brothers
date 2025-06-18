@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
@@ -136,7 +137,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (temp == target) return;
 
-            Vector3 newPos = PlanePosition(temp.transform.position);
+            Vector3 newPos = PlanePosition(temp.ClosestPointOnBounds(transform.position));
 
             float newDot = Vector3.Dot(pivot.forward, (newPos - playerPos).normalized);
 
