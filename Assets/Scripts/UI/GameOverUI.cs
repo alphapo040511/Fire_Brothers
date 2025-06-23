@@ -92,7 +92,7 @@ public class GameOverUI : MonoBehaviour
 
             while(i <= score || i <= playTime)
             {
-                scoreText.text = $"Scroe : {Mathf.Min(i, score)}";
+                scoreText.text = $"{Mathf.Min(i, score)}";
                 for (int j = 0; j < starThreshold.Length; j++)
                 {
                     if (stars[j] != null && i >= starThreshold[j])

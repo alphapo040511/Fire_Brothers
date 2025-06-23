@@ -66,17 +66,17 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F1))
-        {
-            if (CurrentScreen == ScreenType.Cheat)
-            {
-                HideScreen();
-            }
-            else
-            {
-                ShowScreen(ScreenType.Cheat);
-            }
-        }
+        //if(Input.GetKeyDown(KeyCode.F1))
+        //{
+        //    if (CurrentScreen == ScreenType.Cheat)
+        //    {
+        //        HideScreen();
+        //    }
+        //    else
+        //    {
+        //        ShowScreen(ScreenType.Cheat);
+        //    }
+        //}
 
 
         if (CurrentScreen == ScreenType.Cheat) return;
